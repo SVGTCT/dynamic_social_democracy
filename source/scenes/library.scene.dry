@@ -3,11 +3,11 @@ new-page: true
 is-special: true
 go-to: menu
 
+@menu
+
 = The Library
 
 Herein contains relevant information about the government and politics of the British republic.
-
-@menu
 
 - @government: Britain's system of government
 - @weimar_timeline: Timeline of the British Republic before 1928
