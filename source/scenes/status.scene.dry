@@ -16,133 +16,194 @@ if (Q.economic_growth) {
 
 = Status
 
-[+ month : month +] [+ year +][? if rubicon:, Week [+ week +]?]
+[+ month : month +] [+ year +]
 
 Resources available: [+ resources +]
 
-<span style="color: #e31414;">**Labour**</span> position: [? if lab_toleration : toleration ?][? if lab_in_government : in government - ?][? if lab_toleration == 0 and lab_in_government == 0 and lab_caretaker == 0 : opposition ?][? if lab_caretaker : caretaker government ?]
-[? if in_national_coalition and not in_purple_coalition and not in_grand_coalition and lab_in_government: <span style="color: #005eb8;">National</span> <span style="color: #00b041;">Coalition</span><span style="color: #FFCC00;">ar</span> Coalition ?][? if in_purple_coalition and lab_in_government: <span style="color: #9a0cae;">Purple</span> Coalition ?][? if in_social_liberal_coalition and lab_in_government: <span style="color: #e31414;">Social</span>-<span style="color: #ffd600;">Liberal</span> Coalition ?][? if in_grand_coalition and lab_in_government: Grand Coalition ?][? if in_popular_front and lab_in_government: Popular Front ?][? if in_left_front and lab_in_government: Left Front ?][? if in_spd_majority and spd_in_government: <span style="color: #c00000;">**SPD**</span> majority ?][? if in_minority_government and lab_in_government: minority government ?][? if in_emergency_government and lab_in_government: emergency government ?]
+Labour position: [? if lab_toleration : toleration ?][? if lab_in_government : in government - ?][? if lab_toleration == 0 and lab_in_government == 0 and lab_caretaker == 0 : opposition ?][? if lab_caretaker : caretaker government ?]
+[? if in_lab_lib_government and lab_in_government: Lab-Lib Coalition ?][? if in_lw_government and lab_in_government: Left-Wing Coalition ?][? if in_socialist_government and lab_in_government: Socialist Coalition ?][? if in_lab_majority and lab_in_government: Labour majority ?][? if in_lab_minority and lab_in_government: Labour minority ?][? if not in_lab_minority and lab_in_government and minority_government: (minority government) ?][? if in_emergency_government and lab_in_government: emergency government ?]
 
-Toleration goes here
+[? if lab_in_government and in_lab_lib_government: Right-wing coalition dissent: [+ right_coalition_dissent : coalition_dissent +] ?]
 
-Macready approval goes here
-
-Government burdens go here
-
-2ndary gov't burdens here
-
-London government: [? if lab_london : in government - ?]
-London Coalitions
-
-[? if lab_in_government and not in_lab_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
-
-[? if lab_in_government and president == "Macready" : Macready's approval: [+ macready_approval : macready_approval +] ?]
-
-[? if lab_in_government and (in_left_front or in_popular_front): <span style="color: #8e000a;">**CPB**</span> coalition dissent: [+ cpb_coalition_dissent : coalition_dissent +] ?]
+[? if lab_in_government: Left-wing coalition dissent: [+ left_coalition_dissent : coalition_dissent +] ?]
 
 Internal dissent: [+ dissent_percent : dissent +]
 
+Party leader: [+ labour_leader +]
+
 = Government
 
-President: [? if president == "Macready": <span style="color: #808080;">Macready</span> ?]
+Head of State: [+ hos_prefix +] [+ head_of_state +]
 
-Prime Minister: [? if pm_party == "Lab": <span style="color: #e31414;">[+ prime_minister +]</span>?][? if pm_party == "CCP": <span style="color: #1375d6;">[+ prime_minister +]</span>?][? if pm_party == "BUF": <span style="color: #262626;">[+ prime_minister +]</span>?][? if pm_party == "CPB": <span style="color: #700000;">[+ prime_minister +]</span>?][? if pm_party == "CUP": <span style="color: #003789;">[+ prime_minister +]</span>?][? if pm_party == "I": <span style="color: #808080;">[+ prime_minister +]</span>?][? if pm_party == "Lib": <span style="color: #ffbb00;">[+ prime_minister +]</span>?][? if pm_party == "CNLP": <span style="color: #ffd600;">[+ prime_minister +]</span>?] ([? if pm_party == "CCP":<span style="color: #1375d6;">**CCP**</span>?][? if pm_party == "Lab":<span style="color: #e31414;">**Lab**</span>?][? if pm_party == "CPB":<span style="color: #8e000a;">**CPB**</span>?][? if pm_party == "CUP": <span style="color: #003789;">**CUP**</span>?][? if pm_party == "BUF":<span style="color: #6A1E1E;">**BUF**</span>?][? if pm_party == "I":<span style="color: #808080;">I</span>?][? if pm_party == "Lib":<span style="color: #ffbb00;">Lib</span>?][? if pm_party == "CNLP":<span style="color: #ffd600;">CNLP</span>?])     
+Prime Minister: [+ prime_minister +] ([+ pm_party +])
 
-London First Minister: [? if london_direct_rule: *Direct rule* ?][? if not london_direct_rule: [? if london_fm_party == "Lab": <span style="color: #e31414;">[+ london_fm +]</span>?][? if london_fm_party == "CCP": <span style="color: #1375d6;">[+ london_fm +]</span>?][? if london_fm_party == "BUF": <span style="color: #262626;">[+ london_fm +]</span>?][? if london_fm_party == "CPB": <span style="color: #700000;">[+ london_fm +]</span>?][? if london_fm_party == "CUP": <span style="color: #003789;">[+ london_fm +]</span>?][? if london_fm_party == "I": <span style="color: #808080;">[+ london_fm +]</span>?][? if london_fm_party == "Lib": <span style="color: #ffbb00;">[+ london_fm +]</span>?][? if london_fm_party == "CNLP": <span style="color: #ffd600;">[+ london_fm +]</span>?] ([? if london_fm_party == "CCP":<span style="color: #1375d6;">**CCP**</span>?][? if london_fm_party == "Lab":<span style="color: #e31414;">**Lab**</span>?][? if london_fm_party == "CPB":<span style="color: #8e000a;">**CPB**</span>?][? if london_fm_party == "CUP": <span style="color: #003789;">**CUP**</span>?][? if london_fm_party == "BUF":<span style="color: #6A1E1E;">**BUF**</span>?][? if london_fm_party == "I":<span style="color: #808080;">I</span>?][? if london_fm_party == "Lib":<span style="color: #ffbb00;">Lib</span>?][? if london_fm_party == "CNLP":<span style="color: #ffd600;">CNLP</span>?]) ?]
+House of Commons composition:
 
-House of State composition:
-
-Parties
+{!<span class="tooltip-text" title="Conservative Party">Con</span>!}: [+ con_c +]%
+{!<span class="tooltip-text" title="Labour Party">Lab</span>!}: [+ lab_c +]%
+{!<span class="tooltip-text" title="National Liberal Party">Nat Lib</span>!}: [+ nat_lib_c +]%
+{!<span class="tooltip-text" title="Liberal Party">Lib</span>!}: [+ lib_c +]%
+[? if year < 1936: {!<span class="tooltip-text" title="National Labour Organisation">Nat Lab</span>!}: [+ nat_lab_c +]% ?]
+[? if ind_lab_c > 0: {!<span class="tooltip-text" title="Independent Labour (includes Independent Labour Party)">Ind Lab</span>!}: [+ ind_lab_c +] ?]
+[? if nationalist_c > 0: {!<span class="tooltip-text" title="Scottish regionalists and Irish republicans">Nationalists</span>!}: [+ nationalist_c +] ?]
+[? if communist_c > 0: {!<span class="tooltip-text" title="Communist Party of Great Britain">CPGB</span>!}: [+ communist_c +] ?]
+[? if buf_c > 0: {!<span class="tooltip-text" title="British Union of Fascists">BUF</span>!}: [+ buf_c +] ?]
+Others: [+ other_c +]%
 
 [? if lab_in_government = 1 : Budget: [+ budget +] ?]
 
 Next election: [+ next_election_month : month +] [+ next_election_year +]
 
-Next London election: [? if not london_direct_rule: [+ next_election_month_prussia : month +] [+ next_election_year_prussia +][? if rubicon:, Week [+ next_election_week_prussia +] ?] ?][? if prussia_leader == "Papen" or prussia_leader == "Schleicher": postponed indefinitely ?]
-
 = Economics
 
 Inflation: [+ inflation_2 +]%
 
- Unemployment: [+ unemployed_2 +]%
+Unemployment: [+ unemployed_2 +]%
 
 Economic growth: [+ economic_growth_2 +]%
 
 # = Public Opinion
 
-@emergency
-on-arrival: {!
-if (Q.unemployed) {
-    Q.unemployed_2 = Q.unemployed.toFixed(1);
-}
-if (Q.inflation) {
-    Q.inflation_2 = Q.inflation.toFixed(1);
-}
-Q.economic_growth_2 = '0';
-if (Q.economic_growth) {
-    Q.economic_growth_2 = Q.economic_growth.toFixed(1);
-}
-Q.pro_republic_disp = Math.floor(Q.pro_republic);
-!}
-
-= Emergency Status
-
-WIP
-
-= Government
-
-WIP
-
-Next election: [+ next_election_month : month +] [+ next_election_year +]
-Next London election: [? if not london_direct_rule: [+ next_election_month_prussia : month +] [+ next_election_year_prussia +][? if rubicon:, Week [+ next_election_week_prussia +] ?] ?][? if prussia_leader == "Papen" or prussia_leader == "Schleicher": postponed indefinitely ?]
-
-
-= Party
-
-Resources available: [+ resources +]<br>
-Internal dissent: [+ dissent_percent : dissent +]<br>
-Support for the Republic: [+ pro_republic_disp +]%<br>
-Streetfighting
-
-= Economics
-
-Inflation: [+ inflation_2 +]%<br>
-Unemployment: [+ unemployed_2 +]%<br>
-Economic growth: [+ economic_growth_2 +]%
-
 @politics
+
+= Inter-party Relations
+
+{!<span class="tooltip-text" title="Conservative Party">Con</span>!}: [+ con_relation : relationships +]
+
+*The <span style="color:#0087DC">**Conservatives**</span> are led by [? if conservative_leader == "Baldwin": Stanley Baldwin. ?][? if conservative_leader == "Chamberlain": Neville Chamberlain. ?]*
+
+{!<span class="tooltip-text" title="National Liberal Party">Nat Lib</span>!}: [+ nat_lib_relation : relationships +]
+
+*The <span style="color:#AFEEEE">**National Liberals**</span> are led by [? if nat_liberal_leader == "Simon": John Simon. ?][? if nat_liberal_leader == "Brown": Ernest Brown. ?]*
+
+{!<span class="tooltip-text" title="Liberal Party">Lib</span>!}: [+ lib_relation : relationships +]
+
+*The <span style="color:#FFD700">**Liberals**</span> are led by [? if liberal_leader == "Samuel": Sir Herbert Samuel. ?][? if liberal_leader == "Sinclair": Sir Archibald Sinclair. ?]*
+
+[? if year < 1936: {!<span class="tooltip-text" title="National Labour Organisation">Nat Lab</span>!}: [+ nat_lab_relation : relationships +] ?]
+
+*[? if year < 1936: The <span style="color:#008000">**NLO**</span> are led by Ramsay MacDonald. ?]*
+
+{!<span class="tooltip-text" title="Independent Labour (includes Independent Labour Party)">Ind Lab</span>!}: [+ ind_lab_relation : relationships +]
+
+{!<span class="tooltip-text" title="Scottish regionalists and Irish republicans">Nationalists</span>!}: [+ nationalist_relation : relationships +]
+
+{!<span class="tooltip-text" title="Communist Party of Great Britain">CPGB</span>!}: [+ communist_relation : relationships +]
+
+{!<span class="tooltip-text" title="British Union of Fascists">BUF</span>!}: [+ buf_relation : relationships +]
+
+= Internal Factions of the Labour Party
+
+#note: Trade unions support rearmament, so does Bevan -- Marxists are the real pacifists.
+
+[? if left_split == 0: {!<span class="tooltip-text" title="The party's left wing members who have remained after the ILP split push for nationalisation, particularly of banks, and an anti-fascist united front.">Socialist League</span>!} strength: [+ left_strength : strength +], dissent: [+ left_dissent : dissent +] ?]
+
+{!<span class="tooltip-text" title="The mainstream Labour party is pragmatic and seeks to reform capitalism through parliamentarism.">Pragmatists</span>!} strength: [+ pragmatist_strength : strength +], dissent: [+ pragmatist_dissent : dissent +]
+
+[? if unions_independent == 0: {!<span class="tooltip-text" title="The trade unions aim to represent the working class, the largest section of British society.">Labour</span>!} strength: [+ labour_strength : strength +], dissent: [+ labour_dissent : dissent +] ?]
+
+{!<span class="tooltip-text" title="The reformist Fabian Society promotes a gradual reform to a generous welfare state.">Fabian Society</span>!} strength: [+ reformist_strength : strength +], dissent: [+ reformist_dissent : dissent +]
+
+[? if reconciliation == 1: {!<span class="tooltip-text" title="Returning to Labour from the ILP, centre Marxists advocate for revolutionary socialism and pacifism.">Revolutionary Socialists</span>!} strength: [+ marxist_strength : strength +], dissent: [+ marxist_dissent : dissent +] ?]
+
+[? if coop_exit == 0: {!<span class="tooltip-text" title="Running an electoral pact with Labour since 1927, co-operatives supports co-operatives and a "social economy".>Co-operative Party</span>!} strength: [+ cooperative_strength : strength +], dissent: [+ cooperative_dissent : dissent +] ?]
 
 @paramilitaries
 on-arrival: {!
-Q.rb_strength_2 = Q.rb_strength.toFixed(1);
-Q.rfb_strength_2 = Q.rfb_strength.toFixed(1);
-Q.sh_strength_2 = Q.sh_strength.toFixed(1);
-Q.sa_strength_2 = Q.sa_strength.toFixed(1);
+if (Q.union_strength) {
+    Q.union_strength_2 = Q.union_strength.toFixed(1);
+}
+if (Q.ira_strength) {
+    Q.ira_strength_2 = Q.ira_strength.toFixed(1);
+}
+if (Q.blackshirts_strength) {
+    Q.blackshirts_strength_2 = Q.blackshirts_strength.toFixed(1);
+}
+if (Q.fdf_strength) {
+    Q.fdf_strength_2 = Q.fdf_strength.toFixed(1);
+}
 !}
 
 = Paramilitaries
 
-Paramilitary stuff
+{!<span class="tooltip-text" title="The trade unions are not militarised and are affiliated with the Labour Party.">Trade Unions</span>!} Strength: [+ union_strength_2 +] thousand
 
-= Official military/paramilitaries
+Trade Unions Militarisation: [+ union_militancy : militancy +]
 
-Police and armed forces
+{!<span class="tooltip-text" title="The Blackshirts try to mimic the success of European fascist paramilitaries and are associated with the BUF.">Blackshirts</span>!} Strength: [+ blackshirts_strength_2 +] thousand
+
+Blackshirts Militarisation: [+ blackshirts_militancy : militancy +]
+
+{!<span class="tooltip-text" title="The Fascist Defence Force are the personal bodyguard of Oswald Mosley.">FDF</span>!} Strength: 300
+
+FDF Militarisation: [+ fdf_militancy : militancy +]
+
+{!<span class="tooltip-text" title="The Irish Republican Army has been stirring up trouble in Northern Ireland in an attempt to unite the island.">IRA</span>!} Strength: [+ ira_strength_2 +] thousand
+
+IRA Militarisation: [+ ira_militancy : militancy +]
+
+= Official security services
+
+Armed Forces: [+ mil_strength +] thousand troops.
+
+Armed Forces Loyalty: [+ mil_loyalty : loyalty +]
+
+Local police units: [+ local_police_strength +] thousand members.
+
+Local police: [+ local_police_loyalty : loyalty +]
+
+[? if lab_in_government : Secret police loyalty: [+ interior_police_loyalty : loyalty +] ?]
 
 @polls
 on-arrival: {!
-Q.pro_republic_disp = Math.floor(Q.pro_republic);
-Q.nationalism_disp = Math.floor(Q.nationalism);
-Q.socialism_disp = Math.floor(Q.socialism);
+Q.pro_monarchy_disp = Math.round(Q.pro_monarchy);
+Q.nationalism_disp = Math.round(Q.nationalism);
+Q.socialism_disp = Math.round(Q.socialism);
 !}
 
 = Projected election results
 
 (if the election were to be held now):
 
-Polls
+Lab: [+ lab_votes +]%
 
-Support for the Republic: [+ pro_republic_disp +]%
+[? if coop_exit: Coop: [+ coop_votes +]% ?]
+
+Con: [+ con_votes +]%
+
+Nat Lib: [+ nat_lib_votes +]%
+
+Lib: [+ lib_votes +]%
+
+[? if year < 1936: Nat Lab: [+ nat_lab_votes +]% ?]
+
+Ind Lab: [+ ind_lab_votes +]%
+
+CPGB: [+ communist_votes +]%
+
+Nationalist: [+ nationalist_votes +]%
+
+BUF: [+ buf_votes +]%
+
+Others: [+ other_votes +]%
 
 **Detailed results for each demographic**
 
-WIP
+Working class: Lab: [+ working_lab_display +]%, [? if coop_exit: Coop: [+ working_coop_display +]%, ?] Con: [+ working_con_display +]%, Nat Lib: [+ working_nat_lib_display +]%, Lib: [+ working_lib_display +]%, [? if year < 1936: Nat Lab: [+ working_nat_lab_display +]%, ?] Ind Lab: [+ working_ind_lab_display +]%, CPGB: [+ working_communist_display +]%, Nationalist: [+ working_nationalist_display +]%, BUF: [+ working_buf_display +]%, Others: [+ working_other_display +]%
+
+Middle classes: Lab: [+ middle_lab_display +]%, [? if coop_exit: Coop: [+ middle_coop_display +]%, ?] Con: [+ middle_con_display +]%, Nat Lib: [+ middle_nat_lib_display +]%, Lib: [+ middle_lib_display +]%, [? if year < 1936: Nat Lab: [+ middle_nat_lab_display +]%, ?] Ind Lab: [+ middle_ind_lab_display +]%, CPGB: [+ middle_communist_display +]%, Nationalist: [+ middle_nationalist_display +]%, BUF: [+ middle_buf_display +]%, Others: [+ middle_other_display +]%
+
+Upper class: Lab: [+ upper_lab_display +]%, [? if coop_exit: Coop: [+ upper_coop_display +]%, ?] Con: [+ upper_con_display +]%, Nat Lib: [+ upper_nat_lib_display +]%, Lib: [+ upper_lib_display +]%, [? if year < 1936: Nat Lab: [+ upper_nat_lab_display +]%, ?] Ind Lab: [+ upper_ind_lab_display +]%, CPGB: [+ upper_communist_display +]%, Nationalist: [+ upper_nationalist_display +]%, BUF: [+ upper_buf_display +]%, Others: [+ upper_other_display +]%
+
+Farmers: Lab: [+ farmers_lab_display +]%, [? if coop_exit: Coop: [+ farmers_coop_display +]%, ?] Con: [+ farmers_con_display +]%, Nat Lib: [+ farmers_nat_lib_display +]%, Lib: [+ farmers_lib_display +]%, [? if year < 1936: Nat Lab: [+ farmers_nat_lab_display +]%, ?] Ind Lab: [+ farmers_ind_lab_display +]%, CPGB: [+ farmers_communist_display +]%, Nationalist: [+ farmers_nationalist_display +]%, BUF: [+ farmers_buf_display +]%, Others: [+ farmers_other_display +]%
+
+Unemployed: Lab: [+ unemployed_lab_display +]%, [? if coop_exit: Coop: [+ unemployed_coop_display +]%, ?] Con: [+ unemployed_con_display +]%, Nat Lib: [+ unemployed_nat_lib_display +]%, Lib: [+ unemployed_lib_display +]%, [? if year < 1936: Nat Lab: [+ unemployed_nat_lab_display +]%, ?] Ind Lab: [+ unemployed_ind_lab_display +]%, CPGB: [+ unemployed_communist_display +]%, Nationalist: [+ unemployed_nationalist_display +]%, BUF: [+ unemployed_buf_display +]%, Others: [+ unemployed_other_display +]
+
+Support for the Republic: [+ pro_republic_disp +]%
+
+After asking those who considered themselves devout Christians [? if protestants_lab < 50: **only [+ protestants_lab +]%** ?][? if protestants_lab >= 50: **an incredible [+ protestants_lab +]%** ?] were friendly towards the Labour Party.
+
+
+
+
+
