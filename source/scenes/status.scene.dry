@@ -114,34 +114,6 @@ Economic growth: [+ economic_growth_2 +]%
 
 @politics
 
-= Inter-party Relations
-
-WIP
-
-= Party Leadership
-
-WIP
-
-= Industrial Backing
-
-WIP
-
-= Internal Factions
-
-[? if left_split == 0: {!<span class="tooltip-text" title="The party's left wing members push for nationalisation, particularly of banks, and an anti-fascist united front.">Socialist League</span>!} strength: [+ left_strength : strength +], dissent: [+ left_dissent : dissent +] ?]
-
-{!<span class="tooltip-text" title="The mainstream Labour party is pragmatic and seeks to reform capitalism through parliamentarism.">Pragmatists</span>!} strength: [+ pragmatist_strength : strength +], dissent: [+ pragmatist_dissent : dissent +]
-
-[? if unions_independent == 0: {!<span class="tooltip-text" title="The trade unions aim to represent the working class, the largest section of British society.">Labour</span>!} strength: [+ labour_strength : strength +], dissent: [+ labour_dissent : dissent +] 
-
-{!<span class="tooltip-text" title="The reformist Fabian Society promotes a gradual reform to a generous welfare state.">Fabian Society</span>!} strength: [+ reformist_strength : strength +], dissent: [+ reformist_dissent : dissent +]
-
-{!<span class="tooltip-text" title="Returning to Labour from the ACLP, centre Marxists advocate for revolutionary socialism and pacifism.">Revolutionary Socialists</span>!} strength: [+ marxist_strength : strength +], dissent: [+ marxist_dissent : dissent +] 
-
-[? if coop_alliance: {!<span class="tooltip-text" title="Now running an electoral pact with Labour, co-operatives support co-operatives and a "social economy".>Co-operative Party</span>!} strength: [+ cooperative_strength : strength +], dissent: [+ cooperative_dissent : dissent +] ?]
-
-#Equivalent of neorevisionism here?
-
 @paramilitaries
 on-arrival: {!
 Q.rb_strength_2 = Q.rb_strength.toFixed(1);
