@@ -85,7 +85,7 @@ Q.reformists_resigned = 0;
 // ILP reconciliation
 Q.reconciliation = 0;
 
-// crisis_urgency indicates how seriously the population takes Labour's economic policies: can be achieved through support of public works to counter MacDonald's "doctor's mandate"
+// crisis urgency indicates how seriously the population takes Labour's economic policies: can be achieved through support of public works to counter MacDonald's "doctor's mandate"
 Q.economic_viability = 0;
 // nazi_urgency indicates how seriously the SPD takes the BUF - scale from 0 to 10.
 Q.buf_urgency = 0;
@@ -135,8 +135,7 @@ Q.cpb_leader_1 = "Cook";
 Q.cpb_leader_2 = "Campbell";
 Q.uup_leader = "Craig";
 Q.buf_leader = "Mosley";
-Q.spec_interest_leader = "A.R. Grindlay"
-Q.labour_leader = "[+ advisor_1 +][? if advisor_2 != "" and advisor_3 == "": & [+ advisor_2 +] ?][? if advisor_2 != "" and advisor_3 != "": , [+ advisor_2 +] ?][? if advisor_3 != "": & [+ advisor_3 +] ?];
+Q.spec_interest_leader = "A.R. Grindlay";
 
 // hmm... maybe we can play nice with Macready???
 Q.macready_relation = 25;
