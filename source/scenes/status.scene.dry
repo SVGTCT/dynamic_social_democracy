@@ -140,7 +140,7 @@ WIP
 
 [? if coop_alliance: {!<span class="tooltip-text" title="Now running an electoral pact with Labour, co-operatives support co-operatives and a "social economy".>Co-operative Party</span>!} strength: [+ cooperative_strength : strength +], dissent: [+ cooperative_dissent : dissent +] ?]
 
-Equivalent of neorevisionism here?
+#Equivalent of neorevisionism here?
 
 @paramilitaries
 on-arrival: {!
