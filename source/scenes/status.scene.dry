@@ -14,8 +14,6 @@ if (Q.economic_growth) {
 }
 !}
 
-#WIP
-
 = Status
 
 [+ month : month +] [+ year +][? if rubicon:, Week [+ week +]?]
