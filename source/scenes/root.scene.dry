@@ -226,15 +226,20 @@ Q.rearmament_pt = 0;
 Q.budget = 4;
 
 // Proportion of different social groups
-//70% of workforce employed in manual labour. This includes farmers. Source: https://www.blacksacademy.net/pages/hy-059-hyqbsd-Britain-social-conditions-1930s.php 19,357,300 total "occupied persons" & 11.25 million in insured trades (https://api.parliament.uk/historic-hansard/written-answers/1925/apr/08/statistics). This in 1921. With growth 1921-1931: could be 20,647,466, excl. unemployed (10.7%)
+//70% of workforce employed in manual labour. This includes farmers. Source: www.blacksacademy.net/pages/hy-059-hyqbsd-Britain-social-conditions-1930s.php 19,357,300 total "occupied persons" & 11.25 million in insured trades (https://api.parliament.uk/historic-hansard/written-answers/1925/apr/08/statistics). This in 1921. With growth 1921-1931: could be 20,647,466, excl. unemployed (10.7%)
 // Thus total estimate: 23121462 working age
-Q.urban_workers = 51.9; //uses no for insured trades. Scaled
-Q.other_workers = 7.7; // remainder
-Q.white_collar = 25; // https://www.blacksacademy.net/pages/hy-059-hyqbsd-Britain-social-conditions-1930s.php. Scaled
-Q.upper = 1.7; //others not manual labour. Scaled
-Q.farmers = 3; // https://babel.hathitrust.org/cgi/pt?id=uc1.$c9965&seq=64 Total E&W: 650,602. Small number in NI.
+Q.urban_workers = 51.9; 
+//uses no for insured trades. Scaled
+Q.other_workers = 7.7; 
+// remainder
+Q.white_collar = 25; 
+// www.blacksacademy.net/pages/hy-059-hyqbsd-Britain-social-conditions-1930s.php. Scaled
+Q.upper = 1.7; 
+//others not manual labour. Scaled
+Q.farmers = 3; 
+// www.babel.hathitrust.org/cgi/pt?id=uc1.$c9965&seq=64 Total E&W: 650,602. Small number in NI.
 Q.unemployed = 10.7;
-// source: Denman and MacDonald, Unemployment Statistics from 1881 to the Present Day (link: https://escoe-website.s3.amazonaws.com/wp-content/uploads/2018/10/17145130/Denman-and-Macdonald-LMT-1996-Unemployment-Statistics-from-1881-to-the-present-day.pdf)
+// source: Denman and MacDonald, Unemployment Statistics from 1881 to the Present Day (link: www.escoe-website.s3.amazonaws.com/wp-content/uploads/2018/10/17145130/Denman-and-Macdonald-LMT-1996-Unemployment-Statistics-from-1881-to-the-present-day.pdf)
 // statistic for jan 1928
 
 // TODO: income + QoL: is there a use for it?
