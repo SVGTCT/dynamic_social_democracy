@@ -1590,9 +1590,3 @@ view-if: reichswehr_minister_party = "SPD"
 on-arrival: reichswehr_minister_party = "I"; reichswehr_minister = "Groener"; leverage += 15;
 tags: drop_mins_1928
 go-to: ministries
-
-#Placeholders
-
-@social_liberal_coalition_cvp
-
-Placeholder
