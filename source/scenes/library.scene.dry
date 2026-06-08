@@ -19,6 +19,7 @@ Herein contains relevant information about the government and politics of the Br
 - @paramilitaries: Paramilitary groups
 - @factions: Internal factions
 - @figures: Figures and charts
+- @radical_zentrum: test 1
 - @backSpecialScene: Exit library.
 
 @government
@@ -1054,3 +1055,8 @@ if (d3 && window) {
 = Economic history
 
 {!<svg id="economic_history" style="width: 500px; height: 300px;"> </svg>!}
+
+@radical_zentrum
+on-arrival: z_dnvp = 1;
+
+Remember to remove
