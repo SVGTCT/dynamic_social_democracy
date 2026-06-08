@@ -76,110 +76,98 @@ Q.neorevisionist_dissent = 10;
 Q.social_patriot_strength = 0
 Q.social_patriot_dissent = 0;
 
+// factions
+Q.factions = ['left', 'labour', 'reformist', 'pragmatist', 'marxist', 'cooperative'];
+Q.left_strength = 25;
+Q.left_dissent = 10;
+Q.labour_strength = 30;
+Q.labour_dissent = 5;
+Q.reformist_strength = 20;
+Q.reformist_dissent = 10;
+Q.pragmatist_strength = 5;
+Q.pragmatist_dissent = 0;
+Q.marxist_strength = 5;
+Q.marxist_dissent = 30;
+Q.cooperative_strength = 5;
+Q.cooperative_dissent = 5;
+
 // secret events...
 Q.unions_independent = 0;
-Q.centrists_resign = 0;
+Q.coop_exit = 0;
+Q.pragmatists_resign = 0;
 Q.left_split = 0;
 Q.reformists_resigned = 0;
 
-// have we discovered neorevisionism?
-Q.neorevisionism = 0;
+// ILP reconciliation
+Q.reconciliation = 0;
 
-Q.social_patriot = 0;
-
-// crisis_urgency indicates how seriously the SPD is taking the economic crisis - scale from 0 to 10.
-Q.crisis_urgency = 0;
-// nazi_urgency indicates how seriously the SPD takes the nazis - scale from 0 to 10.
-Q.nazi_urgency = 0;
-// radicalization indicates how radical the SPD's rhetoric is - scale from 0 to 10.
-Q.radicalization = 0;
-// Support for the WTB plan and proto-Keynesian works creation plans in general
-Q.wtb_support = 0;
-// Support for Pacifism within the SPD relative to 1928
-Q.pacifism = 0;
-// Support for democratic reform within the SPD relative to 1928
-Q.democratization = 0;
-// Support for a communist coalition relative to 1928
+/ crisis_urgency indicates how seriously the population takes Labour's economic policies: can be achieved through support of public works to counter MacDonald's "doctor's mandate"
+Q.economic_viability = 0;
+// nazi_urgency indicates how seriously the SPD takes the BUF - scale from 0 to 10.
+Q.buf_urgency = 0;
+// radicalisation indicates how radical Labour's rhetoric is - scale from 0 to 10.
+Q.radicalisation = 0;
+// Support for public works programmes
+Q.works_support = 0;
+// Support for Pacifism within the Labour Party
+Q.pacifism = 1;
+// Support for rearmament within the Labour Party
+Q.rearmament = 0;
+// war progress
+Q.war_progress = 0;
+// public trust for the league of nations 
+Q.league_trust = 2;
+// Support for democratic reform within the Labour Party
+Q.democratisation = 0;
+// Support for a communist coalition
 Q.communist_coalition = 0;
-// economic_plan: have we adopted *any* economic plan?
-// 1 - WTB plan, 2 - AfA-bund plan, 3 - radical plan (mass nationalization of industries)
+// economic_plan: have we adopted any economic plan?
+// TODO: research different economic plans and revamp section in general
 Q.economic_plan = 0;
-// have we officially adopted the WTB plan?
-Q.wtb_adopted = 0;
-// have we formed the iron front?
-Q.iron_front_formed = 0;
-// people's party support
-Q.peoples_party_support = 0;
-Q.peoples_party = 0;
-// support for nationalizations
-Q.nationalization_support = 0;
-Q.nationalization_adopted = 0;
-// moderate economic plan
-Q.moderate_plan_support = 0;
-Q.moderate_plan_adopted = 0;
+// support for nationalisations
+Q.nationalisation_support = 0;
+Q.nationalisation_adopted = 0;
+// support for republicanism
+Q.republicanism = 0;
+Q.monarchy_restored = 0;
 
 // organizations
 
 // inter-party relations
-Q.z_relation = 50;
-Q.kpd_relation = 25;
-Q.ddp_relation = 60;
-Q.dvp_relation = 35;
-// DNVP and NSDAP are invariably hostile
-Q.dnvp_relation = 5;
-Q.nsdap_relation = 0;
-Q.lvp_relation = 0;
+Q.lib_relation = 25;
+Q.cnlp_relation = 55;
+Q.cup_relation = 15;
+Q.ccp_relation = 45;
+Q.ilp_relation = 0;
+Q.spec_interest_relation = 15;
+Q.cpb_relation = 25;
+Q.buf_relation = 0;
 
-Q.kpd_leader = "Thälmann";
-Q.z_leader = "Marx";
-Q.z_ideology = "Right";
-Q.cvp_ideology = "Moderate";
-Q.stegerwald_path = 0;
-Q.nsdap_leader = "Hitler";
-Q.nsdap_chancellor = "Hitler";
+Q.cup_leader = "Bridgeman";
+Q.ccp_leader = "Hogg";
+Q.lib_leader = "Chamberlain";
+Q.cnlp_leader = "Scott";
+Q.cpb_leader_1 = "Cook";
+Q.cpb_leader_2 = "Campbell";
+Q.uup_leader = "Craig";
+Q.buf_leader = "Mosley";
+Q.spec_interest_leader = "A.R. Grindlay"
+Q.labour_leader = "[+ advisor_1 +][? if advisor_2 != "" and advisor_3 == "": & [+ advisor_2 +] ?][? if advisor_2 != "" and advisor_3 != "": , [+ advisor_2 +] ?][? if advisor_3 != "": & [+ advisor_3 +] ?];
 
-// hmm... maybe we can play nice with Hindenburg???
-Q.hindenburg_relation = 25;
-Q.hindenburg_angry = 0;
-Q.hindenburg_grr_amount = 0;
+// hmm... maybe we can play nice with Macready???
+Q.macready_relation = 25;
 
-// prussian activities lol
-Q.spd_prussia = 1;
-Q.right_prussia = 0;
-Q.prussia_leader = "Braun"
+// London activities
+Q.lab_london = 1;
+Q.right_london = 0;
+Q.cpb_london = 0;
+Q.london_fm = "Lansbury";
+Q.london_fm_party = "Lab";
 
 // The array of forces - paramilitary groups
-// Number of members in 1928 (in thousands)
-// Reichsbanner, stahlhelm, SA, rotfrontkämpferbund
-Q.rb_strength = 2000;
-Q.rb_militancy = 0.01;
-Q.women_in_rb = 0;
-Q.rb_banned = 0;
-Q.sh_strength = 500;
-Q.sh_militancy = 0.5;
-Q.sh_banned = 0;
-Q.sh_banned_prussia = 0;
-Q.sa_strength = 30;
-Q.sa_militancy = 0.8;
-Q.sa_banned = 0;
-Q.sa_banned_prussia = 0;
-Q.rfb_strength = 130;
-Q.rfb_militancy = 0.5;
-Q.rfb_banned = 0;
-Q.rfb_banned_prussia = 0;
+// WIP
 
-Q.interior_police_strength = 50;
-Q.interior_police_militancy = 1;
-Q.interior_police_loyalty = 0.45;
-
-Q.prussian_police_strength = 90;
-Q.prussian_police_militancy = 2;
-Q.prussian_police_loyalty = 0.5;
-
-// strength includes actual military and de facto reserves?
-Q.reichswehr_strength = 100;
-Q.reichswehr_militancy = 5;
-Q.reichswehr_loyalty = 0.2;
+// Police & armed forces strength goes here
 
 // The state of the country
 
@@ -204,59 +192,80 @@ Q.constructive_vonc = 0;
 Q.presidential_powers = 0;
 // allows banning of non-constitutional parties
 Q.constitutional_protection = 0;
-Q.kpd_banned = 0;
-Q.nsdap_banned = 0;
+Q.cpb_banned = 0;
+Q.buf_banned = 0;
 
 // coups and capital strikes happen when you upset the right or the capitalists too much with your policies. they're an additional check on your policies, when purely electoral checks don't suffice.
 // when coup_progress reaches 10 or capital_strike_progress reaches 10, there's a special event that launches the coup.
 Q.coup_progress = 0;
 Q.capital_strike_progress = 0;
 
+// government goals
+Q.work_councils_start = 0;
+Q.work_councils_done = 0;
+Q.work_councils = 0;
+Q.yes_nationalise_start = 0;
+Q.yes_nationalise_done = 0;
+Q.yes_nationalise = 0;
+Q.health_service_start = 0;
+Q.health_service_done = 0;
+Q.health_service = 0;
+Q.labour_code_start = 0;
+Q.labour_code_done = 0;
+Q.labour_code = 0;
+Q.no_religious_schools_start = 0;
+Q.no_religious_schools_done = 0;
+Q.no_religious_schools = 0;
+Q.scotland_pt = 0;
+Q.scotland_done = 0;
+Q.ireland_pt = 0;
+Q.ireland_war = 0;
+Q.ireland_done = 0;
+Q.rearmament_pt = 0;
+
 Q.budget = 4;
 
 // Proportion of different social groups
-// source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 45, table 3.4 - using 1925 figures
-Q.workers = 48; // industry and trade
-Q.old_middle = 13; // "old mittelstand"
-// 16.4 trade & commerce, 6.6 public and private services, 4.4 domestic help
-Q.new_middle = 14; // "new mittelstand"
-Q.rural = 25; // agriculture and forestry employment... but many of those are proletarians so...
-// source: https://surface.syr.edu/cgi/viewcontent.cgi?filename=3&article=1016&context=books&type=additional page 43, table 3.3
-Q.unemployed = 8.6;
-Q.catholics = 30;
+//70% of workforce employed in manual labour. This includes farmers. Source: https://www.blacksacademy.net/pages/hy-059-hyqbsd-Britain-social-conditions-1930s.php 19,357,300 total "occupied persons" & 11.25 million in insured trades (https://api.parliament.uk/historic-hansard/written-answers/1925/apr/08/statistics). This in 1921. With growth 1921-1931: could be 20,647,466, excl. unemployed (10.7%)
+// Thus total estimate: 23121462 working age
+Q.urban_workers = 51.9; //uses no for insured trades. Scaled
+Q.other_workers = 7.7; // remainder
+Q.white_collar = 25; // https://www.blacksacademy.net/pages/hy-059-hyqbsd-Britain-social-conditions-1930s.php. Scaled
+Q.upper = 1.7; //others not manual labour. Scaled
+Q.farmers = 3; // https://babel.hathitrust.org/cgi/pt?id=uc1.$c9965&seq=64 Total E&W: 650,602. Small number in NI.
+Q.unemployed = 10.7;
+// source: Denman and MacDonald, Unemployment Statistics from 1881 to the Present Day (link: https://escoe-website.s3.amazonaws.com/wp-content/uploads/2018/10/17145130/Denman-and-Macdonald-LMT-1996-Unemployment-Statistics-from-1881-to-the-present-day.pdf)
+// statistic for jan 1928
 
-// unemployment: 1929 - 13.3, 1930 - 22.7, 1931 - 34.3, 1932 - 43.8 (same source as above)
+// TODO: income + QoL: is there a use for it?
 
-// income for industrial workers in reichsmarks/year - 1928 = 1600 Reichsmarks/year; 1931 = 1440 Reichsmarks/year; 1933 = 1138 Reichsmarks/year - source: https://babel.hathitrust.org/cgi/pt?id=uiug.30112104147985&seq=50
-Q.income = 1600;
-// what about incomes for different classes? rural workers? middle-class workers?
+Q.inflation = -0.3;
 
-// inflation (in %; 1928: 2.9; 1929: 0; 1930: -5%; 1931: -10%; 1932: -10%) - source: https://en.wikipedia.org/wiki/File:BSPDRWeltkriseEngl.PNG, derived from https://www.destatis.de/DE/Methoden/WISTA-Wirtschaft-und-Statistik/2009/03/rezession-betrachtung-032009.pdf?__blob=publicationFile
-Q.inflation = 2.9;
-
-// economic growth - same source as above, Table 2 (preisbereinigt) - this is also the source for the yearly changes in the great depression.
-Q.economic_growth = 4.4;
+//estimate YOY
+Q.economic_growth = 2.2;
 
 // economic expansion timer
 Q.economic_expansion = 0;
 
-// quality of life (as % of 1928 - currently unused - should be welfare-adjusted.)
-Q.workers_qol = 100;
-Q.rural_qol = 100;
-Q.unemployed_qol = 100;
-Q.old_middle_qol = 100;
-Q.new_middle_qol = 100;
+// ratio of votes to seats
+Q.lab_modifier = 1.032823995;
+Q.ilp_modifier = 0;
+Q.cup_modifier = 1.034164358;
+Q.ccp_modifier = 1.063968953;
+Q.cpb_modifier = 1.050649222;
+Q.lib_modifier = 1.087679014;
+Q.cnlp_modifier = 1.050443156;
+Q.uup_modifier = 0.9600548603;
+Q.buf_modifier = 0.9605763458;
+Q.spec_interest_modifier = 0.9315323726;
 
-Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
-Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
-Q.parties_graph = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
+Q.classes = ['urban_workers', 'other_workers', 'white_collar', 'upper', 'farmers', 'unemployed'];
+Q.parties = ['lab', 'cup', 'ccp', 'lib', 'cnlp', 'uup', 'buf', 'spec_interest', 'cpb', 'ilp'];
+Q.parties_graph = ['lab', 'cup', 'ccp', 'lib', 'cnlp', 'uup', 'buf', 'spec_interest', 'cpb', 'ilp'];
 
-Q.sapd_formed = 0;
-Q.dnf_formed = 0;
-Q.dnef_formed = 0;
-Q.kvp_formed = 0;
-Q.lvp_formed = 0;
-Q.cvp_formed = 0;
+// party dynamics: WIP
+
+Q.ilp_formed = 0;
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
