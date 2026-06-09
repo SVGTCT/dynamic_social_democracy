@@ -454,7 +454,7 @@ The CCP manages to diffuse some of the hostility from the Armed Forces and the B
 title: Far-right coalition
 subtitle: <span style="color: #262626;">**BUF**</span> + <span style="color: #002c6e;">**CUP**</span> ([+ far_right_coalition +]%)
 view-if: far_right_coalition >= 50
-go-to: far_right_win if (year >= 1932 or buf_r >= 44) and president != "Lansbury"; far_right_fail if (year < 1932 and buf_r < 44) and president != "Lansbury"; far_right_braun if president == "Lansbury"
+go-to: far_right_win if (year >= 1932 or buf_r >= 44) and president != "Lansbury"; far_right_fail if (year < 1932 and buf_r < 44) and president != "Lansbury"; far_right_lansbury if president == "Lansbury"
 priority: 2
 
 There are enough votes for the fascists and the CUP to form a coalition. [+ buf_leader +] has made his participation in government contingent on being appointed chancellor. It is up to President [+ president +] to decide.
