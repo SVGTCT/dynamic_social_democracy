@@ -80,17 +80,17 @@ Economic growth: [+ economic_growth_2 +]%
 
 = Inter-party Relations
 
-[? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span>: [+ cup_relation : relationships +] ?]
+[? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ cup_relation : relationships +] ?]
 
-[? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Conservative**</span>: [+ cup_relation : relationships +] ?]
+[? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Conservative**</span> - [+ cup_relation : relationships +] ?]
 
-[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span>: [+ ccp_relation : relationships +] ?]
+[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> - [+ ccp_relation : relationships +] ?]
 
-[? if not cnlp_gone: <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span>: [+ cnlp_relation : relationships +] ?]
+[? if not cnlp_gone: <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span> - [+ cnlp_relation : relationships +] ?]
 
-<span style="color: #ffbb00;">**Liberal**</span>: [+ lib_relation : relationships +]
+<span style="color: #ffbb00;">**Liberal**</span> - [+ lib_relation : relationships +]
 
-[? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;>ILP</span>: [+ ilp_relation : relationships +] ?]
+[? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ ilp_relation : relationships +] ?]
 
 <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span>: [+ cpb_relation : relationships +]
 
