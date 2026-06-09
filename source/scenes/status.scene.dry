@@ -63,13 +63,16 @@ WIP
 Resources available: [+ resources +]
 
 <span style="color: #e31414;">**Labour**</span> position: [? if lab_toleration : toleration ?][? if lab_in_government : in government - ?][? if lab_toleration == 0 and lab_in_government == 0 and labour_banned == 0: in opposition ?][? if labour_banned == 1: banned ?]
+[? if in_national_coalition: <span style="color: #005eb8;">National</span> <span style="color: #00b041;">Coalition</span> ?][? if in_purple_coalition: <span style="color: #b303bd;">Purple</span> Coalition ?][? if in_lab_lib_coalition: <span style="color: #e31414;">Lab</span>-<span style="color: #ffbb00;">Lib</span> Coalition ?][? if in_popular_front: Popular Front ?][? if in_left_front: Left Front ?]
+
+#More Coalitions to add: Minority, emergency, caretaker
 
 Hoare approval
 
 Presidential Approval
 
 London government: [? if lab_london : in government - ?]
-[? if in_purple_coalition_london: [? if in_minority_purple_coalition_london: minority ?] <span style="color: #b303bd;">Purple</span> Coalition ?][? if in_lab_lib_coalition_london: [? if in_minority_lab_lib_coalition_london: minority ?] <span style="color: #e31414;">Lab</span>-<span style="color: #ffbb00;">Lib</span> Coalition ?]
+[? if in_national_coalition_london: <span style="color: #005eb8;">National</span> <span style="color: #00b041;">Coalition</span> ?][? if in_purple_coalition_london: [? if in_minority_purple_coalition_london: minority ?] <span style="color: #b303bd;">Purple</span> Coalition ?][? if in_lab_lib_coalition_london: [? if in_minority_lab_lib_coalition_london: minority ?] <span style="color: #e31414;">Lab</span>-<span style="color: #ffbb00;">Lib</span> Coalition ?][? if in_popular_front_london: Popular Front ?][? if in_left_front_london: Left Front ?]
 
 [? if lab_in_government and not in_lab_majority and not in_left_front : Coalition dissent: [+ right_coalition_dissent : coalition_dissent +] ?]
 
@@ -83,7 +86,7 @@ Internal dissent: [+ dissent_percent : dissent +]
 
 [? if not monarchy_restored: President: [? if president_ideology == "Macready" or president_ideology == "Reactionary" : <span style="color: #002c6e;">[+ president +]</span> ?][? if president_ideology == "Reactionary_new": <span style="color: #660000;"> (Reactionary)</span> ?][? if president_ideology == "Royalist": <span style="color: #660000;"> (Royalist)</span> ?][? if president_ideology == "Military": <span style="color: #002c6e;"> (Military)</span> ?][? if president_ideology == "Centrist": <span style="color: #000080;"> (Centrist)</span> ?] ?]
 
-Prime Minister: [? if pm_party == "CUP" or pm_party == "Con" : <span style="color: #002c6e;">**[+ prime_minister +]**</span> <span style="color: #002c6e;">([+ cup_name +])</span> ?][? if pm_party == "Lab" : <span style="color: #e31414;">**[+ prime_minister +]**</span> <span style="color: #e31414;">(Labour)</span> ?]
+Prime Minister: [? if pm_party == "CUP" or pm_party == "Con" : <span style="color: #002c6e;">**[+ prime_minister +]**</span> <span style="color: #002c6e;">([+ cup_name +])</span> ?][? if pm_party == "Lab" : <span style="color: #e31414;">**[+ prime_minister +]**</span> <span style="color: #e31414;">(Lab)</span> ?][? if pm_party == "CCP" : <span style="color: #1375d6;">**[+ prime_minister +]**</span> <span style="color: #1375d6;">(CCP)</span> ?][? if pm_party == "I" : <span style="color: #808080;">**[+ prime_minister +]**</span> <span style="color: #8080808;">(Ind)</span> ?]
 
 London First Minister: [? if london_fm_party == "CUP" or london_fm_party == "Con" : <span style="color: #002c6e;">**[+ london_fm +]**</span> <span style="color: #002c6e;">([+ cup_name +])</span> ?][? if london_fm_party == "Lab" : <span style="color: #e31414;">**[+ london_fm +]**</span> <span style="color: #e31414;">(Labour)</span> ?]
 
