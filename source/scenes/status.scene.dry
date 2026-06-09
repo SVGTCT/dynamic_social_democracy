@@ -181,52 +181,36 @@ Q.socialism_disp = Math.floor(Q.socialism);
 
 (if the election were to be held now):
 
-[? if dnef_formed: <span style="color: #BFC8CC;">**DNEF**</span>: [+ dnef_votes +]% ?]
+<span style="color: #e31414;">**Labour**</span>: [+ lab_votes +]
 
-<span style="color: #c00000;">**lab**</span>: [+ lab_votes +]%
+[? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ cup_votes +] ?]
 
-[? if sapd_formed: <span style="color: #9B0000;">**SAPD**</span>: [+ sapd_votes +]% ?]
+[? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Conservative**</span> - [+ cup_votes +] ?]
 
-<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>: [+ z_votes +]%
+[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> - [+ ccp_votes +] ?]
 
-<span style="color: #700000;">**KPD**</span>: [+ kpd_votes +]%
+[? if not cnlp_gone: <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span> - [+ cnlp_votes +] ?]
 
-[? if not lvp_formed: [? if not ddp_name: <span style="color: #D3C24D;">**DDP**</span> ?][? if ddp_name != 0: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> ?]: [+ ddp_votes +]% ?]
+<span style="color: #ffbb00;">**Liberal**</span> - [+ lib_votes +]
 
-[? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>: [+ lvp_votes +]% ?]
+[? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ ilp_votes +] ?]
 
-[? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>: [+ dvp_votes +]% ?]
+<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span>: [+ cpb_votes +]
 
-[? if kvp_formed and not dnvp_dvp_formed: <span style="color: #0087DC;">**KVP**</span>: [+ kvp_votes +]% ?]
-
-[? if dnvp_dvp_formed: <span class="tooltip-text" title="Free Conservative Party" style="color: #00C0FF;">**FKP**</span>: [+ kvp_votes +]% ?]
-
-[? if not cvp_formed and not dnvp_defunct: <span style="color: #3E88B3;">**DNVP**</span>: [+ dnvp_votes +]% ?]
-
-[? if dnf_formed: <span style="color: #003755;">**DNF**</span>: [+ dnf_votes +]% ?]
-
-[? if dsu_exist: <span style="color: #6A1E1E;">**DSU**</span>: [+ dsu_votes +]% ?]
-
-[? if not nsdap_split: <span style="color: #7A3C00;">**NSDAP**</span>: [+ nsdap_votes +]% ?]
-
-[? if nsdap_split: <span style="color: #7A3C00;">**NSDAP**</span>: [+ nsdap_hitler_votes +]% ?]
-
-[? if nvf_exist: <span style="color: #142e20;">**NVF**</span>: [+ nvf_votes +]% ?]
-
-**Others**: [+ other_votes +]%
+Others**: [+ other_votes +]
 
 Support for the Republic: [+ pro_republic_disp +]%
 
 **Detailed results for each demographic**
 
-Workers: [? if dnef_formed: DNEF: [+ workers_dnef_display +]%, ?]lab: [+ workers_lab_display +]%, [+ z_party_name +]: [+ workers_z_display +]%, KPD: [+ workers_kpd_display +]%, [? if not lvp_formed: [+ ddp_votes_display +]% ?][? if lvp_formed: LVP: [+ lvp_votes_workers +]% ?][? if not lvp_formed and dvp_exist: DVP: [+ dvp_votes_workers +]% ?][? if kvp_formed and not dnvp_dvp_formed: KVP: [+ kvp_votes_workers +]% ?][? if dnvp_dvp_formed: FKP: [+ kvp_votes_workers +]% ?][? if not cvp_formed and not dnvp_defunct: DNVP: [+ dnvp_votes_workers +]% ?][? if nsdap_split == 0: NSDAP: [+ nsdap_votes_workers +]% ?][? if nsdap_split == 1: NSDAP-H: [+ nsdap_hitler_votes_workers +]% ?]
+Urban Workers
 
-New Middle Class: [? if dnef_formed: DNEF: [+ new_middle_dnef_display +]%, ?]lab: [+ new_middle_lab_display +]%, [+ z_party_name +]: [+ new_middle_z_display +]%, KPD: [+ new_middle_kpd_display +]%, [? if not lvp_formed: [+ ddp_votes_display +]% ?][? if lvp_formed: LVP: [+ lvp_votes_middle +]% ?][? if not lvp_formed and dvp_exist: DVP: [+ dvp_votes_middle +]% ?][? if kvp_formed and not dnvp_dvp_formed: KVP: [+ kvp_votes_middle +]% ?][? if dnvp_dvp_formed: FKP: [+ kvp_votes_middle +]% ?][? if not cvp_formed and not dnvp_defunct: DNVP: [+ dnvp_votes_middle +]% ?][? if nsdap_split == 0: NSDAP: [+ nsdap_votes_middle +]% ?][? if nsdap_split == 1: NSDAP-H: [+ nsdap_hitler_votes_middle +]% ?]
+Other Workers
 
-Old Middle Class: [? if dnef_formed: DNEF: [+ old_middle_dnef_display +]%, ?]lab: [+ old_middle_lab_display +]%, [+ z_party_name +]: [+ old_middle_z_display +]%, KPD: [+ old_middle_kpd_display +]%, [? if not lvp_formed: [+ ddp_votes_display +]% ?][? if lvp_formed: LVP: [+ lvp_votes_old +]% ?][? if not lvp_formed and dvp_exist: DVP: [+ dvp_votes_old +]% ?][? if kvp_formed and not dnvp_dvp_formed: KVP: [+ kvp_votes_old +]% ?][? if dnvp_dvp_formed: FKP: [+ kvp_votes_old +]% ?][? if not cvp_formed and not dnvp_defunct: DNVP: [+ dnvp_votes_old +]% ?][? if nsdap_split == 0: NSDAP: [+ nsdap_votes_old +]% ?][? if nsdap_split == 1: NSDAP-H: [+ nsdap_hitler_votes_old +]% ?]
+White-collar
 
-Rural: [? if dnef_formed: DNEF: [+ rural_dnef_display +]%, ?]lab: [+ rural_lab_display +]%, [+ z_party_name +]: [+ rural_z_display +]%, KPD: [+ rural_kpd_display +]%, [? if not lvp_formed: [+ ddp_votes_display +]% ?][? if lvp_formed: LVP: [+ lvp_votes_rural +]% ?][? if not lvp_formed and dvp_exist: DVP: [+ dvp_votes_rural +]% ?][? if kvp_formed and not dnvp_dvp_formed: KVP: [+ kvp_votes_rural +]% ?][? if dnvp_dvp_formed: FKP: [+ kvp_votes_rural +]% ?][? if not cvp_formed and not dnvp_defunct: DNVP: [+ dnvp_votes_rural +]% ?][? if nsdap_split == 0: NSDAP: [+ nsdap_votes_rural +]% ?][? if nsdap_split == 1: NSDAP-H: [+ nsdap_hitler_votes_rural +]% ?]
+Farmers
 
-Unemployed: [? if dnef_formed: DNEF: [+ unemployed_dnef_display +]%, ?]lab: [+ unemployed_lab_display +]%, [+ z_party_name +]: [+ unemployed_z_display +]%, KPD: [+ unemployed_kpd_display +]%, [? if not lvp_formed: [+ ddp_votes_display +]% ?][? if lvp_formed: LVP: [+ lvp_votes_unemployed +]% ?][? if not lvp_formed and dvp_exist: DVP: [+ dvp_votes_unemployed +]% ?][? if kvp_formed and not dnvp_dvp_formed: KVP: [+ kvp_votes_unemployed +]% ?][? if dnvp_dvp_formed: FKP: [+ kvp_votes_unemployed +]% ?][? if not cvp_formed and not dnvp_defunct: DNVP: [+ dnvp_votes_unemployed +]% ?][? if nsdap_split == 0: NSDAP: [+ nsdap_votes_unemployed +]% ?][? if nsdap_split == 1: NSDAP-H: [+ nsdap_hitler_votes_unemployed +]% ?]
+Upper class
 
-Catholics: [? if dnef_formed: DNEF: [+ catholics_dnef_display +]%, ?]lab: [+ catholics_lab_display +]%, [+ z_party_name +]: [+ catholics_z_display +]%, KPD: [+ catholics_kpd_display +]%, [? if not lvp_formed: [+ ddp_votes_display +]% ?][? if lvp_formed: LVP: [+ lvp_votes_catholics +]% ?][? if not lvp_formed and dvp_exist: DVP: [+ dvp_votes_catholics +]% ?][? if kvp_formed and not dnvp_dvp_formed: KVP: [+ kvp_votes_catholics +]% ?][? if dnvp_dvp_formed: FKP: [+ kvp_votes_catholics +]% ?][? if not cvp_formed and not dnvp_defunct: DNVP: [+ dnvp_votes_catholics +]% ?][? if nsdap_split == 0: NSDAP: [+ nsdap_votes_catholics +]% ?][? if nsdap_split == 1: NSDAP-H: [+ nsdap_hitler_votes_catholics +]% ?]
+Unemployed
