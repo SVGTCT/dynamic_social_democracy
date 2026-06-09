@@ -110,7 +110,7 @@ WIP
 
 {!<span class="tooltip-text" title="The mainstream Labour party is pragmatic and seeks to reform capitalism through parliamentarism.">Pragmatists</span>!} strength: [+ pragmatist_strength : strength +], dissent: [+ pragmatist_dissent : dissent +]
 
-[? if unions_independent == 0: {!<span class="tooltip-text" title="The trade unions aim to represent the working class, the largest section of British society.">Labour</span>!} strength: [+ labour_strength : strength +], dissent: [+ labour_dissent : dissent +] 
+[? if unions_independent == 0: {!<span class="tooltip-text" title="The trade unions aim to represent the working class, the largest section of British society.">Labour</span>!} strength: [+ labour_strength : strength +], dissent: [+ labour_dissent : dissent +]  ?]
 
 [? if reformist_split == 0: {!<span class="tooltip-text" title="The reformist Fabian Society promotes a gradual reform to a generous welfare state.">Fabian Society</span>!} strength: [+ reformist_strength : strength +], dissent: [+ reformist_dissent : dissent +] ?]
 
