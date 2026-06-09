@@ -410,6 +410,9 @@ unavailable-subtitle: Our relationship with the CPB are not high enough.
 choose-if: (cpb_relation >= 60 and communist_coalition >= 3) or cpb_party_leader == "Conciliators"
 go-to: popular_front_success
 
+@popular_front_braun
+go-to: popular_front_lansbury
+
 @popular_front_lansbury
 title: Use pressure from President Lansbury to force the parties to cooperate.
 view-if: president == "Lansbury"
