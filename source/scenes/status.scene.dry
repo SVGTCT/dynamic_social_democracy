@@ -14,48 +14,6 @@ if (Q.economic_growth) {
 }
 !}
 
-= Inter-party Relations
-
-[? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ cup_relation : relationships +] ?]
-
-[? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Conservative**</span> - [+ cup_relation : relationships +] ?]
-
-[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> - [+ ccp_relation : relationships +] ?]
-
-[? if not cnlp_gone: <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span> - [+ cnlp_relation : relationships +] ?]
-
-<span style="color: #ffbb00;">**Liberal**</span> - [+ lib_relation : relationships +]
-
-[? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ ilp_relation : relationships +] ?]
-
-<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ cpb_relation : relationships +]
-
-**Special Interests**: [+ other_relation : relationships +]
-
-= Party Leadership
-
-TODO
-
-= Industrial Backing
-
-WIP
-
-= Internal Factions of the <span style="color: #c00000;">**lab**</span>
-
-[? if left_split == 0: {!<span class="tooltip-text" title="The party's left wing members push for nationalisation, particularly of banks, and an anti-fascist united front.">Socialist League</span>!} strength: [+ left_strength : strength +],  dissent: [+ left_dissent : dissent +] ?]
-
-{!<span class="tooltip-text" title="The mainstream Labour party is pragmatic and seeks to reform capitalism through parliamentarism.">Pragmatists</span>!} strength: [+ pragmatist_strength : strength +], dissent: [+ pragmatist_dissent : dissent +]
-
-[? if unions_independent == 0: {!<span class="tooltip-text" title="The trade unions aim to represent the working class, the largest section of British society.">Labour</span>!} strength: [+ labour_strength : strength +],  dissent: [+ labour_dissent : dissent +] ?]
-
-[? if reformist_split == 0: {!<span class="tooltip-text" title="The reformist Fabian Society promotes a gradual reform to a generous welfare state.">Fabian Society</span>!} strength: [+ reformist_strength : strength +],  dissent: [+ reformist_dissent : dissent +] ?]
-
-[? if left_split == 0: {!<span class="tooltip-text" title="Returning to Labour from the ACLP, centre Marxists advocate for revolutionary socialism and pacifism.">Revolutionary Socialists</span>!} strength: [+ revolutionary_strength : strength +],  dissent: [+ revolutionary_dissent : dissent +] ?]
-
-[? if coop_alliance: {!<span class="tooltip-text" title="Now running an electoral pact with Labour, co-operatives support co-operatives and a "social economy".">Co-operative Party</span>!} strength: [+ coop_strength : strength +],  dissent: [+ coop_dissent : dissent +] ?]
-
-@politics
-
 = Status
 
 [+ month : month +] [+ year +]
@@ -115,6 +73,48 @@ Inflation: [+ inflation_2 +]%
 Unemployment: [+ unemployed_2 +]%
 
 Economic growth: [+ economic_growth_2 +]%
+
+@politics
+
+= Inter-party Relations
+
+[? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ cup_relation : relationships +] ?]
+
+[? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Conservative**</span> - [+ cup_relation : relationships +] ?]
+
+[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> - [+ ccp_relation : relationships +] ?]
+
+[? if not cnlp_gone: <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span> - [+ cnlp_relation : relationships +] ?]
+
+<span style="color: #ffbb00;">**Liberal**</span> - [+ lib_relation : relationships +]
+
+[? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ ilp_relation : relationships +] ?]
+
+<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ cpb_relation : relationships +]
+
+**Special Interests**: [+ other_relation : relationships +]
+
+= Party Leadership
+
+TODO
+
+= Industrial Backing
+
+WIP
+
+= Internal Factions of the <span style="color: #c00000;">**lab**</span>
+
+[? if left_split == 0: {!<span class="tooltip-text" title="The party's left wing members push for nationalisation, particularly of banks, and an anti-fascist united front.">Socialist League</span>!} strength: [+ left_strength : strength +],  dissent: [+ left_dissent : dissent +] ?]
+
+{!<span class="tooltip-text" title="The mainstream Labour party is pragmatic and seeks to reform capitalism through parliamentarism.">Pragmatists</span>!} strength: [+ pragmatist_strength : strength +], dissent: [+ pragmatist_dissent : dissent +]
+
+[? if unions_independent == 0: {!<span class="tooltip-text" title="The trade unions aim to represent the working class, the largest section of British society.">Labour</span>!} strength: [+ labour_strength : strength +],  dissent: [+ labour_dissent : dissent +] ?]
+
+[? if reformist_split == 0: {!<span class="tooltip-text" title="The reformist Fabian Society promotes a gradual reform to a generous welfare state.">Fabian Society</span>!} strength: [+ reformist_strength : strength +],  dissent: [+ reformist_dissent : dissent +] ?]
+
+[? if left_split == 0: {!<span class="tooltip-text" title="Returning to Labour from the ACLP, centre Marxists advocate for revolutionary socialism and pacifism.">Revolutionary Socialists</span>!} strength: [+ revolutionary_strength : strength +],  dissent: [+ revolutionary_dissent : dissent +] ?]
+
+[? if coop_alliance: {!<span class="tooltip-text" title="Now running an electoral pact with Labour, co-operatives support co-operatives and a "social economy".">Co-operative Party</span>!} strength: [+ coop_strength : strength +],  dissent: [+ coop_dissent : dissent +] ?]
 
 @paramilitaries
 on-arrival: {!
