@@ -22,15 +22,9 @@ Resources available: [+ resources +]
 
 <span style="color: #e31414;">**Labour**</span> position: [? if lab_toleration : toleration ?][? if lab_in_government : in government - ?][? if lab_toleration == 0 and lab_in_government == 0 and labour_banned == 0: in opposition ?][? if labour_banned == 1: banned ?]
 
-[? if in_national_coalition and not in_purple_coalition and not in_lab_lib_coalition and lab_in_government: <span style="color: #005eb8;">National</span> <span style="color: #00b041;">Coalition</span> ?]
+Hoare approval
 
-[? if hoare_time and lab_toleration: Hoare's House backing: [+ hoare_coalition +]% ?]
-
-[? if hoare_time and president == "Macready": Macready's approval: [+ macready_angry_hoare : macready_angry_hoare +] ?]
-
-[? if lab_government_burden_seen: Government Goals: [? if goal_lab_cancel == 0: [+ goal_lab_total +] ?][? if goal_lab_cancel >= 1: Failed ?] / 2 completed, due in [+ lab_government_burden_timer +] months ?]
-
-[? if lab_government_burden_peoples: Secondary Government Goals: [? if goal_lab_cancel_peoples == 0: [+ goal_lab_total_peoples +] ?][? if goal_lab_cancel_peoples >= 1: Failed ?] / 1 completed, due in [+ lab_government_burden_timer +] months ?]
+Presidential Approval
 
 London government: [? if lab_london : in government - ?]
 [? if in_purple_coalition_london: [? if in_minority_purple_coalition_london: minority ?] <span style="color: #b303bd;">Purple</span> Coalition ?][? if in_lab_lib_coalition_london: [? if in_minority_lab_lib_coalition_london: minority ?] <span style="color: #e31414;">Lab</span>-<span style="color: #ffbb00;">Lib</span> Coalition ?]
