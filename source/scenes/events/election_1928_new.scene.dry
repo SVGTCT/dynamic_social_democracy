@@ -637,6 +637,9 @@ on-arrival: lab_in_government = 0; lab_toleration = 0; chancellor = "Brüning"; 
 Even though the cup is very reluctant to participate in such a coalition, they still accede to President Hindenburg's wishes. Thus, a majority center-right coalition is formed, with Brüning as chancellor.
 
 @papen_coalition
+go-to: wood_coalition
+
+@wood_coalition
 title: There are the votes for a right-wing coalition.
 subtitle: Z + BVP + lib + cup + Others ([+ right_coalition +]%)
 unavailable-subtitle: 
