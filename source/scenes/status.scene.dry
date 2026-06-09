@@ -187,7 +187,7 @@ Q.socialism_disp = Math.floor(Q.socialism);
 
 [? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Conservative**</span> - [+ cup_votes +] ?]
 
-[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> - [+ ccp_votes +] ?]
+[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ ccp_votes +] ?]
 
 [? if not cnlp_gone: <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span> - [+ cnlp_votes +] ?]
 
