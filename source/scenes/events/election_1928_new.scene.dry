@@ -667,6 +667,9 @@ Since the Center Party was taken over by Franz von Papen, it has largely abandon
 # use of "left" presidency -- note
 
 @radical_zentrum
+go-to: radical_ccp
+
+@radical_ccp
 title: As the Center will not work with us, there is no clear governing majority.
 view-if: z_cup = 1 and right_coalition < 50
 on-arrival: 
