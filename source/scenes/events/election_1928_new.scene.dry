@@ -1018,6 +1018,9 @@ Otto Wels has become chancellor of the lab majority.
 
 
 @brauns_dilemma
+go-to: lansburys_dilemma
+
+@lansburys_dilemma
 title: There is no clear governing majority.
 subtitle: President Braun faces a dilemma.
 view-if: president == "Braun" and (grand_coalition < 50 or grand_coalition_failed == 1)
