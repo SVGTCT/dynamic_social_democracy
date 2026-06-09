@@ -130,7 +130,7 @@ Q.cnlp_relation = 55;
 Q.cup_relation = 15;
 Q.ccp_relation = 45;
 Q.ilp_relation = 0;
-Q.spec_interest_relation = 15;
+Q.other_relation = 15;
 Q.cpb_relation = 25;
 Q.buf_relation = 0;
 
@@ -142,7 +142,7 @@ Q.cpb_leader_1 = "Cook";
 Q.cpb_leader_2 = "Campbell";
 Q.uup_leader = "Craig";
 Q.buf_leader = "Mosley";
-Q.spec_interest_leader = "A.R. Grindlay";
+Q.other_leader = "A.R. Grindlay";
 
 // hmm... maybe we can play nice with Macready???
 Q.macready_relation = 25;
@@ -155,9 +155,34 @@ Q.london_fm = "Lansbury";
 Q.london_fm_party = "Lab";
 
 // The array of forces - paramilitary groups
-// WIP
+// Unions (can mobilise in national crisis), Nationalist Paramilitaries (Sinn Fein's IRA), BUF Blackshirts & FDF, Gentlemen's Clubs (can mobilise in national crisis)
+Q.union_strength = 4800;
+Q.union_militancy = 0.00;
+Q.ira_strength = 2;
+Q.ira_militancy = 0.2;
+Q.blackshirts_strength = 40;
+Q.blackshirts_militancy = 0.2;
+Q.fdf_strength = 0.3;
+Q.fdf_militancy = 0.2;
+Q.clubs_strength = 50;
+Q.clubs_militancy = 0.05;
 
 // Police & armed forces strength goes here
+
+// Local & state constabularies (can work against Labour)
+Q.local_police_strength = 72;
+Q.local_police_militancy = 0.5;
+Q.local_police_loyalty = 0.4;
+
+//London Metropolitan Police
+Q.met_police_strength = 19;
+Q.met_police_militancy = 1;
+Q.met_police_loyalty = 0.55;
+
+//Armed Forces (Hofburg capped)
+Q.mil_strength = 100;
+Q.mil_militancy = 5;
+Q.mil_loyalty = 0.3;
 
 // The state of the country
 
@@ -172,7 +197,7 @@ Q.pro_republic = 59;
 
 Q.emergency_rule = 0;
 
-// minimum percentage of votes to be represented in the Reichstag
+// minimum percentage of votes to be represented in the House of State
 Q.electoral_threshold = 0;
 // constitutional reform level
 Q.constitutional_reform = 0;
@@ -252,11 +277,11 @@ Q.lib_modifier = 1.087679014;
 Q.cnlp_modifier = 1.050443156;
 Q.uup_modifier = 0.9600548603;
 Q.buf_modifier = 0.9605763458;
-Q.spec_interest_modifier = 0.9315323726;
+Q.other_modifier = 0.9315323726;
 
 Q.classes = ['urban_workers', 'other_workers', 'white_collar', 'upper', 'farmers', 'unemployed'];
-Q.parties = ['lab', 'cup', 'ccp', 'lib', 'cnlp', 'uup', 'buf', 'spec_interest', 'cpb', 'ilp'];
-Q.parties_graph = ['lab', 'cup', 'ccp', 'lib', 'cnlp', 'uup', 'buf', 'spec_interest', 'cpb', 'ilp'];
+Q.parties = ['lab', 'cup', 'ccp', 'lib', 'cnlp', 'buf', 'other', 'cpb', 'ilp'];
+Q.parties_graph = ['lab', 'cup', 'ccp', 'lib', 'cnlp', 'buf', 'other', 'cpb', 'ilp'];
 
 // party dynamics: WIP
 
@@ -264,257 +289,166 @@ Q.ilp_formed = 0;
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
-Q.workers_spd = 55;
-Q.workers_kpd = 22;
-Q.workers_z = 5;
-Q.workers_ddp = 2;
-Q.workers_dvp = 0;
-Q.workers_dnvp = 6;
-Q.workers_nsdap = 0;
-Q.workers_other = 10;
 
-Q.new_middle_spd = 8;
-Q.new_middle_kpd = 1;
-Q.new_middle_z = 10;
-Q.new_middle_ddp = 23;
-Q.new_middle_dvp = 22;
-Q.new_middle_dnvp = 10;
-Q.new_middle_nsdap = 4;
-Q.new_middle_other = 22;
+Q.urban_workers_lab = 43;
+Q.other_workers_lab = 28;
+Q.white_collar_lab = 6;
+Q.upper_lab = 4;
+Q.farmers_lab = 9;
+Q.unemployed_lab = 15;
 
-Q.old_middle_spd = 4;
-Q.old_middle_kpd = 0;
-Q.old_middle_z = 6;
-Q.old_middle_ddp = 10;
-Q.old_middle_dvp = 27;
-Q.old_middle_dnvp = 24;
-Q.old_middle_nsdap = 9;
-Q.old_middle_other = 20;
+Q.urban_workers_cup = 11;
+Q.other_workers_cup = 25;
+Q.white_collar_cup = 19;
+Q.upper_cup = 60;
+Q.farmers_cup = 30;
+Q.unemployed_cup = 6;
 
-Q.rural_spd = 9;
-Q.rural_kpd = 0;
-Q.rural_z = 5;
-Q.rural_ddp = 4;
-Q.rural_dvp = 15;
-Q.rural_dnvp = 46;
-Q.rural_nsdap = 3;
-Q.rural_other = 16;
+Q.urban_workers_ccp = 19;
+Q.other_workers_ccp = 17;
+Q.white_collar_ccp = 10;
+Q.upper_ccp = 6;
+Q.farmers_ccp = 15;
+Q.unemployed_ccp = 8;
 
-Q.unemployed_spd = 21;
-Q.unemployed_kpd = 50;
-Q.unemployed_z = 1;
-Q.unemployed_ddp = 0;
-Q.unemployed_dvp = 0;
-Q.unemployed_dnvp = 4;
-Q.unemployed_nsdap = 13;
-Q.unemployed_other = 7;
+Q.urban_workers_cpb = 8;
+Q.other_workers_cpb = 21;
+Q.white_collar_cpb = 2;
+Q.upper_cpb = 0;
+Q.farmers_cpb = 12;
+Q.unemployed_cpb = 45;
 
-Q.catholics_spd = 21;
-Q.catholics_kpd = 2;
-Q.catholics_z = 49;
-Q.catholics_ddp = 0;
-Q.catholics_dvp = 5;
-Q.catholics_dnvp = 5;
-Q.catholics_nsdap = 0;
-Q.catholics_other = 16;
+Q.urban_workers_lib = 1;
+Q.other_workers_lib = 5;
+Q.white_collar_lib = 30;
+Q.upper_lib = 15;
+Q.farmers_lib = 5;
+Q.unemployed_lib = 0;
 
-Q.workers_spd_old = 60;
-Q.new_middle_spd_old = 8;
-Q.old_middle_spd_old = 4;
-Q.rural_spd_old = 8;
-Q.unemployed_spd_old = 25;
-Q.catholics_spd_old = 20;
+Q.urban_workers_cnlp = 2;
+Q.other_workers_cnlp = 2;
+Q.white_collar_cnlp = 13;
+Q.upper_cnlp = 5;
+Q.farmers_cnlp = 4;
+Q.unemployed_cnlp = 0;
+
+Q.urban_workers_buf = 1;
+Q.other_workers_buf = 0;
+Q.white_collar_buf = 0;
+Q.upper_buf = 5;
+Q.farmers_buf = 0;
+Q.unemployed_buf = 20;
+
+Q.urban_workers_other = 15;
+Q.other_workers_other = 2;
+Q.white_collar_other = 20;
+Q.upper_other = 5;
+Q.farmers_other = 25;
+Q.unemployed_other = 6;
 
 // Current Reichstag composition
-// % of Reichstag in Jan 1928
-// source: wikipedia
-// note: the Z figures also include the BVP (Bavarian people's party)
+// % of House of State in Jan 1928
+// note: the CCP figures also include the UUP (Ulster Unionist Party)
 // since they were ideologically similar, but they were separate parties.
 // They did not have a CDU/CSU-style relationship.
-Q.spd_r = 26.5;
-Q.kpd_r = 9.1;
-Q.z_r = 17.8;
-Q.ddp_r = 6.5;
-Q.dvp_r = 10.3;
-Q.dnvp_r = 20.9;
-Q.nsdap_r = 3;
-Q.other_r = 5.9;
-Q.bvp_r = 3.9;
-Q.wp_r = 2.4;
-Q.cnblp_r = 1.7;
-Q.true_other_r = 1.8;
-Q.reichstag_size = 4.93;
-Q.landtag_size = 4.5;
+Q.lab_r = 26.9;
+Q.cpb_r = 9.4;
+Q.ccp_r = 18.1;
+Q.cnlp_r = 6.7;
+Q.lib_r = 11.0;
+Q.cup_r = 21.2;
+Q.buf_r = 2.9;
+Q.other_r = 3.6;
+Q.uup_r = 3.6;
+Q.ep_r = 2.4;
+Q.cnpfp_r = 0;
+Q.true_other_r = 1.2;
+Q.r_size = 4.75;
 
 // diff from prev
-Q.old_spd_r = 26.5;
-Q.old_kpd_r = 9.1;
-Q.old_z_r = 13.9;
-Q.old_ddp_r = 6.5;
-Q.old_dvp_r = 10.3;
-Q.old_dnvp_r = 20.9;
-Q.old_nsdap_r = 3;
-Q.old_other_r = 5.9;
-Q.old_bvp_r = 3.9;
+Q.old_lab_r = 26.9;
+Q.old_cpb_r = 9.4;
+Q.old_ccp_r = 18.1;
+Q.old_cnlp_r = 6.7;
+Q.old_lib_r = 11.0;
+Q.old_cup_r = 21.2;
+Q.old_buf_r = 2.9;
+Q.old_other_r = 3.6;
+Q.old_uup_r = 3.6;
 
 // old election votes
-Q.previous_spd_last_election_votes = 26;
-Q.previous_kpd_last_election_votes = 9;
-Q.previous_z_last_election_votes = 17.3;
-Q.previous_ddp_last_election_votes = 6.3;
-Q.previous_dvp_last_election_votes = 10.1;
-Q.previous_dnvp_last_election_votes = 20.5;
-Q.previous_nsdap_last_election_votes = 3;
+Q.previous_lab_last_election_votes = 26;
+Q.previous_cpb_last_election_votes = 9;
+Q.previous_ccp_last_election_votes = 17.3;
+Q.previous_cnlp_last_election_votes = 6.3;
+Q.previous_lib_last_election_votes = 10.1;
+Q.previous_cup_last_election_votes = 20.5;
+Q.previous_buf_last_election_votes = 3;
 Q.previous_other_last_election_votes = 7.8;
-Q.previous_bvp_last_election_votes = 3.7;
+Q.previous_uup_last_election_votes = 3.7;
 
-Q.old_dsu_r = 0;
-Q.old_nsdap_hitler_r = 0;
-Q.old_nvf_r = 0;
+// London gov right now
+Q.lab_r_london = 36.9;
+Q.cpb_r_london = 10.1;
+Q.ccp_r_london = 10.5;
+Q.cnlp_r_london = 7.7;
+Q.lib_r_london = 15.7;
+Q.cup_r_london = 13.1;
+Q.buf_r_london = 2.4;
+Q.other_r_london = 3.6;
 
-Q.old_dsu_r_prussia = 0;
-Q.old_nsdap_hitler_r_prussia = 0;
-Q.old_nvf_r_prussia = 0;
+// diff from prev London
+Q.old_lab_r_london = 36.8;
+Q.old_cpb_r_london = 10.1;
+Q.old_ccp_r_london = 10.5;
+Q.old_cnlp_r_london = 7.7;
+Q.old_lib_r_london = 15.7;
+Q.old_cup_r_london = 13.1;
+Q.old_buf_r_london = 2.4;
+Q.old_other_r_london = 3.6;
 
-Q.previous_dsu_last_election_votes = 0.0;
-Q.previous_nsdap_hitler_last_election_votes = 0.0;
-Q.previous_nvf_last_election_votes = 0.0;
-Q.previous_schleicher_dnef_last_election_votes = 0.0;
+// old election votes London
+Q.previous_lab_last_election_votes_london = 36.8;
+Q.previous_cpb_last_election_votes_london = 10.1;
+Q.previous_ccp_last_election_votes_london = 10.5;
+Q.previous_cnlp_last_election_votes_london = 7.7;
+Q.previous_lib_last_election_votes_london = 15.7;
+Q.previous_cup_last_election_votes_london = 13.1;
+Q.previous_buf_last_election_votes_london = 2.4;
+Q.previous_other_last_election_votes_london = 3.6;
 
-Q.previous_dsu_last_election_votes_prussia = 0.0;
-Q.previous_nsdap_hitler_last_election_votes_prussia = 0.0;
-Q.previous_nvf_last_election_votes_prussia = 0.0;
-Q.previous_schleicher_dnef_last_election_votes_prussia = 0.0;
-
-// prussian gov right now
-Q.spd_r_prussia = 25.3;
-Q.kpd_r_prussia = 9.8;
-Q.z_r_prussia = 18.0;
-Q.ddp_r_prussia = 6.0;
-Q.dvp_r_prussia = 10.0;
-Q.dnvp_r_prussia = 24.2;
-Q.nsdap_r_prussia = 2.5;
-Q.other_r_prussia = 4.2;
-
-// diff from prev PRUSSIA
-Q.old_spd_r_prussia = 25.3;
-Q.old_kpd_r_prussia = 9.8;
-Q.old_z_r_prussia = 18.0;
-Q.old_ddp_r_prussia = 6.0;
-Q.old_dvp_r_prussia = 10.0;
-Q.old_dnvp_r_prussia = 24.2;
-Q.old_nsdap_r_prussia = 2.5;
-Q.old_other_r_prussia = 4.2;
-
-// old election votes PRUSSIA
-Q.previous_spd_last_election_votes_prussia = 24.9;
-Q.previous_kpd_last_election_votes_prussia = 9.6;
-Q.previous_z_last_election_votes_prussia = 17.6;
-Q.previous_ddp_last_election_votes_prussia = 5.9;
-Q.previous_dvp_last_election_votes_prussia = 9.8;
-Q.previous_dnvp_last_election_votes_prussia = 23.7;
-Q.previous_nsdap_last_election_votes_prussia = 2.5;
-Q.previous_other_last_election_votes_prussia = 6.0;
-
-Q.spd_votes = 27.9;
-Q.kpd_votes = 11.4;
-Q.z_votes = 15.1;
-Q.ddp_votes = 4.7;
-Q.dvp_votes = 8.6;
-Q.dnvp_votes = 15.2;
-Q.nsdap_votes = 2.6;
+Q.lab_votes = 27.9;
+Q.cpb_votes = 11.4;
+Q.ccp_votes = 15.1;
+Q.cnlp_votes = 4.7;
+Q.lib_votes = 8.6;
+Q.cup_votes = 15.2;
+Q.buf_votes = 2.6;
 Q.other_votes = 14.5;
-Q.bvp_votes = 0;
+Q.uup_votes = 0;
 
-// sapd isn't formed yet, but it may be formed
-Q.sapd_r = 0;
-Q.old_sapd_r = 0;
-Q.sapd_r_prussia = 0;
-Q.old_sapd_r_prussia = 0;
-Q.sapd_votes = 0;
+// ilp isn't formed yet, but it may be formed
+Q.ilp_r = 0;
+Q.old_ilp_r = 0;
+Q.ilp_r_london = 0;
+Q.old_ilp_r_london = 0;
+Q.ilp_votes = 0;
 
-Q.dnf_r = 0;
-Q.old_dnf_r = 0;
-Q.dnf_r_prussia = 0;
-Q.old_dnf_r_prussia = 0;
-Q.dnf_votes = 0;
+// What other parties will be formed?
 
-Q.kvp_r = 0;
-Q.old_kvp_r = 0;
-Q.kvp_r_prussia = 0;
-Q.old_kvp_r_prussia = 0;
-Q.kvp_votes = 0;
+// State modifiers here
 
-Q.lvp_r = 0;
-Q.old_lvp_r = 0;
-Q.lvp_r_prussia = 0;
-Q.old_lvp_r_prussia = 0;
-
-Q.lvp_left = 0;
-Q.lvp_right = 0;
-Q.lvp_leader = "Luther";
-Q.lvp_ideology = "Moderate";
-Q.lvp_normalized = 0;
-Q.lvp_votes = 0;
-
-Q.dnef_left = 0;
-Q.dnef_right = 0;
-Q.dnef_leader = "Schleicher";
-Q.dnef_ideology = "Moderate";
-Q.dnef_normalized = 0;
-Q.dnef_votes = 0;
-Q.dnef_r = 0;
-Q.true_dnef_r = 0;
-
-Q.nvf_votes = 0;
-Q.nvf_r = 0;
-Q.old_nvf_r = 0;
-Q.old_nvf_r_prussia = 0;
-
-Q.cvp_right = 0;
-Q.cvp_left = 0;
-
-Q.adjustmentFactors_spd = 1.0;
-Q.adjustmentFactors_sapd = 1.0;
-Q.adjustmentFactors_kpd = 1.0;
-Q.adjustmentFactors_z = 1.0;
-Q.adjustmentFactors_ddp = 1.0;
-Q.adjustmentFactors_dvp = 1.0;
-Q.adjustmentFactors_lvp = 1.0;
-Q.adjustmentFactors_dnvp = 1.0;
-Q.adjustmentFactors_nsdap = 1.0;
-Q.adjustmentFactors_dnf = 1.0;
-Q.adjustmentFactors_dnef = 1.0;
-Q.adjustmentFactors_kvp = 1.0;
-Q.adjustmentFactors_other = 0.75;
-
-Q.adjustmentFactors_votes_spd = 1.0;
-Q.adjustmentFactors_votes_sapd = 1.0;
-Q.adjustmentFactors_votes_kpd = 1.0;
-Q.adjustmentFactors_votes_z = 1.0;
-Q.adjustmentFactors_votes_ddp = 1.0;
-Q.adjustmentFactors_votes_dvp = 1.0;
-Q.adjustmentFactors_votes_lvp = 1.0;
-Q.adjustmentFactors_votes_dnvp = 1.0;
-Q.adjustmentFactors_votes_nsdap = 1.0;
-Q.adjustmentFactors_votes_dnf = 1.0;
-Q.adjustmentFactors_votes_dnef = 1.0;
-Q.adjustmentFactors_votes_kvp = 1.0;
-Q.adjustmentFactors_votes_other = 1.0;
-
-Q.adjustmentFactors_spd_prussia = 1.0;
-Q.adjustmentFactors_sapd_prussia = 1.0;
-Q.adjustmentFactors_kpd_prussia = 1.0;
-Q.adjustmentFactors_z_prussia = 1.0;
-Q.adjustmentFactors_ddp_prussia = 1.0;
-Q.adjustmentFactors_dvp_prussia = 1.0;
-Q.adjustmentFactors_lvp_prussia = 1.0;
-Q.adjustmentFactors_dnvp_prussia = 1.0;
-Q.adjustmentFactors_nsdap_prussia = 1.0;
-Q.adjustmentFactors_dnf_prussia = 1.0;
-Q.adjustmentFactors_dnef_prussia = 1.0;
-Q.adjustmentFactors_kvp_prussia = 1.0;
-Q.adjustmentFactors_other_prussia = 0.7;
+// London PV modifier. PV = % Seats at start
+// ratio of votes to seats
+Q.lab_modifier_london = 1.38;
+Q.ilp_modifier_london = 0;
+Q.cup_modifier_london = 0.48;
+Q.ccp_modifier_london = 0.58;
+Q.cpb_modifier_london = 1.21;
+Q.lib_modifier_london = 1.65;
+Q.cnlp_modifier_london = 1.3;
+Q.buf_modifier_london = 0.67;
+Q.other_modifier_london = 0.7;
 
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
@@ -525,126 +459,129 @@ Q.economic_records = [];
 
 
 // State of the government
-Q.president = "Hindenburg";
-Q.president_ideology = "Hindenburg";
-// starting chancellor: Wilhelm Marx
-Q.chancellor = "Marx";
-Q.chancellor_party = 'Z';
-Q.spd_in_government = 0;
-Q.spd_in_government_time = 0;
-Q.spd_in_government_total_time = 0;
-Q.spd_in_foreign_time = 0;
-Q.z_in_government = 1;
-Q.ddp_in_government = 0;
-Q.dvp_in_government = 1;
-Q.dnvp_in_government = 1;
-Q.kpd_in_government = 0;
-Q.nsdap_in_government = 0;
+Q.president = "Macready";
+Q.president_ideology = "Macready";
+// starting pm: Douglas Hogg
+Q.prime_minister = "Hogg";
+Q.pm_party = 'CCP';
+Q.lab_in_government = 0;
+Q.lab_in_government_time = 0;
+Q.lab_in_government_total_time = 0;
+Q.lab_in_foreign_time = 0;
+Q.ccp_in_government = 1;
+Q.cnlp_in_government = 0;
+Q.lib_in_government = 1;
+Q.cup_in_government = 1;
+Q.cpb_in_government = 0;
+Q.buf_in_government = 0;
 
-Q.spd_prussia_time = 0;
+Q.lab_london_time = 0;
 
 Q.in_right_coalition = 0;
-// Weimar coalition = SPD + Z + DDP
-Q.in_weimar_coalition = 0;
-// Grand coalition = SPD + Z + BVP + DDP + DVP
-// also includes the "new grand coalition" of SPD + Z + BVP + DDP + DVP + Others
+// National coalition = Lab + CCP + CNLP
+Q.in_national_coalition = 0;
+// Grand coalition = Lab + CCP + UUP + CNLP + Lib
+// also includes the "new grand coalition" of Lab + CCP + UUP + CNLP + Lib + Others
 Q.in_grand_coalition = 0;
-// Popular front = SPD + KPD + Z + DDP
+// Popular front = Lab + CPB + CCP + CNLP
 Q.in_popular_front = 0;
-// left coalition = SPD + KPD + left-splinters
+// left coalition = SPD + CPB + left-splinters
 Q.in_left_front = 0;
-// emergency government containing the SPD: only president Braun can do this.
+// emergency government containing Labour: only president Lansbury(?) can do this.
 Q.in_emergency_government = 0;
-Q.in_spd_majority = 0;
+Q.in_lab_majority = 0;
 Q.grand_coalition_failed = 0;
-// if the SPD is ruling as part of a minority government
+// if Labour is ruling as part of a minority government
 Q.in_minority_government = 0;
-// national unity governmet
+// national unity government
 Q.in_center_right_coalition = 0;
-Q.in_social_catholic_coalition = 0;
-Q.in_social_liberal_coalition = 0;
+Q.in_purple_coalition = 0;
+Q.in_lab_lib_coalition = 0;
 
-Q.in_right_coalition_prussia = 0;
-Q.in_weimar_coalition_prussia = 1;
-Q.in_grand_coalition_prussia = 0;
-Q.in_popular_front_prussia = 0;
-Q.in_left_front_prussia = 0;
-Q.in_spd_majority_prussia = 0;
-Q.in_center_right_coalition_prussia = 0;
-Q.in_minority_weimar_coalition_prussia = 0;
-Q.in_minority_grand_coalition_prussia = 0;
-Q.dvp_prussia_asked = 0;
-Q.in_far_right_coalition_prussia = 0;
-Q.ddp_in_popular_front_prussia = 0;
-Q.kpd_goals_seen_prussia = 0;
-Q.reichsexekution = 0;
-Q.bruning_coalition_loss = 0;
+Q.in_right_coalition_london = 0;
+Q.in_national_coalition_london = 1;
+Q.in_grand_coalition_london = 0;
+Q.in_popular_front_london = 0;
+Q.in_left_front_london = 0;
+Q.in_lab_majority_london = 0;
+Q.in_center_right_coalition_london = 0;
+Q.in_minority_national_coalition_london = 0;
+Q.in_minority_grand_coalition_london = 0;
+Q.lib_london_asked = 0;
+Q.in_far_right_coalition_london = 0;
+Q.cnlp_in_popular_front_london = 0;
+Q.cpb_goals_seen_london = 0;
+Q.directrule_london = 0;
+Q.hoare_coalition_loss = 0;
 
-Q.spd_government_burden_seen = 0;
-Q.spd_government_burden_trigger = 0;
-Q.welfare_goal_spd = 0;
-Q.economy_goal_spd = 0;
-Q.finance_goal_spd = 0;
-Q.labor_goal_spd = 0;
-Q.unemployment_goal_spd = 0;
-Q.women_goal_spd = 0;
-Q.education_goal_spd = 0;
-Q.economic_plan_goal_spd = 0;
-Q.agriculture_goal_spd = 0;
-Q.reichswehr_goal_spd = 0;
-Q.goal_spd_cancel = 0;
-Q.goal_spd_total = 0;
+Q.lab_government_burden_seen = 0;
+Q.lab_government_burden_trigger = 0;
+Q.welfare_goal_lab = 0;
+Q.economy_goal_lab = 0;
+Q.finance_goal_lab = 0;
+Q.labor_goal_lab = 0;
+Q.unemployment_goal_lab = 0;
+Q.women_goal_lab = 0;
+Q.education_goal_lab = 0;
+Q.economic_plan_goal_lab = 0;
+Q.agriculture_goal_lab = 0;
+Q.reichswehr_goal_lab = 0;
+Q.goal_lab_cancel = 0;
+Q.goal_lab_total = 0;
 
-Q.economy_goal_spd_peoples = 0;
-Q.finance_goal_spd_peoples = 0;
-Q.tariff_goal_spd_peoples = 0;
-Q.education_goal_spd_peoples = 0;
-Q.labor_goal_spd_peoples = 0;
-Q.agriculture_goal_spd_peoples = 0;
-Q.foreign_goal_spd_peoples = 0;
-Q.goal_spd_cancel_peoples = 0;
-Q.goal_spd_total_peoples = 0;
+Q.economy_goal_lab_peoples = 0;
+Q.finance_goal_lab_peoples = 0;
+Q.tariff_goal_lab_peoples = 0;
+Q.education_goal_lab_peoples = 0;
+Q.labor_goal_lab_peoples = 0;
+Q.agriculture_goal_lab_peoples = 0;
+Q.foreign_goal_lab_peoples = 0;
+Q.goal_lab_cancel_peoples = 0;
+Q.goal_lab_total_peoples = 0;
 
 // if you're in a coalition, this is an incremental counter for how many times dissent has happened from the right.
-Q.coalition_dissent = 0;
-// dissent from the KPD, in a popular front or left front government
-Q.kpd_coalition_dissent = 0;
+Q.right_coalition_dissent = 0;
+// dissent from the CPB/left, in a popular front or left front government
+Q.left_coalition_dissent = 0;
 
-// does the SPD tolerate the government even if it is not a participant?
-Q.spd_toleration = 0;
-Q.spd_toleration_right = 0;
+// does Labour tolerate the government even if it is not a participant?
+Q.lab_toleration = 0;
+Q.lab_toleration_right = 0;
 
 // is the current government a presidential minority government?
 Q.minority_government = 0;
 
 // ministries - which parties control the ministries?
-// starting with the 4th Marx cabinet https://en.wikipedia.org/wiki/Fourth_Marx_cabinet
+// starting with the 4th Hogg cabinet
+// Ministries slightly different from RedAutumn/Dynamic
 // is the agricultural ministry useful at all?
-Q.foreign_minister = 'Stresemann';
-Q.foreign_minister_party = 'DVP';
-Q.interior_minister = 'von Keudell';
-Q.interior_minister_party = 'DNVP';
-Q.justice_minister = 'Hergt';
-Q.justice_minister_party = 'DNVP';
-Q.labor_minister = 'Brauns';
-Q.labor_minister_party = 'Z';
-Q.reichswehr_minister = 'Groener';
-Q.reichswehr_minister_party = 'I';
-Q.economic_minister = 'Curtius';
-Q.economic_minister_party = 'DVP';
-Q.finance_minister = 'Köhler';
-Q.finance_minister_party = 'Z';
-Q.agriculture_minister = 'Schiele';
-Q.agriculture_minister_party = 'DNVP';
+Q.foreign_sec = 'Chamberlain';
+Q.foreign_sec_party = 'Lib';
+Q.home_sec = 'Joynson-Hicks';
+Q.home_sec_party = 'CUP';
+Q.justice_minister = 'Cave';
+Q.justice_minister_party = 'CUP';
+Q.labour_minister = 'Steel-Maitland';
+Q.labour_minister_party = 'Ind Con';
+Q.war_sec = 'Worthington-Evans';
+Q.war_sec_party = 'Ind Con';
+Q.trade_president = 'Glassey';
+Q.trade_president_party = 'Lib';
+Q.chancellor = 'Jowitt';
+Q.chancellor_party = 'CCP';
+Q.agriculture_minister = 'Stanhope';
+Q.agriculture_minister_party = 'CUP';
+Q.health_minister = 'Percy';
+Q.health_minister_party = 'CCP';
 
 // Events: what has occurred?
-Q.panzerkreuzer_seen = 0;
-Q.panzerkreuzer_funded = 0;
-Q.panzerkreuzer_failed = 0;
+Q.horizon_seen = 0;
+Q.horizon_funded = 0;
+Q.horizon_failed = 0;
 Q.unemployment_insurance_seen = 0;
 // unemployment insurance event is seen if the unemployment level is at least 4 more than the threshold...
 Q.unemployment_insurance_threshold = 10;
-Q.blutmai = 0;
+Q.bloody_may = 0;
 
 // have we reformed these institutions to be more democratic?
 Q.judicial_reform = 0;
@@ -656,13 +593,15 @@ Q.welfare = 0;
 // level of support for farmers
 Q.agricultural_policy = 0;
 Q.land_reform = 0;
-// works-creation programs (i.e. WTB-plan) - how much have they implemented?
+// works-creation programs - how much have they implemented?
 Q.works_program = 0;
 Q.wtb_implemented = 0;
-// Relations with the Western countries (France, UK).
-Q.west_relation = 0;
-// Relations with the Eastern countries (Poland, Czechoslovakia)
-Q.east_relation = 0;
+// Relations with the Anglo countries (Ireland, Scotland, USA).
+Q.anglo_relation = 0;
+// Relations with the Southern European countries (Spain, Portugal, Italy)
+Q.fascist_relation = 0;
+// Relations with the Central European countries (Germany, France, Austria)
+Q.europe_relation = 0;
 // Relations with the Soviet Union
 Q.soviet_relation = 0;
 // How much have we exposed the secret rearmament programs?
@@ -670,11 +609,11 @@ Q.rearmament_exposed = 0;
 // reparations vs baseline: young plan is -1.
 Q.reparations = 0;
 Q.reparations_negotiation = 0;
-// nationalization_progress is part of the left economic plan.
-Q.nationalization_progress = 0;
-// socializations is part of the economic democracy card.
-Q.socializations = 0;
-Q.nationalize_budget = 4;
+// nationalisation_progress is part of the left economic plan.
+Q.nationalisation_progress = 0;
+//Socialisation is part of the economic democracy card.
+Q.socialisations = 0;
+Q.nationalise_budget = 4;
 // have there been any factory takeovers?
 Q.factory_takeovers = 0;
 // progress on the moderate economic plan
@@ -699,6 +638,8 @@ Q.spd_no_confidence = 0;
 // was the last SPD government taken down in a vote of no confidence by right-wing coalition partners?
 Q.no_confidence_against_spd = 0;
 
+// Timers are the last WIP/TODO: they will remain largely the same, advisors need names changed
+
 // Advisors/Leaders
 Q.n_advisors = 3;
 // timer - this decrements by 1 every turn, and is set to 5 whenever an advisor action is used, so that you can only use one advisor action every 5 months.
@@ -714,7 +655,7 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
     // govt
     'agricultural_policy', 'domestic_enemies', 'fiscal_policy',
     'foreign_policy', 'judiciary', 'labor_affairs', 'military_policy',
-    'police', 'prussian_affairs', 'shuffle_cabinet', 'social_welfare',
+    'police', 'londonn_affairs', 'shuffle_cabinet', 'social_welfare',
     'homosexual_rights', 'economic_policy', 'coalition_affairs',
     'war_guilt', 'womens_rights', 'economic_democracy',
     'dealing_with_toleration',
@@ -723,10 +664,10 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
     // events
     'emergency_cuts', 'unemployment_insurance',
     'sa_ban', 'sh_ban', 'papen_chancellor', 'schleicher_chancellor',
-    'kpd_policy', 'kpd_ultimatum', 'kpd_ultimatum_prussia', 'popular_front_dispute',
+    'kpd_policy', 'kpd_ultimatum', 'kpd_ultimatum_london', 'popular_front_dispute',
     'high_inflation', 'banking_crisis', 'understanding_enemy',
-    'dnf_decay', 'march_on_berlin', 'prussian_reichsexekution',
-    'bruning_event', 'lvp_merger', 'lvp_merger_1', 'lvp_merger_2', 'bourgeois_merger',
+    'dnf_decay', 'march_on_berlin', 'londonn_reichsexekution',
+    'hoare_event', 'lvp_merger', 'lvp_merger_1', 'lvp_merger_2', 'bourgeois_merger',
     'bourgeois_negotiations_1930', 'bourgeois_negotiations_1930_aftermath', 'schleichers_schemes',
     'bourgeois_negotiations_elections_1930', 'nazi_decay', 'stegerwald_transformation', 'emergency_fundraising', 'red_general', 'weimar_rally', 'nazi_funds',
     'dsu_policy'];
@@ -740,7 +681,7 @@ Q.rubicon_timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
     // govt
     'agricultural_policy', 'domestic_enemies', 'fiscal_policy',
     'foreign_policy', 'judiciary', 'labor_affairs', 'military_policy',
-    'police', 'prussian_affairs', 'shuffle_cabinet', 'social_welfare',
+    'police', 'londonn_affairs', 'shuffle_cabinet', 'social_welfare',
     'homosexual_rights', 'economic_policy', 'coalition_affairs',
     'war_guilt', 'womens_rights', 'economic_democracy',
     'dealing_with_toleration',
@@ -749,16 +690,16 @@ Q.rubicon_timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
     // events
     'emergency_cuts', 'unemployment_insurance',
     'sa_ban', 'sh_ban', 'papen_chancellor', 'schleicher_chancellor',
-    'kpd_policy', 'kpd_ultimatum', 'kpd_ultimatum_prussia', 'popular_front_dispute',
+    'kpd_policy', 'kpd_ultimatum', 'kpd_ultimatum_london', 'popular_front_dispute',
     'high_inflation', 'banking_crisis', 'understanding_enemy',
-    'dnf_decay', 'march_on_berlin', 'prussian_reichsexekution',
-    'bruning_event', 'lvp_merger', 'lvp_merger_1', 'lvp_merger_2', 'bourgeois_merger', 'schleichers_schemes',
+    'dnf_decay', 'march_on_berlin', 'londonn_reichsexekution',
+    'hoare_event', 'lvp_merger', 'lvp_merger_1', 'lvp_merger_2', 'bourgeois_merger', 'schleichers_schemes',
     'bourgeois_negotiations_elections_1930', 'emergency_fundraising', 'red_general', 'weimar_rally', 'nazi_funds',
     'campaigning', 'dsu_policy'];
 Q.advisor_action_timer = 0;
 // party affairs timers
-Q.confronting_nazis_timer = 0;
-Q.crisis_program_timer = 0;
+Q.confronting_fascists_timer = 0;
+Q.crisis_programme_timer = 0;
 Q.fundraising_timer = 0;
 Q.ideology_timer = 0;
 Q.inter_party_relationships_timer = 0;
@@ -768,34 +709,35 @@ Q.media_timer = 0;
 Q.enemies_timer = 0;
 Q.party_organizations_timer = 0;
 Q.rally_timer = 0;
-Q.reichsbanner_timer = 0;
+Q.unions_timer = 0;
 Q.shuffle_leadership_timer = 0;
 Q.streetfighting_timer = 0;
 Q.peoples_party_timer = 0;
-Q.bruning_event_timer = 0;
-Q.stegerwald_transformation_timer = 0;
-Q.dsu_policy_timer = 0;
+Q.hoare_event_timer = 0;
+// Eustace Percy = Stegerwald
+Q.percy_transformation_timer = 0;
 // n_elections is the number of elections that have happened since the start of the game.
 Q.n_elections = 0;
-Q.n_elections_prussia = 0;
+Q.n_elections_london = 0;
 // number of elections without a clear majority.
 Q.no_majority_elections = 0;
-Q.no_majority_papen_elections = 0;
-Q.no_majority_elections_prussia = 0;
+// Edward Wood = Franz von Papen. Wood may lead the CCP rather than CUP as he is an ally of Hoare (hoare) but may lead both.
+Q.no_majority_wood_elections = 0;
+Q.no_majority_elections_london = 0;
 Q.elections_1932 = 0;
-Q.prussian_reichsexekution_timer = 0;
-// elections are not on a timer, but rather there is an indicator for whether you're in an electoral cycle.
+Q.londonn_directrule_timer = 0;
+// elections are not on a timer, but rather, there is an indicator for whether you're in an electoral cycle.
 Q.in_election = 1;
-Q.in_election_prussia = 1;
-Q.next_election_time_prussia = 5;
-Q.next_election_year_prussia = 1928;
-Q.next_election_month_prussia = 5;
+Q.in_election_london = 1;
+Q.next_election_time_london = 5;
+Q.next_election_year_london = 1928;
+Q.next_election_month_london = 5;
 Q.next_election_year = 1928;
 Q.next_election_month = 12;
 Q.next_election_time = 12;
 // government affairs timers
 Q.campaigning_timer = 0;
-Q.spd_government_burden_timer = 0;
+Q.lab_government_burden_timer = 0;
 Q.agricultural_policy_timer = 0;
 Q.domestic_enemies_timer = 0;
 Q.economic_policy_timer = 0;
@@ -805,7 +747,7 @@ Q.judiciary_timer = 0;
 Q.labor_affairs_timer = 0;
 Q.military_policy_timer = 0;
 Q.police_timer = 0;
-Q.prussian_affairs_timer = 0;
+Q.londonn_affairs_timer = 0;
 Q.shuffle_cabinet_timer = 0;
 Q.social_welfare_timer = 0;
 Q.war_guilt_timer = 0;
@@ -816,95 +758,86 @@ Q.coalition_affairs_timer = 0;
 // event timers
 Q.emergency_cuts_timer = 0;
 Q.unemployment_insurance_timer = 0;
-Q.sa_ban_timer = 0;
-Q.sh_ban_timer = 0;
-Q.kpd_ultimatum_timer = 0;
-Q.kpd_ultimatum_prussia_timer = 0;
-Q.dnf_decay_timer = 0;
-Q.march_on_berlin_timer = 0;
-Q.lvp_merger_timer = 0;
-Q.lvp_merger_1_timer = 0;
-Q.lvp_merger_2_timer = 0;
+Q.fdf_ban_timer = 0;
+Q.blackshirts_ban_timer = 0;
+Q.clubs_ban_timer = 0;
+Q.cpb_ultimatum_timer = 0;
+Q.cpb_ultimatum_london_timer = 0;
+Q.second_march_on_london_timer = 0;
 Q.bourgeois_negotiations_1930_timer = 0;
 Q.bourgeois_negotiations_1930_aftermath_timer = 0;
 Q.bourgeois_negotiations_elections_1930_timer = 0;
 Q.bourgeois_merger_timer = 0;
 Q.high_inflation_timer = 0;
-Q.papen_chancellor_timer = 0;
+Q.wood_pm_timer = 0;
+//Who is Schleicher? TODO
 Q.schleicher_chancellor_timer = 0;
-Q.nazi_decay_timer = 0;
-Q.red_general_timer = 0;
-Q.weimar_rally_timer = 0;
-Q.editorial_line = "Center";
-Q.z_party_name = "Z";
-Q.dnvp_leader = "Westarp";
-Q.dnvp_ideology = "Radical";
-Q.dstp_formed = 0;
-Q.ddp_left = 0;
-Q.ddp_right = 0;
-Q.ddp_name = "DDP";
-Q.ddp_full_name = "German Democratic Party";
-Q.ddp_leader = "Koch-Weser";
-Q.ddp_ideology = "Moderate"
-Q.ddp_cohesion = 15;
+Q.fascist_decay_timer = 0;
+Q.national_rally_timer = 0;
+Q.editorial_line = "Pragmatic";
+Q.ccp_party_name = "CCP";
+Q.cup_leader = "Bridgeman";
+Q.cup_ideology = "Radical";
+Q.bcp_formed = 0;
+Q.cnlp_left = 0;
+Q.cnlp_right = 0;
+Q.cnlp_name = "CNLP";
+Q.cnlp_full_name = "Coalition National Liberal Party";
+Q.cnlp_leader = "Scott";
+Q.cnlp_ideology = "Progressive"
+Q.cnlp_cohesion = 15;
 Q.young_plan_signatures = 0;
 Q.young_plan_votes = 0;
 Q.weimar_ref_signatures = 0;
 Q.weimar_ref_votes = 0;
 Q.was_in_center_right_coalition = 0;
 Q.was_in_right_coalition = 0;
-Q.dvp_left = 0;
-Q.dvp_right = 0;
-Q.dvp_was_in_prussia = 0;
-Q.dvp_leader = "Stresemann";
-Q.dvp_ideology = "Moderate"
+Q.lib_left = 0;
+Q.lib_right = 0;
+Q.lib_was_in_london = 0;
+Q.lib_leader = "Chamberlain";
+Q.lib_ideology = "Moderate"
 Q.liberal_cooperation = 0;
 Q.liberal_parliament = 0;
 Q.bourgeois_parliament = 0;
-Q.bourgeois_parliament_ddp = 0;
-Q.bourgeois_parliament_kvp = 0;
-Q.dvp_congress_trigger = 0;
+Q.bourgeois_parliament_cnlp = 0;
+Q.lib_congress_trigger = 0;
 Q.liberal_parliament_seen = 0;
-Q.dvp_reform = 0;
+Q.lib_reform = 0;
 Q.bourgeois_cooperation = 0;
 Q.ui1_compromise = 0;
-Q.panzerkreuser_right_seen = 0;
+Q.horizon_right_seen = 0;
 Q.black_thursday_seen = 0;
 Q.grand_coalition_collapsed = 0;
 Q.true_christian_democracy = 0;
-Q.zentrum_disintegration = 0;
-Q.wtb_rally = 0;
-Q.braun_resign = 0;
+Q.ccp_disintegration = 0;
+Q.labour_plan_rally = 0;
+Q.lansbury_resign = 0;
 Q.secret_mode = 0;
 Q.secret_trigger = 0;
 Q.strife = 0;
-Q.lvp_timer_trigger = 0;
-Q.lvp_timer_1_trigger = 0;
-Q.lvp_timer_2_trigger = 0;
+//Liberal Unification & KVP equivalent? TODO
 Q.ui0_seen = 0;
 Q.young_plan_ratified = 0
-Q.kvp_leader = "Westarp"
-Q.stresemann_dead = 0;
+Q.chamberlain_resigned = 0;
 Q.bourgeois_negotiations = 0;
 Q.bourgeois_negotiations_1 = 0;
 Q.bourgeois_negotiations_2 = 0;
 Q.bourgeois_negotiations_election_soon = 0;
-Q.dnvp_split_2 = 0
+Q.cup_split_2 = 0
 Q.bourgeois_merger_trigger = 0;
 Q.bourgeois_list = 0;
-Q.hindenburg_angry_bruning = 0;
-Q.bruning_time = 0;
-Q.bruning_toleration_time = 0;
-Q.total_bruning_time = 0;
-Q.total_bruning_toleration_time = 0;
-Q.bruning_lite_time = 0;
-Q.bruning_toleration_lite_time = 0;
-Q.total_bruning_lite_time = 0;
-Q.total_bruning_toleration_lite_time = 0;
-Q.goerdeler_pre_time = 0;
-Q.total_goerdeler_time = 0;
-Q.rubicon_mini_time = 0;
-Q.papen_time = 0;
+Q.macready_angry_hoare = 0;
+Q.hoare_time = 0;
+Q.hoare_toleration_time = 0;
+Q.total_hoare_time = 0;
+Q.total_hoare_toleration_time = 0;
+Q.hoare_lite_time = 0;
+Q.hoare_toleration_lite_time = 0;
+Q.total_hoare_lite_time = 0;
+Q.total_hoare_toleration_lite_time = 0;
+//Goerdeler equivalent TODO
+Q.wood_time = 0;
 Q.schleicher_time = 0;
 Q.schleicher_post_time = 0;
 Q.bredow_time = 0;
@@ -919,9 +852,9 @@ Q.dnvp_westarp = 1;
 Q.ddp_factionless_time = 0;
 Q.wp_conflict_time = 0;
 Q.dvp_conflict_time = 0;
-Q.bruning_austerity_limited = 0;
+Q.hoare_austerity_limited = 0;
 Q.political_decree = 0;
-Q.bruning_coalition_dissent = 0;
+Q.hoare_coalition_dissent = 0;
 Q.dnvp_angry = 0;
 Q.dvp_exist = 1;
 Q.reichsbanner_unpopularity_time = 0;
@@ -944,7 +877,7 @@ Q.nsdap_lippe = 1;
 Q.nazi_explode = 0;
 Q.schleicher_explode = 0;
 Q.schleicher_victory = 0;
-Q.old_prussia_leader = " ";
+Q.old_london_leader = " ";
 Q.schleicher_post = 0;
 Q.schleicher_spd_concession = 0;
 Q.dsu_policy = 0;
@@ -974,10 +907,10 @@ Q.dynamic_token = 0;
 Q.schwarze_null = 1;
 Q.notwendigkeit = 1;
 Q.gov_burden_fail = 0;
-Q.prussia_force_timer = 0;
+Q.london_force_timer = 0;
 Q.emergency_used = 0;
 Q.kleber_der_partei = 1;
-Q.prussia_purge = 0;
+Q.london_purge = 0;
 
 // rubicon
 Q.hindenburg_schleicher_r = 5;
@@ -1074,7 +1007,7 @@ const achievements = [
   "achievement_einigkeit_und_recht_und_freiheit",
   "achievement_victory_for_the_republic",
   "achievement_bollwerk_der_demokratie",
-  "achievement_red_tzar_of_prussia",
+  "achievement_red_tzar_of_london",
   "achievement_einheitsfront",
   "achievement_einheitsfront_2",
   "achievement_volksfront",
@@ -1184,7 +1117,7 @@ const achievements = [
   "achievement_sechs_sieben",
   "achievement_er_ist_wieder_da",
   "achievement_abgrundlaufer",
-  "achievement_bruning_uber_alles",
+  "achievement_hoare_uber_alles",
   "achievement_der_aufstieg_skywalkers",
   "achievement_kulturkampf",
   "achievement_mr_breitscheid",
@@ -1192,7 +1125,7 @@ const achievements = [
   "achievement_kleber_der_partei",
   "achievement_grosse_sauberung",
   "achievement_die_rote_justiz",
-  "achievement_bruning_der_rotfrontkampfer",
+  "achievement_hoare_der_rotfrontkampfer",
   "achievement_merz_und_scholz",
   "achievement_lindner_moribund",
   "achievement_tausendjahrige_libreich"
