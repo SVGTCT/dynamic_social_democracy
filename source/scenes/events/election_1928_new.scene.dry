@@ -371,6 +371,9 @@ There are some potential coalition arrangements.
 - @wood_coalition
 - @radical_ccp
 
+@national_coalition
+go-to: weimar_coalition
+
 # note: consider possible sky blue-black coalition of CCP/BUF
 
 @popular_front_coalition
