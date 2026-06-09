@@ -29,7 +29,35 @@ Since we are currently ruling as part of an emergency government, we may use qua
 - @election_algorithm: No, let's hold the elections.
 
 @cancel_elections_2
-on-departure: next_election_year = next_election_year + 1; next_election_time = time + 12; pro_republic -= 10; lib_relation -= 8; cco_relation -= 8; cnlp_relation -= 10; cpb_relation -= 8; coup_progress += 2; urban_workers_lab -= 4; other_workers_lab -= 5; white_collar_lab -= 5; upper_lab -= 5; farmers_lab; unemployed_lab -= 5; coup_progress += 2 if buf_normalised >= 0.3; coup_progress += 2 if buf_normalised + cup_normalised >= 0.5; blackshirts_strength += 100 if coup_progress >= 7; clubs_strength += 100 if coup_progress >= 7
+on-departure: {! 
+Q.next_election_year = Q.next_election_year + 1; 
+Q.next_election_time = time + 12; 
+Q.pro_republic -= 10; 
+Q.lib_relation -= 8; 
+Q.ccp_relation -= 8; 
+Q.cnlp_relation -= 10; 
+Q.cpb_relation -= 8; 
+Q.coup_progress += 2; 
+Q.urban_workers_lab -= 4; 
+Q.other_workers_lab -= 5; 
+Q.white_collar_lab -= 5; 
+Q.upper_lab -= 5; 
+Q.farmers_lab -= 5; 
+Q.unemployed_lab -= 5; 
+
+if (Q.buf_normalised >= 0.3) {
+    coup_progress += 2;
+}
+
+if (Q.buf_normalised + Q.cup_normalised >= 0.5) {
+    Q.coup_progress += 2;
+}
+
+if (Q.coup_progress >= 7) {
+    Q.blackshirts_strength += 100; 
+    Q.clubs_strength += 100;
+}
+!}
 #achievement: ausnahmezustand
 
 Fine. President [+ president +] has taken the unprecedented step of cancelling these elections. New elections are scheduled for [+ next_election_month : month +] [+ next_election_year +].
