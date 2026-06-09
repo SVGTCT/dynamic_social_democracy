@@ -412,6 +412,7 @@ choose-if: (cpb_relation >= 60 and communist_coalition >= 3) or cpb_party_leader
 go-to: popular_front_success
 
 @popular_front_braun
+title: shadabadabadabadeydabadoo
 go-to: popular_front_lansbury
 
 @popular_front_lansbury
@@ -970,6 +971,7 @@ New elections have been set for [+ next_election_month : month +] [+ next_electi
 
 
 @no_majority_schleicher
+title: shadabadabadabadeydabadoo
 go-to: hitler_chancellor
 
 # TODO: there should be a second Schleicher option if the buf isn't the strongest
@@ -1028,6 +1030,7 @@ Otto Wels has become chancellor of the lab majority.
 
 
 @brauns_dilemma
+title: shadabadabadabadeydabadoo
 go-to: lansburys_dilemma
 
 @lansburys_dilemma
