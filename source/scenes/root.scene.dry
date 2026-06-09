@@ -655,7 +655,7 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
     // govt
     'agricultural_policy', 'domestic_enemies', 'fiscal_policy',
     'foreign_policy', 'judiciary', 'labor_affairs', 'military_policy',
-    'police', 'londonn_affairs', 'shuffle_cabinet', 'social_welfare',
+    'police', 'london_affairs', 'shuffle_cabinet', 'social_welfare',
     'homosexual_rights', 'economic_policy', 'coalition_affairs',
     'war_guilt', 'womens_rights', 'economic_democracy',
     'dealing_with_toleration',
@@ -666,7 +666,7 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
     'sa_ban', 'sh_ban', 'papen_chancellor', 'schleicher_chancellor',
     'kpd_policy', 'kpd_ultimatum', 'kpd_ultimatum_london', 'popular_front_dispute',
     'high_inflation', 'banking_crisis', 'understanding_enemy',
-    'dnf_decay', 'march_on_berlin', 'londonn_reichsexekution',
+    'dnf_decay', 'march_on_berlin', 'london_reichsexekution',
     'hoare_event', 'lvp_merger', 'lvp_merger_1', 'lvp_merger_2', 'bourgeois_merger',
     'bourgeois_negotiations_1930', 'bourgeois_negotiations_1930_aftermath', 'schleichers_schemes',
     'bourgeois_negotiations_elections_1930', 'nazi_decay', 'stegerwald_transformation', 'emergency_fundraising', 'red_general', 'weimar_rally', 'nazi_funds',
@@ -681,7 +681,7 @@ Q.rubicon_timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
     // govt
     'agricultural_policy', 'domestic_enemies', 'fiscal_policy',
     'foreign_policy', 'judiciary', 'labor_affairs', 'military_policy',
-    'police', 'londonn_affairs', 'shuffle_cabinet', 'social_welfare',
+    'police', 'london_affairs', 'shuffle_cabinet', 'social_welfare',
     'homosexual_rights', 'economic_policy', 'coalition_affairs',
     'war_guilt', 'womens_rights', 'economic_democracy',
     'dealing_with_toleration',
@@ -692,7 +692,7 @@ Q.rubicon_timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
     'sa_ban', 'sh_ban', 'papen_chancellor', 'schleicher_chancellor',
     'kpd_policy', 'kpd_ultimatum', 'kpd_ultimatum_london', 'popular_front_dispute',
     'high_inflation', 'banking_crisis', 'understanding_enemy',
-    'dnf_decay', 'march_on_berlin', 'londonn_reichsexekution',
+    'dnf_decay', 'march_on_berlin', 'london_reichsexekution',
     'hoare_event', 'lvp_merger', 'lvp_merger_1', 'lvp_merger_2', 'bourgeois_merger', 'schleichers_schemes',
     'bourgeois_negotiations_elections_1930', 'emergency_fundraising', 'red_general', 'weimar_rally', 'nazi_funds',
     'campaigning', 'dsu_policy'];
@@ -725,7 +725,7 @@ Q.no_majority_elections = 0;
 Q.no_majority_wood_elections = 0;
 Q.no_majority_elections_london = 0;
 Q.elections_1932 = 0;
-Q.londonn_directrule_timer = 0;
+Q.london_directrule_timer = 0;
 // elections are not on a timer, but rather, there is an indicator for whether you're in an electoral cycle.
 Q.in_election = 1;
 Q.in_election_london = 1;
@@ -747,7 +747,7 @@ Q.judiciary_timer = 0;
 Q.labor_affairs_timer = 0;
 Q.military_policy_timer = 0;
 Q.police_timer = 0;
-Q.londonn_affairs_timer = 0;
+Q.london_affairs_timer = 0;
 Q.shuffle_cabinet_timer = 0;
 Q.social_welfare_timer = 0;
 Q.war_guilt_timer = 0;
