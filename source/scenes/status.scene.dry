@@ -28,7 +28,7 @@ if (Q.economic_growth) {
 
 [? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ ilp_relation : relationships +] ?]
 
-<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span>: [+ cpb_relation : relationships +]
+<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ cpb_relation : relationships +]
 
 **Special Interests**: [+ other_relation : relationships +]
 
@@ -42,17 +42,17 @@ WIP
 
 = Internal Factions of the <span style="color: #c00000;">**lab**</span>
 
-[? if left_split == 0: {!<span class="tooltip-text" title="The party's left wing members push for nationalisation, particularly of banks, and an anti-fascist united front.">Socialist League</span>!} strength: [+ left_strength : strength +] ?]
+[? if left_split == 0: {!<span class="tooltip-text" title="The party's left wing members push for nationalisation, particularly of banks, and an anti-fascist united front.">Socialist League</span>!} strength: [+ left_strength : strength +],  dissent: [+ left_dissent : dissent +] ?]
 
-{!<span class="tooltip-text" title="The mainstream Labour party is pragmatic and seeks to reform capitalism through parliamentarism.">Pragmatists</span>!} strength: [+ pragmatist_strength : strength +]
+{!<span class="tooltip-text" title="The mainstream Labour party is pragmatic and seeks to reform capitalism through parliamentarism.">Pragmatists</span>!} strength: [+ pragmatist_strength : strength +], dissent: [+ pragmatist_dissent : dissent +]
 
-[? if unions_independent == 0: {!<span class="tooltip-text" title="The trade unions aim to represent the working class, the largest section of British society.">Labour</span>!} strength: [+ labour_strength : strength +] ?]
+[? if unions_independent == 0: {!<span class="tooltip-text" title="The trade unions aim to represent the working class, the largest section of British society.">Labour</span>!} strength: [+ labour_strength : strength +],  dissent: [+ labour_dissent : dissent +] ?]
 
-[? if reformist_split == 0: {!<span class="tooltip-text" title="The reformist Fabian Society promotes a gradual reform to a generous welfare state.">Fabian Society</span>!} strength: [+ reformist_strength : strength +] ?]
+[? if reformist_split == 0: {!<span class="tooltip-text" title="The reformist Fabian Society promotes a gradual reform to a generous welfare state.">Fabian Society</span>!} strength: [+ reformist_strength : strength +],  dissent: [+ reformist_dissent : dissent +] ?]
 
-[? if left_split == 0: {!<span class="tooltip-text" title="Returning to Labour from the ACLP, centre Marxists advocate for revolutionary socialism and pacifism.">Revolutionary Socialists</span>!} strength: [+ revolutionary_strength : strength +] ?]
+[? if left_split == 0: {!<span class="tooltip-text" title="Returning to Labour from the ACLP, centre Marxists advocate for revolutionary socialism and pacifism.">Revolutionary Socialists</span>!} strength: [+ revolutionary_strength : strength +],  dissent: [+ revolutionary_dissent : dissent +] ?]
 
-[? if coop_alliance: {!<span class="tooltip-text" title="Now running an electoral pact with Labour, co-operatives support co-operatives and a "social economy".">Co-operative Party</span>!} strength: [+ coop_strength : strength +] ?]
+[? if coop_alliance: {!<span class="tooltip-text" title="Now running an electoral pact with Labour, co-operatives support co-operatives and a "social economy".">Co-operative Party</span>!} strength: [+ coop_strength : strength +],  dissent: [+ coop_dissent : dissent +] ?]
 
 @politics
 
@@ -195,22 +195,70 @@ Q.socialism_disp = Math.floor(Q.socialism);
 
 [? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ ilp_votes +] ?]
 
-<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span>: [+ cpb_votes +]
+<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ cpb_votes +]
 
-Others**: [+ other_votes +]
+**Others**: [+ other_votes +]
 
 Support for the Republic: [+ pro_republic_disp +]%
 
 **Detailed results for each demographic**
 
-Urban Workers
+<span class="tooltip-text" title="Insured and unionised workers in cities, mostly larger ones such as London, Birmingham, Liverpool etc.">Urban Workers</span>: <span style="color: #e31414;">**Lab**</span>: [+ urban_workers_lab +]
+[? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ urban_workers_cup +] ?]
+[? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ urban_workers_cup +] ?]
+[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ urban_workers_ccp +] ?]
+[? if not cnlp_gone: <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span> - [+ urban_workers_cnlp +] ?]
+<span style="color: #ffbb00;">**Liberal**</span> - [+ urban_workers_lib +]
+[? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ urban_workers_ilp +] ?]
+<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ urban_workers_cpb +]
+**Others**: [+ urban_workers_other +]
 
-Other Workers
+<span class="tooltip-text" title="Uninsured, non-union, part-time workers, mostly in smaller cities.">Other Workers</span>: <span style="color: #e31414;">**Lab**</span>: [+ other_workers_lab +]
+[? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ other_workers_cup +] ?]
+[? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ other_workers_cup +] ?]
+[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ other_workers_ccp +] ?]
+[? if not cnlp_gone: <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span> - [+ other_workers_cnlp +] ?]
+<span style="color: #ffbb00;">**Liberal**</span> - [+ other_workers_lib +]
+[? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ other_workers_ilp +] ?]
+<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ other_workers_cpb +]
+**Others**: [+ other_workers_other +]
 
-White-collar
+<span class="tooltip-text" title="The British middle class, working non-manual jobs e.g. office, bureaucrats etc.">White-collar Workers</span>: <span style="color: #e31414;">**Lab**</span>: [+ white_collar_lab +]
+[? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ white_collar_cup +] ?]
+[? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ white_collar_cup +] ?]
+[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ white_collar_ccp +] ?]
+[? if not cnlp_gone: <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span> - [+ white_collar_cnlp +] ?]
+<span style="color: #ffbb00;">**Liberal**</span> - [+ white_collar_lib +]
+[? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ white_collar_ilp +] ?]
+<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ white_collar_cpb +]
+**Others**: [+ white_collar_other +]
 
-Farmers
+<span class="tooltip-text" title="Estat-owning former nobility influential as media moguls, industrialists, military leadership, and politicians. Concentrated around financial centres, with land in rural areas. Some are Labour-voting \"Champagne socialists"\">Upper class</span>: <span style="color: #e31414;">**Lab**</span>: [+ upper_lab +]
+[? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ upper_cup +] ?]
+[? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ upper_cup +] ?]
+[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ upper_ccp +] ?]
+[? if not cnlp_gone: <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span> - [+ upper_cnlp +] ?]
+<span style="color: #ffbb00;">**Liberal**</span> - [+ upper_lib +]
+[? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ upper_ilp +] ?]
+<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ upper_cpb +]
+**Others**: [+ upper_other +]
 
-Upper class
+<span class="tooltip-text" title="Agricultural and farm workers, mostly in rural areas.">Famers</span>: <span style="color: #e31414;">**Lab**</span>: [+ farmers_lab +]
+[? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ farmers_cup +] ?]
+[? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ farmers_cup +] ?]
+[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ farmers_ccp +] ?]
+[? if not cnlp_gone: <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span> - [+ farmers_cnlp +] ?]
+<span style="color: #ffbb00;">**Liberal**</span> - [+ farmers_lib +]
+[? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ farmers_ilp +] ?]
+<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ farmers_cpb +]
+**Others**: [+ farmers_other +]
 
-Unemployed
+<span class="tooltip-text" title="People who are able to work but not working.">Unemployed</span>: <span style="color: #e31414;">**Lab**</span>: [+ unemployed_lab +]
+[? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ unemployed_cup +] ?]
+[? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ unemployed_cup +] ?]
+[? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ unemployed_ccp +] ?]
+[? if not cnlp_gone: <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span> - [+ unemployed_cnlp +] ?]
+<span style="color: #ffbb00;">**Liberal**</span> - [+ unemployed_lib +]
+[? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ unemployed_ilp +] ?]
+<span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ unemployed_cpb +]
+**Others**: [+ unemployed_other +]
