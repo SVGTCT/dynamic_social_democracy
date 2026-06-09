@@ -115,7 +115,7 @@ if (Q.electoral_threshold && Q.electoral_threshold > 0) {
 
 // now with the modifier
 
-Q.[party + '_r'] = Q.[party + '_r'] * Q.[party + '_modifier'].toFixed(1);
+Q[party + '_r'] = Q[party + '_r'] * Q[party + '_modifier'].toFixed(1);
 
 Q.total_r = Q.lab_r + Q.cup_r + Q.ccp_r + Q.cpb_r + Q.cnlp_r + Q.lib_r + Q.buf_r + Q.other_r;
 
