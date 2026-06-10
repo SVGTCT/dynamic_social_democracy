@@ -65,6 +65,108 @@ Fine. President [+ president +] has taken the unprecedented step of cancelling t
 Let us hope this does not backfire.
 
 @post_election_1928
+on-arrival: {!
+
+// The largest party can only be the CPB, BUF or Labour.
+Q.largest_party = 'Labour';
+
+if (Q.buf_r >= Q.lab_r && Q.buf_r >= Q.cpb_r) {
+    Q.largest_party = 'BUF';
+}
+
+if (Q.cpb_r >= Q.lab_r && Q.cpb_r >= Q.buf_r) {
+    Q.largest_party = 'CPB';
+}
+
+// coalitions
+Q.national_coalition = (Number(Q.lab_r + Q.cnlp_r + Q.ccp_r - 3));
+Q.grand_coalition = (Number(Q.lab_r + Q.cnlp_r + Q.ccp_r + Q.lib_r));
+Q.bourgeois_coalition = (Number(Q.cnlp_r + Q.ccp_r + Q.lib_r + Q.other_r));
+Q.center_right_coalition = (Number(Q.ccp_r + Q.cnlp_r + Q.lib_r + Q.other_r + Q.cup_r));
+Q.right_coalition = (Number(Q.ccp_r + Q.lib_r + Q.other_r + Q.cup_r));
+Q.far_right_coalition = (Number(Q.cup_r + Q.buf_r));
+Q.left_coalition = (Number(Q.lab_r + Q.cpb_r + Q.ilp_r));
+Q.purple_coalition = (Number(Q.lab_r + Q.ccp_r - 3));
+
+if (Q.lib_reconciliation == 1) {
+    Q.lab_lib_coalition = (Number(Q.lab_r + Q.lib_r));
+}
+else {
+    Q.lab_lib_coalition = (Number(Q.lab_r + Q.cnlp_r));
+}
+
+Q.popular_front_coalition = (Number(Q.lab_r + Q.cpb_r + Q.ccp_r - 3 + Q.cnlp_r + Q.ilp_r));
+Q.anti_democratic_coalition = (Number(Q.cpb_r + Q.buf_r + Q.cup_r));
+// aka everyone except buf, cpb, cup
+Q.neo_national_coalition = (Number(Q.lab_r + Q.cnlp_r + Q.ccp_r + Q.lib_r + Q.other_r));
+// Mosley + Right-wing parties (only comes into effect if you've alienated CCP too badly)
+Q.mosley_right_coalition = (Number(Q.ccp_r + Q.cup_r + Q.buf_r));
+// Progressive coalition isn't going to be implemented as a distinct coalition but it's the coalition that lets you pass improved women's rights/gay rights
+Q.progressive_coalition = (Number(Q.lab_r + Q.cpb_r + Q.cnlp_r + Q.ilp_r));
+
+if (Q.cpb_relation >= 30) {
+    Q.national_coalition += Q.ilp_r;
+}
+
+Q.leverage = Q.lab_r;
+
+Q.grand_coalition_failed = 0;
+Q.right_coalition_dissent = 0;
+Q.left_coalition_dissent = 0;
+Q.lab_in_government = 0;
+Q.in_national_coalition = 0;
+Q.in_grand_coalition = 0;
+Q.in_purple_coalition = 0;
+Q.in_lab_lib_coalition = 0;
+Q.in_left_front = 0;
+Q.in_popular_front = 0;
+Q.in_emergency_government = 0;
+Q.in_minority_government = 0;
+Q.in_unity_government = 0;
+Q.lab_toleration = 0;
+Q.lab_caretaker = 0;
+
+// Remember ministers must be set and named after each final event
+
+// reset cpb goals
+Q.cpb_goals_seen = 0;
+Q.cpb_ultimatum_seen = 0;
+Q.welfare_goal = 0;
+Q.agriculture_goal = 0;
+Q.economy_goal = 0;
+Q.finance_goal = 0;
+Q.labor_goal = 0;
+Q.foreign_goal = 0;
+Q.interior_goal = 0;
+Q.defence_goal = 0;
+
+Q.welfare_goal_completed = 0;
+Q.agriculture_goal_completed = 0;
+Q.economy_goal_completed = 0;
+Q.finance_goal_completed = 0;
+Q.labor_goal_completed = 0;
+Q.foreign_goal_completed = 0;
+Q.interior_goal_completed = 0;
+Q.defence_goal_completed = 0;
+
+// more variables that need reset here
+
+Q.strike_term_seen = 0;
+
+Q.ccp_minus_uup_r = Q.ccp_r - 3;
+
+// understanding the enemy
+if (Q.buf_r >= 15) {
+    Q.understanding_enemy_timer = 2;
+}
+
+var election_result = {'date': new Date(Q.year, Q.month - 1)};
+for (var party of Q.parties) {
+    election_result[party] = Q[party + '_r'];
+}
+Q.election_records.push(election_result);
+
+!}
 on-departure: fascist_urgency = 1 if (fascist_urgency == 0 and buf_r >= 15)
 on-display: {!
 data = [
@@ -158,26 +260,26 @@ go-to: coalition_menu
 {!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!} 
-{!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#e31414; outline: 2px; outline-style: solid;'> </div> !} **Labour:** {!</td><td>!} **[+ lab_r +]%** {!</td><td>!} **[+ str_change_lab +]** {!</td></tr>!}
+{!<tr><td>Party</td><td>Voteshare</td><td>Seats</td><td>% Change</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#e31414; outline: 2px; outline-style: solid;'> </div> !} **Labour:** {!</td><td>!} **[+ lab_votes +]%** {!</td><td>!} **[+ lab_r +]%** {!</td><td>!} **[+ str_change_lab +]** {!</td></tr>!}
 
-[? if ilp_formed : {!<tr><td><div class="box" style='background-color:#9c0606'> </div> !}ILP: {!</td><td>!} [+ ilp_r +]% {!</td><td>!} [+ str_change_ilp +] {!</td></tr>!} ?]
+[? if ilp_formed : {!<tr><td><div class="box" style='background-color:#9c0606'> </div> !}ILP: {!</td><td>!} [+ ilp_votes +]% {!</td><td>!} [+ ilp_r +]% {!</td><td>!} [+ str_change_ilp +] {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#8e000a'> </div> !}CPB: {!</td><td>!} [+ cpb_r +]% {!</td><td>!} [+ str_change_cpb +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#8e000a'> </div> !}CPB: {!</td><td>!} [+ cpb_r +]% {!</td><td>!} [+ cpb_votes +]% {!</td><td>!} {!</td><td>!} [+ str_change_cpb +] {!</td></tr>!}
 
-[? if cnlp_r > 0: {!<tr><td><div class="box" style='background-color:#ffd600'> </div> !} CNLP: {!</td><td>!} [+ cnlp_r +]% {!</td><td>!} [+ str_change_cnlp +] {!</td></tr>!} ?]
+[? if cnlp_r > 0: {!<tr><td><div class="box" style='background-color:#ffd600'> </div> !} CNLP: {!</td><td>!} [+ cnlp_votes +]% {!</td><td>!} {!</td><td>!} [+ cnlp_r +]% {!</td><td>!} [+ str_change_cnlp +] {!</td></tr>!} ?]
 
-[? if ccp_r > 0: {!<tr><td><div class="box" style='background-color:#1375d6'> </div> !} CCP: {!</td><td>!} [+ ccp_minus_uup_r +]% {!</td><td>!} [+ str_change_ccp +] {!</td></tr>!} ?]
+[? if ccp_r > 0: {!<tr><td><div class="box" style='background-color:#1375d6'> </div> !} CCP: {!</td><td>!} [+ ccp_votes +]% {!</td><td>!} {!</td><td>!} [+ ccp_minus_uup_r +]% {!</td><td>!} [+ str_change_ccp +] {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#5eaeee'> </div> !} UUP: {!</td><td>!} 3% {!</td><td>!} 0 {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#5eaeee'> </div> !} UUP: {!</td><td>!} 3.1% {!</td><td>!} {!</td><td>!} 3% {!</td><td>!} 0 {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#ffbb00'> </div> !} Liberal: {!</td><td>!} [+ lib_r +]% {!</td><td>!} [+ str_change_lib +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#ffbb00'> </div> !} Liberal: {!</td><td>!} [+ lib_votes +]% {!</td><td>!} {!</td><td>!} [+ lib_r +]% {!</td><td>!} [+ str_change_lib +] {!</td></tr>!}
  
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_r +] % {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_votes +]% {!</td><td>!} {!</td><td>!} [+ other_r +] % {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#002c6e'> </div> !} CUP: {!</td><td>!} [+ cup_r +]% {!</td><td>!} [+ str_change_cup +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#002c6e'> </div> !} CUP: {!</td><td>!} [+ cup_votes +]% {!</td><td>!} {!</td><td>!} [+ cup_r +]% {!</td><td>!} [+ str_change_cup +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#262626'> </div> !} BUF: {!</td><td>!} [+ buf_r +]% {!</td><td>!} [+ str_change_buf +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#262626'> </div> !} BUF: {!</td><td>!} [+ buf_votes +]% {!</td><td>!} {!</td><td>!} [+ buf_r +]% {!</td><td>!} [+ str_change_buf +] {!</td></tr>!}
 {!</table>!}
 
 **Potential coalitions:**
