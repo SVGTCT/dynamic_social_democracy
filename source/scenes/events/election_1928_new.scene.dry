@@ -850,6 +850,7 @@ Q.upper_buf += 5;
 Q.white_collar_buf += 5; 
 Q.farmers_cup -= 5;
 !}
+
 We have decided to tolerate Maugham's government. This means that we will vote against no-confidence votes to make sure they fail, but also that we will not be directly participating as ministers in the government. Thus, we can prevent a new election and stop the far right from entering government.
 
 @radical_const
@@ -1050,7 +1051,7 @@ New elections have been set for [+ next_election_month : month +] [+ next_electi
 @radical_z_mosley
 on-arrival: chancellor = "Mosley"; chancellor_party = "BUF"
 
-There is no path to a majority government for now. The scheming around President Macready is leading to only one path - that of Chancellor Oswald Mosley. [? if largest_party == "BUF" : Since they are the largest party, it is not exactly contrary to parliamentary procedure, so it is difficult to raise objections solely on procedural grounds. ?] [? if mosley_exiled: Despite his earlier exile, the fascist leaders and their reactionary allies have connived for the president to give him a presidential pardon. ?]
+There is no path to a majority government for now. The scheming around President Macready is leading to only one path - that of Prime Minister Oswald Mosley. [? if largest_party == "BUF" : Since they are the largest party, it is not exactly contrary to parliamentary procedure, so it is difficult to raise objections solely on procedural grounds. ?] [? if mosley_exiled: Despite his earlier exile, the fascist leaders and their reactionary allies have connived for the president to give him a presidential pardon. ?]
 
 - @hitler_takes_power: What now?
 
