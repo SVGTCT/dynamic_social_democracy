@@ -1,105 +1,152 @@
 title: Election
 on-arrival: {!
-// calculate normalized class voting amounts (0 to 100)
-for (var c of Q.classes) {
-    var class_votes = 0;
-    for (var party of Q.parties) {
-        if (Q[c+'_'+party] < 0) {
-            Q[c+'_'+party] = 0;
-        }
-        class_votes += Q[c+'_'+party];
-    }
-    for (var party of Q.parties) {
-        Q[c + '_' + party + '_normalized'] = 100*Q[c+'_'+party]/class_votes;
-        Q[c + '_' + party + '_display'] = Math.round(100*Q[c+'_'+party]/class_votes);
-    }
+
+function getRandom() {
+  return Math.random();
 }
 
-// 1. calculate support for each of the parties
-var total_support = 0;
-for (var party of Q.parties) {
-    var party_support = 0;
-    for (var c of Q.classes) {
-        // but this version is somewhat more entertaining and allows for wilder swings in votes.
-        // the other option basically necessitates a multi-class strategy. while the first option allows for a working-class-only strategy.
-        if (Q.old_demographics) {
-            // okay i'm pretty sure this is wrong, and the hard version is correct
-            // basically this allows for "spillover" effects in other demographics.
-            // so you can campaign among say the workers and 
-            party_support += Q[c]*Q[c+'_'+party];
-            // However, there should be a cap on how much party support you can get in a certain demo.
-        } else  {
-            party_support += Q[c]*Q[c+'_'+party+'_normalized'];
-        }
-    }
-    Q[party + '_support'] = party_support;
-    total_support += party_support;
-    if (party == "other") {
-        Q.cnblp_normalized = Q.rural_other_normalized*Q.rural;
-        Q.wp_normalized = (Q.new_middle_other_normalized*Q.new_middle) + (Q.old_middle_other_normalized*Q.old_middle);
-        if (Q.csvd_formed && !Q.aspd_other) Q.csvd_normalized = Q.workers_other_normalized*Q.workers;
-        if (Q.aspd_other) Q.aspd_normalized = (Q.workers_other_normalized*Q.workers) + (Q.unemployed_other_normalized*Q.unemployed);
-        if (Q.aspd_kvp) Q.aspd_normalized = (Q.workers_kvp_normalized*Q.workers) + (Q.unemployed_kvp_normalized*Q.unemployed);
-        if (Q.right_dnef) Q.right_dnef_normalized = ((Q.new_middle_dnef_normalized / 2)*Q.new_middle) + (Q.old_middle_dnef_normalized*Q.old_middle) + (Q.rural_dnef_normalized*Q.rural) + ((Q.catholics_dnef_normalized / 2)*Q.catholics);
-        if (Q.left_dnef) Q.left_dnef_normalized = ((Q.new_middle_dnef_normalized / 2)*Q.new_middle) + (Q.workers_dnef_normalized*Q.workers) + (Q.unemployed_dnef_normalized*Q.unemployed) + ((Q.catholics_dnef_normalized / 2)*Q.catholics);
-    }
-    if (party == "nsdap" && Q.nsdap_split) {
-        Q.nsdap_hitler_support = Q.rural_nsdap_normalized*Q.rural;
-        Q.nsdap_hitler_support += Q.old_middle_nsdap_normalized*Q.old_middle;
-        Q.nsdap_hitler_support += Q.catholics_nsdap_normalized*Q.catholics;
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
 
-        if (Q.dsu_exist && !Q.nvf_exist) {
-            Q.dsu_support = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
-            Q.dsu_support += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
-            Q.dsu_support += Q.new_middle_nsdap*Q.new_middle;
-        } else if (!Q.dsu_exist && Q.nvf_exist) {
-            Q.nvf_support = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
-            Q.nvf_support += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
-            Q.nvf_support += Q.new_middle_nsdap*Q.new_middle;
-        } else if (Q.dsu_exist && Q.nvf_exist) {
-            Q.dsu_support = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
-            Q.dsu_support += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
-            Q.dsu_support += Q.new_middle_nsdap*Q.new_middle;
+//Calculate votes using turnout modifier 0.95 to 1.05
 
-            Q.nvf_support = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
-            Q.nvf_support += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+for (const party of Q.parties) {
+    Q['turnout_modifier_' + party] = (Number(0.95 + (getRndInteger(0,10)/100)));
+}
+
+for (const party of Q.parties) {
+    Q[party + '_votes'] = (Number(Q[party + '_votes'] * Q['turnout_modifier_' + party]));
+}
+
+for (const party of Q.parties) {
+    Q['old_' + party + '_r'] = (Number(Q[party + '_r']);
+}
+ 
+if (Q.constitutional_reform > 0) {
+    for (const party of Q.parties) {
+        if (Q[party + '_votes'] < Q.electoral_threshold || (Q.electoral_threshold > 1 && party == 'other') || Q[party + '_banned']) {
+            Q[party + '_r'] = 0;
         } else {
-            Q.nsdap_hitler_support += Q.workers_nsdap*Q.workers;
-            Q.nsdap_hitler_support += Q.unemployed_nsdap*Q.unemployed;
-            Q.nsdap_hitler_support += Q.new_middle_nsdap*Q.new_middle;
+            Q[party + '_r'] = Q[party + '_votes']*Q[party + '_modifier'];
         }
+        new_party_sum += Q[party + '_r'];
+    }
+} 
+
+if (Q.new_party_sum != 100 && Q.new_party_sum > 0 ) {
+    for (const party of Q.parties) {
+        Q[party + '_r'] *= (Number((100/Q.new_party_sum)));
     }
 }
-// 2. normalize support (fraction)
-// 3. Round to integers
+
+for (const party of Q.parties) {
+    Q[party+'_r'] = (Number(Math.round(Q[party+'_r'])*10)/10);
+}
+
+for (const party of Q.parties) {
+    Q[party+'_change'] = (Number(Math.round(Q['old_' + party + '_r'] - Q[party + '_r']*10))/10);
+    Q['str_change_'+party] = (str(Q[party+'_change']));
+}
+
+// The largest party can only be the CPB, BUF or Labour.
+Q.largest_party = 'Labour';
+
+if (Q.buf_r >= Q.lab_r && Q.buf_r >= Q.cpb_r) {
+    Q.largest_party = 'BUF';
+}
+
+if (Q.cpb_r >= Q.lab_r && Q.cpb_r >= Q.buf_r) {
+    Q.largest_party = 'CPB';
+}
+
+// coalitions
+Q.national_coalition = Q.lab_r + Q.cnlp_r + Q.ccp_r - 3;
+Q.grand_coalition = Q.lab_r + Q.cnlp_r + Q.ccp_r + Q.lib_r;
+Q.bourgeois_coalition = Q.cnlp_r + Q.ccp_r + Q.lib_r + Q.other_r;
+Q.center_right_coalition = Q.ccp_r + Q.cnlp_r + Q.lib_r + Q.other_r + Q.cup_r;
+Q.right_coalition = Q.ccp_r + Q.lib_r + Q.other_r + Q.cup_r;
+Q.far_right_coalition = Q.cup_r + Q.buf_r;
+Q.left_coalition = Q.lab_r + Q.cpb_r + Q.ilp_r;
+Q.purple_coalition = Q.lab_r + Q.ccp_r - 3;
+
+if (Q.lib_reconciliation == 1) {
+    Q.lab_lib_coalition = Q.lab_r + Q.lib_r;
+}
+else {
+    Q.lab_lib_coalition = Q.lab_r + Q.cnlp_r;
+}
+
+Q.popular_front_coalition = Q.lab_r + Q.cpb_r + Q.ccp_r - 3 + Q.cnlp_r + Q.ilp_r;
+Q.anti_democratic_coalition = Q.cpb_r + Q.buf_r + Q.cup_r;
+// aka everyone except buf, cpb, cup
+Q.neo_national_coalition = Q.lab_r + Q.cnlp_r + Q.ccp_r + Q.lib_r + Q.other_r;
+// Mosley + Right-wing parties (only comes into effect if you've alienated CCP too badly)
+Q.mosley_right_coalition = Q.ccp_r + Q.cup_r + Q.buf_r;
+// Progressive coalition isn't going to be implemented as a distinct coalition but it's the coalition that lets you pass improved women's rights/gay rights
+Q.progressive_coalition = Q.lab_r + Q.cpb_r + Q.cnlp_r + Q.ilp_r;
+
+if (Q.cpb_relation >= 30) {
+    Q.national_coalition += Q.ilp_r;
+}
+
+Q.leverage = Q.lab_r;
+
+Q.grand_coalition_failed = 0;
+Q.right_coalition_dissent = 0;
+Q.left_coalition_dissent = 0;
+Q.lab_in_government = 0;
+Q.in_national_coalition = 0;
+Q.in_grand_coalition = 0;
+Q.in_purple_coalition = 0;
+Q.in_lab_lib_coalition = 0;
+Q.in_left_front = 0;
+Q.in_popular_front = 0;
+Q.in_emergency_government = 0;
+Q.in_minority_government = 0;
+Q.in_unity_government = 0;
+Q.lab_toleration = 0;
+Q.lab_caretaker = 0;
+
+// Remember ministers must be set and named after each final event
+
+// reset cpb goals
+Q.cpb_goals_seen = 0;
+Q.cpb_ultimatum_seen = 0;
+Q.welfare_goal = 0;
+Q.agriculture_goal = 0;
+Q.economy_goal = 0;
+Q.finance_goal = 0;
+Q.labor_goal = 0;
+Q.foreign_goal = 0;
+Q.interior_goal = 0;
+Q.defence_goal = 0;
+
+Q.welfare_goal_completed = 0;
+Q.agriculture_goal_completed = 0;
+Q.economy_goal_completed = 0;
+Q.finance_goal_completed = 0;
+Q.labor_goal_completed = 0;
+Q.foreign_goal_completed = 0;
+Q.interior_goal_completed = 0;
+Q.defence_goal_completed = 0;
+
+// more variables that need reset here
+
+Q.strike_term_seen = 0;
+
+Q.ccp_minus_uup_r = Q.ccp_r - 3;
+
+// understanding the enemy
+if (Q.buf_r >= 15) {
+    Q.understanding_enemy_timer = 2;
+}
+
+var election_result = {'date': new Date(Q.year, Q.month - 1)};
 for (var party of Q.parties) {
-    Q[party+'_normalized'] = Q[party + '_support']/total_support;
-    if (party == "other") {
-        Q.cnblp_votes = (Q.cnblp_normalized/total_support);
-        Q.wp_votes = (Q.wp_normalized/total_support);
-        if (Q.csvd_formed && !Q.aspd_other) Q.csvd_votes = (Q.csvd_normalized/total_support);
-        if (Q.aspd_other || Q.aspd_kvp) Q.aspd_votes = (Q.aspd_normalized/total_support);
-        if (Q.right_dnef) Q.right_dnef_votes = (Q.right_dnef_normalized/total_support);
-        if (Q.left_dnef) Q.left_dnef_votes = (Q.left_dnef_normalized/total_support);
-    }
-    if (party == "nsdap" && Q.nsdap_split) {
-        Q.nsdap_hitler_normalized = Q.nsdap_hitler_support / total_support;
-        Q.dsu_normalized = Q.dsu_support / total_support;
-        if (Q.nvf_exist) Q.nvf_normalized = Q.nvf_support / total_support;
-        Q.nsdap_hitler_votes = Math.round(Q.nsdap_hitler_normalized*1000) / 10;
-        Q.dsu_votes = Math.round(Q.dsu_normalized*1000) / 10;
-        if (Q.nvf_exist) Q.nvf_votes = Math.round(Q.nvf_normalized*1000) / 10;
-    }
-    Q[party+'_votes'] = Math.round(Q[party+'_normalized']*1000)/ 10;
-    if (party == "other") {
-        Q.cnblp_votes = Math.round((Q.cnblp_votes*1000)/10);
-        Q.wp_votes = Math.round((Q.wp_votes*1000)/10);
-        if (Q.csvd_formed && !Q.aspd_other) Q.csvd_votes = Math.round((Q.csvd_votes*1000)/10);
-        if (Q.aspd_other || Q.aspd_kvp) Q.aspd_votes = Math.round((Q.aspd_votes*1000)/10);
-        if (Q.right_dnef) Q.right_dnef_votes = Math.round((Q.right_dnef_votes*1000)/10);
-        if (Q.left_dnef) Q.left_dnef_votes = Math.round((Q.left_dnef_votes*1000)/10);
-    }
+    election_result[party] = Q[party + '_r'];
 }
+Q.election_records.push(election_result);
 !}
 go-to: jumpScene
 
