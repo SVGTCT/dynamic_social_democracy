@@ -2602,6 +2602,13 @@ is-deck: true
 
 - #govt_affairs
 
+@Federalism
+title: State Affairs
+card-image: img-lab/HomeGeography.jpg
+is-deck: true
+
+- #federalism
+
 @time
 title: Bide our Time
 view-if: rubicon and (schleicher_spd_influence < 6 or chancellor != "Schleicher" or not schleicher_time or schleicher_time < 8)
