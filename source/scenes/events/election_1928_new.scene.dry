@@ -66,65 +66,35 @@ Let us hope this does not backfire.
 
 @post_election_1928
 on-arrival: {!
-// set old results
-// election threshold constitutional reform
-// banning parties
-var new_party_sum = 0;
+
 for (var party of Q.parties) {
     Q['old_' + party + '_r'] = Q[party + '_r'];
-    if (Q.constitutional_reform > 0) {
+}
+ 
+if (Q.constitutional_reform > 0) {
+    for (var party of Q.parties) {
         if (Q[party + '_votes'] < Q.electoral_threshold || (Q.electoral_threshold > 1 && party == 'other') || Q[party + '_banned']) {
             Q[party + '_r'] = 0;
         } else {
-            Q[party + '_r'] = Q[party + '_votes'];
+            Q[party + '_r'] = Q[party + '_votes']*Q[party + '_modifier'];
         }
         new_party_sum += Q[party + '_r'];
-    } else {
-        Q[party + '_r'] = Q[party + '_votes'];
-    }
-    // if we use decimals, then we might want to truncate the numbers
-    if (Q.use_decimals) {
-        Q[party + '_r_disp'] = Q[party+'_r'].toFixed(1);
-    }  else {
-            Q[party + '_r_disp'] = Q[party+'_r'];
-    }
-    Q['change_' + party + '_r'] = Q[party + '_r'] - Q['old_' + party + '_r'];
-    var sign = Q['change_' + party + '_r'] > 0 ? '+'  : '';
-    Q['str_change_' + party] = sign + Q['change_' + party + '_r'];//.toFixed(1);
-}
-// calculate new party sum if electoral reform
-if (Q.electoral_threshold && Q.electoral_threshold > 0) {
+} 
+
+if (Q.new_party_sum != 100) {
     for (var party of Q.parties) {
-        if (Q[party + '_r'] > 0) {
-            if (Q.use_decimals) {
-                Q[party + '_r'] = Math.round(Q[party + '_r']*1000/new_party_sum)/10;
-            } else {
-                Q[party + '_r'] = Math.round(Q[party + '_r']*100/new_party_sum);
-            }
-        }
-        if (Q.use_decimals) {
-            Q[party + '_r_disp'] = Q[party+'_r'].toFixed(1);
-        } else {
-            Q[party + '_r_disp'] = Q[party+'_r'];
-        }
-        Q['change_' + party + '_r'] = Q[party + '_r'] - Q['old_' + party + '_r'];
-        var sign = Q['change_' + party + '_r'] > 0 ? '+'  : '';
-        Q['str_change_' + party] = sign + Q['change_' + party + '_r'];//.toFixed(1);
-    }
+        Q[party + '_r'] *= (100/Q.new_party_sum);
 }
 
-// now with the modifier
-
-Q[party + '_r'] = Q[party + '_r'] * Q[party + '_modifier'].toFixed(1);
-
-Q.total_r = Q.lab_r + Q.cup_r + Q.ccp_r + Q.cpb_r + Q.cnlp_r + Q.lib_r + Q.buf_r + Q.other_r;
-
-if (Q.total_r > 100) {
-    Q.lab_r -= Q.total_r - 100;
+for (var party of Q.parties) {
+    Q[party + '_r'] *= 10;
+    Q[party+'_r'] = Math.round(Q[party+'_r']);
+    Q[party + '_r'] /= 10;
 }
 
-if (Q.total_r < 100) {
-    Q.cup_r += 100 - Q.total_r;
+for (var party of Q.parties) {
+    Q[party+'_change'] = Q['old_' + party + '_r'] - Q[party + '_r'];
+    Q.['str_change_'+party] = Q[party+'_change'].toFixed(1);
 }
 
 // The largest party can only be the CPB, BUF or Labour.
