@@ -51,7 +51,7 @@ if (Q.total_unemployed > 100 || Q.total_unemployed < 100) {
 }
 
 for (var party of Q.parties) {
-    Q[party+'_votes'] = ((Q['urban_workers_'+party]/100)*urban_workers)+((Q['other_workers_'+party]/100)*other_workers)+((Q['white_collar_'+party]/100)*white_collar)+((Q['upper_'+party]/100)*upper)+((Q['farmers_'+party]/100)*farmers)+((Q['unemployed_'+party]/100)*unemployed);
+    Q[party+'_votes'] = ((Q['urban_workers_'+party]/100)*Q.urban_workers)+((Q['other_workers_'+party]/100)*Q.other_workers)+((Q['white_collar_'+party]/100)*Q.white_collar)+((Q['upper_'+party]/100)*Q.upper)+((Q['farmers_'+party]/100)*Q.farmers)+((Q['unemployed_'+party]/100)*Q.unemployed);
 }
 
 Q.total_votes = Q.lab_votes + Q.cup_votes + Q.ccp_votes + Q.cpb_votes + Q.lib_votes + Q.cnlp_votes + Q.buf_votes + Q.other_votes + Q.ilp_votes;
@@ -104,8 +104,8 @@ Q.dissent = 0.01*total_dissent/total_strength;
 Q.dissent_percent = Q.dissent*100;
 console.log('new dissent: ' + Q.dissent);
 
-if (Q.dissent < 0) {
-    Q.dissent = 0;
+if (Q.dissent =< 0) {
+    Q.dissent = 0.01;
 } else if (Q.dissent > 0.95) {
     Q.dissent = 0.95;
 }
@@ -279,7 +279,7 @@ var choices = this._compileChoices(scene);
 if (choices && choices[0].title != "Continue...") {
     Q.has_event = 1;
 } else {
-    has_event = 0;
+    Q.has_event = 0;
 }
 // pre-load all of the event images
 if (this.ui && this.ui.show_portraits) {
