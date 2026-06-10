@@ -862,7 +862,7 @@ unavailable-subtitle: Lab + CCP + UUP + [? if cnlp_r > 0: CNLP + ?] Lib + Others
 Some text here explaining that other parties are reluctant to join the coalition.
 
 - @rz_use_resources
-- @toleration_guerard: No. We will tolerate a minority government.
+- @toleration_maugham: No. We will tolerate a minority government.
 - @new_elections: No. We will have new elections.
 
 @rz_use_resources
