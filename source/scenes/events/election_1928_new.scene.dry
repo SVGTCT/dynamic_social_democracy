@@ -79,28 +79,28 @@ if (Q.constitutional_reform > 0) {
             Q[party + '_r'] = Q[party + '_votes']*Q[party + '_modifier'];
         }
         new_party_sum += Q[party + '_r'];
-}
+    }
 } 
 
 if (Q.new_party_sum != 100) {
     for (var party of Q.parties) {
         Q[party + '_r'] *= (100/Q.new_party_sum);
-}
+    }
 }
 
 for (var party of Q.parties) {
     Q[party + '_r'] *= 10;
-    Q[party+'_r'] = Math.round(Q[party+'_r']);
-    Q[party + '_r'] /= 10;
+    Q[party+'_r'] = Math.round(Q[party+'_r'])/10;
 }
 
 for (var party of Q.parties) {
-    Q[party+'_change'] = Q['old_' + party + '_r'] - Q[party + '_r'];
-    Q.['str_change_'+party] = Q[party+'_change'].toFixed(1);
+    Q[party+'_change'] = Math.round(Q['old_' + party + '_r'] - Q[party + '_r']*10)/10;
+    Q.['str_change_'+party] = str(Q[party+'_change']);
 }
 
 // The largest party can only be the CPB, BUF or Labour.
 Q.largest_party = 'Labour';
+
 if (Q.buf_r >= Q.lab_r && Q.buf_r >= Q.cpb_r) {
     Q.largest_party = 'BUF';
 }
@@ -118,14 +118,15 @@ Q.right_coalition = Q.ccp_r + Q.lib_r + Q.other_r + Q.cup_r;
 Q.far_right_coalition = Q.cup_r + Q.buf_r;
 Q.left_coalition = Q.lab_r + Q.cpb_r + Q.ilp_r;
 Q.purple_coalition = Q.lab_r + Q.ccp_r - 3;
+
 if (lib_reconciliation == 1) {
     Q.lab_lib_coalition = Q.lab_r + Q.lib_r;
 }
 else {
     Q.lab_lib_coalition = Q.lab_r + Q.cnlp_r;
 }
-// this is an absurd concept lol
-Q.popular_front_coalition = Q.lab_r + Q.cpb_r + Q.ccp_r + Q.cnlp_r - 3 + Q.ilp_r;
+
+Q.popular_front_coalition = Q.lab_r + Q.cpb_r + Q.ccp_r - 3 + Q.cnlp_r + Q.ilp_r;
 Q.anti_democratic_coalition = Q.cpb_r + Q.buf_r + Q.cup_r;
 // aka everyone except buf, cpb, cup
 Q.neo_national_coalition = Q.lab_r + Q.cnlp_r + Q.ccp_r + Q.lib_r + Q.other_r;
@@ -141,7 +142,6 @@ if (Q.cpb_relation >= 30) {
 Q.leverage = Q.lab_r;
 
 Q.grand_coalition_failed = 0;
-// Reset government and ministers... Based on Brüning's 1930 govt
 Q.right_coalition_dissent = 0;
 Q.left_coalition_dissent = 0;
 Q.lab_in_government = 0;
@@ -156,6 +156,7 @@ Q.in_minority_government = 0;
 Q.in_unity_government = 0;
 Q.lab_toleration = 0;
 Q.lab_caretaker = 0;
+
 // Remember ministers must be set and named after each final event
 
 // reset cpb goals
@@ -196,7 +197,7 @@ for (var party of Q.parties) {
 }
 Q.election_records.push(election_result);
 !}
-on-departure: nazi_urgency = 1 if (fascist_urgency == 0 and buf_r >= 15)
+on-departure: fascist_urgency = 1 if (fascist_urgency == 0 and buf_r >= 15)
 on-display: {!
 data = [
     {
