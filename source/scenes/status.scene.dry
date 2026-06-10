@@ -92,7 +92,7 @@ Economic growth: [+ economic_growth_2 +]%
 
 <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ cpb_relation : relationships +]
 
-<span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ buf_relation +]
+<span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ buf_relation : relationships +]
 
 **Special Interests** - [+ other_relation : relationships +]
 
@@ -183,7 +183,7 @@ Q.socialism_disp = Math.floor(Q.socialism);
 
 (if the election were to be held now):
 
-<span style="color: #e31414;">**Labour**</span>: [+ lab_votes +]
+<span style="color: #e31414;">**Labour**</span> - [+ lab_votes +]
 
 [? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ cup_votes +] ?]
 
@@ -207,7 +207,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 
 **Detailed results for each demographic**
 
-<span class="tooltip-text" title="Insured and unionised workers in cities, mostly larger ones such as London, Birmingham, Liverpool etc.">Urban Workers</span>: <span style="color: #e31414;">**Lab**</span>: [+ urban_workers_lab +]
+<span class="tooltip-text" title="Insured and unionised workers in cities, mostly larger ones such as London, Birmingham, Liverpool etc.">Urban Workers</span>: <span style="color: #e31414;">**Lab**</span> - [+ urban_workers_lab +]
 [? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ urban_workers_cup +] ?]
 [? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ urban_workers_cup +] ?]
 [? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ urban_workers_ccp +] ?]
@@ -218,7 +218,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ urban_workers_buf +]
 **Others**: [+ urban_workers_other +]
 
-<span class="tooltip-text" title="Uninsured, non-union, part-time workers, mostly in smaller cities.">Other Workers</span>: <span style="color: #e31414;">**Lab**</span>: [+ other_workers_lab +]
+<span class="tooltip-text" title="Uninsured, non-union, part-time workers, mostly in smaller cities.">Other Workers</span>: <span style="color: #e31414;">**Lab**</span> - [+ other_workers_lab +]
 [? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ other_workers_cup +] ?]
 [? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ other_workers_cup +] ?]
 [? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ other_workers_ccp +] ?]
@@ -229,7 +229,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ other_workers_buf +]
 **Others**: [+ other_workers_other +]
 
-<span class="tooltip-text" title="The British middle class, working non-manual jobs e.g. office, bureaucrats etc.">White-collar Workers</span>: <span style="color: #e31414;">**Lab**</span>: [+ white_collar_lab +]
+<span class="tooltip-text" title="The British middle class, working non-manual jobs e.g. office, bureaucrats etc.">White-collar Workers</span>: <span style="color: #e31414;">**Lab**</span> - [+ white_collar_lab +]
 [? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ white_collar_cup +] ?]
 [? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ white_collar_cup +] ?]
 [? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ white_collar_ccp +] ?]
@@ -240,7 +240,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ white_collar_buf +]
 **Others**: [+ white_collar_other +]
 
-<span class="tooltip-text" title="Estate-owning former nobility; still very influential. Some are Labour-voting \"Champagne socialists"\">Upper class</span>: <span style="color: #e31414;">**Lab**</span>: [+ upper_lab +]
+<span class="tooltip-text" title="Estate-owning former nobility; still very influential. Some are Labour-voting \"Champagne socialists"\">Upper class</span>: <span style="color: #e31414;">**Lab**</span> - [+ upper_lab +]
 [? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ upper_cup +] ?]
 [? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ upper_cup +] ?]
 [? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ upper_ccp +] ?]
@@ -251,7 +251,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ upper_buf +]
 **Others**: [+ upper_other +]
 
-<span class="tooltip-text" title="Agricultural and farm workers, mostly in rural areas.">Farmers</span>: <span style="color: #e31414;">**Lab**</span>: [+ farmers_lab +]
+<span class="tooltip-text" title="Agricultural and farm workers, mostly in rural areas.">Farmers</span>: <span style="color: #e31414;">**Lab**</span> - [+ farmers_lab +]
 [? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ farmers_cup +] ?]
 [? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ farmers_cup +] ?]
 [? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ farmers_ccp +] ?]
@@ -262,7 +262,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ farmers_buf +]
 **Others**: [+ farmers_other +]
 
-<span class="tooltip-text" title="People who are able to work but not working.">Unemployed</span>: <span style="color: #e31414;">**Lab**</span>: [+ unemployed_lab +]
+<span class="tooltip-text" title="People who are able to work but not working.">Unemployed</span>: <span style="color: #e31414;">**Lab**</span> - [+ unemployed_lab +]
 [? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ unemployed_cup +] ?]
 [? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ unemployed_cup +] ?]
 [? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ unemployed_ccp +] ?]
