@@ -19,7 +19,7 @@ Herein contains relevant information about the government and politics of the Br
 - @paramilitaries: Paramilitary groups
 - @factions: Internal factions
 - @figures: Figures and charts
-- @election_1928_new.far_right_fail: test 1
+- @test1: test 1
 - @backSpecialScene: Exit library.
 
 @government
@@ -1056,7 +1056,85 @@ if (d3 && window) {
 
 {!<svg id="economic_history" style="width: 500px; height: 300px;"> </svg>!}
 
-@radical_zentrum
-on-arrival: z_dnvp = 1;
+@test1
+on-arrival: {!
+Q.total_urban_workers = Q.urban_workers_lab + Q.urban_workers_cup + Q.urban_workers_ccp + Q.urban_workers_cpb + Q.urban_workers_lib + Q.urban_workers_cnlp + Q.urban_workers_buf + Q.urban_workers_other + Q.urban_workers_ilp;
 
-Remember to remove
+Q.total_other_workers = Q.other_workers_lab + Q.other_workers_cup + Q.other_workers_ccp + Q.other_workers_cpb + Q.other_workers_lib + Q.other_workers_cnlp + Q.other_workers_buf + Q.other_workers_other + Q.other_workers_ilp;
+
+Q.total_white_collar = Q.white_collar_lab + Q.white_collar_cup + Q.white_collar_ccp + Q.white_collar_cpb + Q.white_collar_lib + Q.white_collar_cnlp + Q.white_collar_buf + Q.white_collar_other + Q.white_collar_ilp;
+
+Q.total_upper = Q.upper_lab + Q.upper_cup + Q.upper_ccp + Q.upper_cpb + Q.upper_lib + Q.upper_cnlp + Q.upper_buf + Q.upper_other + Q.upper_ilp;
+
+Q.total_farmers = Q.farmers_lab + Q.farmers_cup + Q.farmers_ccp + Q.farmers_cpb + Q.farmers_lib + Q.farmers_cnlp + Q.farmers_buf + Q.farmers_other + Q.farmers_ilp;
+
+Q.total_unemployed = Q.unemployed_lab + Q.unemployed_cup + Q.unemployed_ccp + Q.unemployed_cpb + Q.unemployed_lib + Q.unemployed_cnlp + Q.unemployed_buf + Q.unemployed_other + Q.unemployed_ilp;
+
+if (Q.total_urban_workers != 100) {
+    for (var party of Q.parties) {
+        Q['urban_workers_'+party] = Q['urban_workers_'+party]*(100/Q.total_urban_workers);
+    }
+}
+
+if (Q.total_other_workers != 100) {
+    for (var party of Q.parties) {
+        Q['other_workers_'+party] = Q['other_workers_'+party]*(100/Q.total_other_workers);
+    }
+}
+
+if (Q.total_white_collar != 100) {
+    for (var party of Q.parties) {
+        Q['white_collar_'+party] = Q['white_collar_'+party]*(100/Q.total_white_collar);
+    }
+}
+
+if (Q.total_upper != 100) {
+    for (var party of Q.parties) {
+        Q['upper_'+party] = Q['upper_'+party]*(100/Q.total_upper);
+    }
+}
+
+if (Q.total_farmers != 100) {
+    for (var party of Q.parties) {
+        Q['farmers_'+party] = Q['farmers_'+party]*(100/Q.total_farmers);
+    }
+}
+
+if (Q.total_unemployed != 100) {
+    for (var party of Q.parties) {
+        Q['unemployed_'+party] = Q['unemployed_'+party]*(100/Q.total_unemployed);
+    }
+}
+
+for (var party of Q.parties) {
+    Q[party+'_votes'] = ((Q['urban_workers_'+party]/100)*Q.urban_workers)+((Q['other_workers_'+party]/100)*Q.other_workers)+((Q['white_collar_'+party]/100)*Q.white_collar)+((Q['upper_'+party]/100)*Q.upper)+((Q['farmers_'+party]/100)*Q.farmers)+((Q['unemployed_'+party]/100)*Q.unemployed);
+}
+
+Q.total_votes = Q.lab_votes + Q.cup_votes + Q.ccp_votes + Q.cpb_votes + Q.lib_votes + Q.cnlp_votes + Q.buf_votes + Q.other_votes + Q.ilp_votes;
+
+if (Q.total_votes != 100) {
+    for (var party of Q.parties) {
+        Q[party+'_votes'] = (Math.round((Q[party+'_votes']*(100/Q.total_votes)*10)))/10;
+    }
+}
+
+for (var party of Q.parties) {
+    Q['urban_workers_'+party] = Math.round(Q['urban_workers_'+party]);
+    Q['other_workers_'+party] = Math.round(Q['other_workers_'+party]);
+    Q['white_collar_'+party] = Math.round(Q['white_collar_'+party]);
+    Q['upper_'+party] = Math.round(Q['upper_'+party]);
+    Q['farmers_'+party] = Math.round(Q['farmers_'+party]);
+    Q['unemployed_'+party] = Math.round(Q['unemployed_'+party]);
+}
+!}
+
+[+ total_urban_workers +]
+[+ total_other_workers +]
+[+ total_white_collar +]
+[+ total_upper +]
+[+ total_farmers +]
+[+ total_unemployed +]
+
+[+ total_votes +]
+
+[+ lab_votes +]
