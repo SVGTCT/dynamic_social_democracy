@@ -175,9 +175,9 @@ Q.local_police_militancy = 0.5;
 Q.local_police_loyalty = 0.4;
 
 //London Metropolitan Police
-Q.met_police_strength = 19;
-Q.met_police_militancy = 1;
-Q.met_police_loyalty = 0.55;
+Q.met_strength = 19;
+Q.met_militancy = 1;
+Q.met_loyalty = 0.55;
 
 //Armed Forces (Hofburg capped)
 Q.mil_strength = 100;
