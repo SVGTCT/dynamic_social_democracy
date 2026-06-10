@@ -217,6 +217,8 @@ There are some potential coalition arrangements.
 @popular_front_coalition
 title: A new "Popular Front" coalition?
 subtitle: WIP
+view-if: popular_front_coalition >= 50
+#choose-if: 
 
 WIP
 
