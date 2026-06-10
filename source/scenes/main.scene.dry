@@ -2580,6 +2580,7 @@ max-cards: 4
 
 - @party
 - @govt
+- @federalism
 - @eco
 - @time
 - @time_2
@@ -2602,7 +2603,7 @@ is-deck: true
 
 - #govt_affairs
 
-@Federalism
+@federalism
 title: State Affairs
 card-image: img-lab/HomeGeography.jpg
 is-deck: true
