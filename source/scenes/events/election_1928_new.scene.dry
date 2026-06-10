@@ -697,14 +697,14 @@ Since the CCP was taken over by Edward Wood, it has largely abandoned its democr
 
 It would much sooner engage in a coalition with the CUP instead of the Labour Party. With their majority, and the CUP much happier to enter a coalition with Wood than let socialists into government, there is nothing we can do.
 
-@radical_zentrum
+@radical_ccpentrum
 go-to: radical_ccp
 
 @radical_ccp
 title: As the CCP will not work with us, there is no clear governing majority.
 view-if: wood_ccp = 1 and right_coalition < 50
 on-arrival: 
-go-to: radical_ccp_lab if president != "Macready" and ccp_relation > 35; radical_z_applin if chancellor != "Applin" and president = "Macready" and right_coalition + buf_r < 50; radical_ccp_mosley if chancellor = "Applin"; radical_ccp_buf
+go-to: radical_ccp_lab if president != "Macready" and ccp_relation > 35; radical_ccp_applin if chancellor != "Applin" and president = "Macready" and right_coalition + buf_r < 50; radical_ccp_mosley if chancellor = "Applin"; radical_ccp_buf
 
 @radical_ccp_lab
 on-arrival:
@@ -972,13 +972,13 @@ choose-if: z_relation >= 55 and right_coalition + buf_r >= 50
 subtitle: We can stop the CCP from going ahead with this.
 on-arrival: ccp_relation -= 5; upper_lab -= 6;
 unavailable-subtitle: [? if z_relation < 55: There is nothing we can do. ?] [? if right_coalition + buf_r < 50: The authoritarian right does not hold a majority. ?]
-go-to: radical_z_applin
+go-to: radical_ccp_applin
 
 Thanks to our connections with the remaining moderates in the CCP, we are able to stop them from going ahead, much to the chagrin of President Macready and Wood.
 
 @rz_no_maj
 view-if: right_coalition + buf_r < 50
-go-to: radical_z_applin
+go-to: radical_ccp_applin
 
 Thankfully, the authoritarian right does not hold a majority.
 
@@ -988,7 +988,7 @@ go-to: radical_ccp_lab
 
 Thankfully, President [+ president +] is beyond this. He demands that Wood negotiate.
 
-@radical_z_applin
+@radical_ccp_applin
 on-arrival: {!
 Q.pro_republic -= 10; 
 Q.next_election_time = time+5; 
@@ -1048,7 +1048,7 @@ Consisting mostly of independents, Applin's government is deeply unpopular among
 
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
-@radical_z_mosley
+@radical_ccp_mosley
 on-arrival: chancellor = "Mosley"; chancellor_party = "BUF"
 
 There is no path to a majority government for now. The scheming around President Macready is leading to only one path - that of Prime Minister Oswald Mosley. [? if largest_party == "BUF" : Since they are the largest party, it is not exactly contrary to parliamentary procedure, so it is difficult to raise objections solely on procedural grounds. ?] [? if mosley_exiled: Despite his earlier exile, the fascist leaders and their reactionary allies have connived for the president to give him a presidential pardon. ?]
