@@ -149,6 +149,7 @@ for (var party of Q.parties) {
     election_result[party] = Q[party + '_r'];
 }
 Q.election_records.push(election_result);
+
 !}
 go-to: jumpScene
 
