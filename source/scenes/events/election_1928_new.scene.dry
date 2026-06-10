@@ -5,7 +5,7 @@ priority: -1
 view-if: (year = next_election_year and month >= next_election_month) or (year > next_election_year)
 on-departure: month_actions += 1; in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; papen_chancellor_timer = 4;
 set-jump: post_election_1928
-face-image: img/Rothe_Wahlen_1903.jpg
+face-image: img-lab/ElectionResults1929.jpg
 
 # TODO: should there be an image?
 
@@ -13,7 +13,7 @@ face-image: img/Rothe_Wahlen_1903.jpg
 
 = Elections, [+ month : month +] [+ year +]
 
-The Reichstag elections are to be held now.
+The House of State elections are to be held now.
 
 - @election_algorithm: May we do our best...
 - @cancel_elections
@@ -646,44 +646,70 @@ go-to: wood_coalition
 
 @wood_coalition
 title: There are the votes for a right-wing coalition.
-subtitle: Z + BVP + lib + cup + Others ([+ right_coalition +]%)
-unavailable-subtitle: 
-view-if: right_coalition >= 50 and z_cup = 1
-choose-if: (hitler_right_coalition < 50 or year < 1932)
-go-to: papen_before if largest_party == "lab" and (president == "Braun" or president == "Schumacher" or president == "Juchacz" or president == "Thälmann" or president == "Münzenberg"); papen_coalition_2
+subtitle: Z + BVP + Lib + CUP + Others ([+ right_coalition +]%)
+unavailable-subtitle: Wood would rather govern with Mosley than the Liberals
+view-if: right_coalition >= 50 and wood_ccp = 1
+choose-if: mosley_right_coalition < 50
+go-to: wood_before if largest_party == "Labour" and (president_ideology != "Reactionary" or president_ideology != "Conservative" or president_ideology != "Macready"); wood_coalition_2
 
-@papen_before
+@wood_before
 
-There are enough votes for a right-wing coalition of the Center (+ BVP), lib, cup, and minor conservative parties, and they are optimistic about this coalition. However, this will be seen as abdicating responsibility for government, as we are the largest party, and the presidency is even opposed to such a coalition. 
+There are enough votes for a right-wing coalition of the CCP (+ UUP), Liberal Party, CUP, and minor conservative parties, and they are optimistic about this coalition. However, this will be seen as abdicating responsibility for government, as we are the largest party, and the presidency is even opposed to such a coalition. 
 
-- @papen_sure: We will allow the coalition to go ahead.
+- @wood_sure: We will allow the coalition to go ahead.
 - @coalition_menu: What are the other governing arrangements?
 
-@papen_sure
+@wood_sure
 subtitle: This will be extremely unpopular within our party.
-on-arrival: pro_republic -= 5; center_dissent += 15; left_dissent += 10; labor_dissent += 25; reformist_dissent += 25; neorevisionist_dissent += 15; z_relation -= 5; cnlp_relation -= 5; lib_relation -= 5
-go-to: papen_coalition_2
+on-arrival: pro_republic -= 5; pragmatist_dissent += 15; left_dissent += 10; labuor_dissent += 25; reformist_dissent += 25; cooperative_dissent += 15; marxist_dissent += 15; ccp_relation -= 5; cnlp_relation -= 5; lib_relation -= 5
+go-to: wood_coalition_2
 
-@papen_coalition_2
-on-arrival: lab_in_government = 0; lab_toleration = 0; chancellor = "Papen"; chancellor_party = "Z"; foreign_minister_party = "Z"; interior_minister_party = "cup"; justice_minister_party = "Z"; labor_minister_party = "lib"; reichswehr_minister_party = "I"; economic_minister_party = "lib"; finance_minister_party = "cup"; agriculture_minister_party = "cup"; in_right_coalition = 1;
+@wood_coalition_2
+on-arrival: {!
 
-Since the Center Party was taken over by Franz von Papen, it has largely abandoned its democratic values. It would much sooner engage in a coalition with the cup instead of the lab. With their majority, and the cup much happier to enter a coalition with Papen than let the "socialists" into government, there is nothing we can do.
+Q.lab_in_government = 0; 
+Q.lab_toleration = 0; 
 
-# use of "left" presidency -- note
+//Ministries
+Q.prime_minister = 'Wood'; 
+Q.pm_party = 'CCP';
+Q.foreign_sec = 'N Chamberlain';
+Q.foreign_sec_party = 'CUP';
+Q.home_sec = 'Joynson-Hicks';
+Q.home_sec_party = 'CUP';
+Q.justice_minister = 'Cave';
+Q.justice_minister_party = 'CUP';
+Q.labour_minister = 'Steel-Maitland';
+Q.labour_minister_party = 'Ind Con';
+Q.war_sec = 'Worthington-Evans';
+Q.war_sec_party = 'Ind Con';
+Q.trade_president = 'Cunliffe-Lister';
+Q.trade_president_party = 'CUP';
+Q.chancellor = 'Hoare';
+Q.chancellor_party = 'CCP';
+Q.agriculture_minister = 'Stanhope';
+Q.agriculture_minister_party = 'CUP';
+Q.health_minister = 'Craig';
+Q.health_minister_party = 'UUP';
+!}
+
+Since the CCP was taken over by Edward Wood, it has largely abandoned its democratic values.
+
+It would much sooner engage in a coalition with the CUP instead of the Labour Party. With their majority, and the CUP much happier to enter a coalition with Wood than let socialists into government, there is nothing we can do.
 
 @radical_zentrum
 go-to: radical_ccp
 
 @radical_ccp
-title: As the Center will not work with us, there is no clear governing majority.
-view-if: z_cup = 1 and right_coalition < 50
+title: As the CCP will not work with us, there is no clear governing majority.
+view-if: wood_ccp = 1 and right_coalition < 50
 on-arrival: 
-go-to: radical_z_lab if president != "Hindenburg" and z_relation > 35; radical_z_schleicher if chancellor != "Schleicher" and president = "Hindenburg" and right_coalition + buf_r < 50; radical_z_hitler if chancellor = "Schleicher"; radical_z_buf
+go-to: radical_ccp_lab if president != "Macready" and ccp_relation > 35; radical_z_applin if chancellor != "Applin" and president = "Macready" and right_coalition + buf_r < 50; radical_ccp_mosley if chancellor = "Applin"; radical_ccp_buf
 
-@radical_z_lab
+@radical_ccp_lab
 on-arrival:
 
-Owing to our existing connections in the Center Party, and the lack of a right-wing majority, we can convince Papen to enter a Grand Coalition for stability's sake, even if the party leadership is hostile to the idea. Cynically, Papen may even see this as accelerating our demise. We would have to concede the Chancellery in any case.
+Owing to our existing connections in the CCP, and the lack of a right-wing majority, we can convince Wood to enter a Grand Coalition for stability's sake, even if the party leadership is hostile to the idea. Cynically, Wood may even see this as accelerating our demise. We would have to concede the premiership in any case.
 
 - @radical_grand: We can try to form a Grand Coalition.
 - @radical_const: We can try to form a "New Grand Coalition" of all the constitutional parties.
@@ -692,51 +718,146 @@ Owing to our existing connections in the Center Party, and the lack of a right-w
 
 @radical_grand
 view-if: grand_coalition >= 50 and grand_coalition_failed == 0
-choose-if: z_relation > 35 and lib_relation >= 30
-unavailable-subtitle: Our relations with the [? if z_relation <= 35: Center Party ?][? if lib_relation < 30: lib ?] are not good enough.
-subtitle: lab + Z + BVP + [+ cnlp_name +] + lib ([+ grand_coalition +]%)
+choose-if: ccp_relation > 35 and lib_relation >= 30
+unavailable-subtitle: Our relations with the [? if ccp_relation <= 35: CCP ?][? if lib_relation < 30: Liberals ?] are not good enough.
+subtitle: Lab + CCP + UUP + [? if cnlp_r > 0: CNLP + ?] Lib ([+ grand_coalition +]%)
 on-arrival: in_grand_coalition = 1; in_popular_front = 0; in_left_front = 0
 
-There are enough votes to form a majority coalition consisting of the lab, Center (Z), Bavarian People's (BVP), Democratic ([+ cnlp_name +]), and People's (lib) parties. Given [? if (lab_r < 30 or largest_party != "lab"): our rather weak electoral performance, and ?] [? if lab_no_confidence = 1 : our previous vote of no confidence against the government, ?][? if no_confidence_against_lab = 1 : the vote of no confidence against us, ?] President Hindenburg has asked the Center Party to take the lead role in forming a government.
+There are enough votes to form a majority coalition consisting of the Labour Party, Coalition Conservatives (CCP), Ulster Unionists (UUP), [? if cnlp_r > 0: Coalitional Liberals (CNLP), ?] and Liberal parties. Given [? if (lab_r < 30 or largest_party != "Labour"): our rather weak electoral performance, and ?] [? if lab_no_confidence = 1 : our previous vote of no confidence against the government, ?][? if no_confidence_against_lab = 1 : the vote of no confidence against us, ?] President Macready has asked the CCP to take the lead role in forming a government.
 
 The Chancellor would likely be Theodor von Guérard, of the Center Party. Alongside the party leadership, he is hesitant about forming a broad coalition, but is not opposed to it. Alternatively, we could simply express our confidence in the government, and enter a "toleration" agreement.
 
-- @join_guerard: Join the Guérard coalition.
-- @guerard_oppo: Join the opposition.
-- @toleration_guerard: We will "tolerate" a minority Guérard government.
+- @join_maugham: Join the Maugham coalition.
+- @maugham_oppo: Join the opposition.
+- @toleration_maugham: We will "tolerate" a minority Maugham government.
 - @radical_const: We can try to form a "New Grand Coalition" of all the constitutional parties instead.
 
-@join_guerard
+@join_maugham
 view-if: grand_coalition >= 50 or neo_weimar_coalition >= 50
-on-arrival: lab_in_government = 1; lab_toleration = 0; in_grand_coalition = 1; chancellor = "Guérard"; chancellor_party = "Z"; foreign_minister_party = "Z"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "lib"; reichswehr_minister_party = "I"; economic_minister_party = "lib"; finance_minister_party = "Z"; agriculture_minister_party = "Z"; leverage = 20 if leverage >= 20;
+face-image: img-lab/portraits-lab/MaughamFrederic.jpg
+on-arrival: {!
+
+Q.lab_in_government = 1; 
+Q.lab_toleration = 0; 
+Q.in_grand_coalition = 1; 
+
+//Ministries
+Q.prime_minister = 'Maugham'; 
+Q.pm_party = 'CCP'; 
+Q.foreign_sec = 'Glassey';
+Q.foreign_sec_party = 'Lib';
+Q.home_sec = 'Hoare';
+Q.home_sec_party = 'Lib';
+Q.justice_minister = 'Hogg';
+Q.justice_minister_party = 'CCP';
+Q.labour_minister = 'Steel-Maitland';
+Q.labour_minister_party = 'Ind Con';
+Q.war_sec = 'Wood';
+Q.war_sec_party = 'CCP';
+Q.trade_president = 'Rennell Rodd';
+Q.trade_president_party = 'CCP';
+Q.chancellor = 'Jowitt';
+Q.chancellor_party = 'CCP';
+Q.agriculture_minister = 'Percy';
+Q.agriculture_minister_party = 'CCP';
+Q.health_minister = 'Craig';
+Q.health_minister_party = 'UUP';
+
+if (Q.leverage >= 20) {
+    Q.leverage = 20;
+}
+!}
 go-to: ministries
 
-Theodor von Guérard welcomes us into his new cabinet. Now, we have our pick of ministries.
+Frederic Maugham welcomes us into his new cabinet. Now, we have our pick of ministries.
 
-@guerard_oppo
-on-arrival: lab_in_government = 0; lab_toleration = 0; chancellor = "Guérard"; chancellor_party = "Z"; foreign_minister_party = "Z"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "lib"; reichswehr_minister_party = "I"; economic_minister_party = "lib"; finance_minister_party = "Z"; agriculture_minister_party = "Z"; grand_coalition_failed = 1
+@maugham_oppo
+on-arrival: {!
 
+Q.lab_in_government = 0; 
+Q.lab_toleration = 0; 
+Q.grand_coalition_failed = 1;
+
+//Ministries
+Q.prime_minister = 'Maugham'; 
+Q.pm_party = 'CCP'; 
+Q.foreign_sec = 'Glassey';
+Q.foreign_sec_party = 'Lib';
+Q.home_sec = 'Hoare';
+Q.home_sec_party = 'Lib';
+Q.justice_minister = 'Hogg';
+Q.justice_minister_party = 'CCP';
+Q.labour_minister = 'Steel-Maitland';
+Q.labour_minister_party = 'Ind Con';
+Q.war_sec = 'Wood';
+Q.war_sec_party = 'CCP';
+Q.trade_president = 'Rennell Rodd';
+Q.trade_president_party = 'CCP';
+Q.chancellor = 'Jowitt';
+Q.chancellor_party = 'CCP';
+Q.agriculture_minister = 'Percy';
+Q.agriculture_minister_party = 'CCP';
+Q.health_minister = 'Craig';
+Q.health_minister_party = 'UUP';
+!}
 By refusing to join the grand coalition or tolerating it, we essentially throw the balance of government to the right wing. 
 
-If we do not at least "tolerate" the government, there will be new elections in a few months. In the meantime, the President and Chancellor may use the emergency powers granted by Article 48 of the constitution to essentially govern by decree. And it is not at all clear that we will do any better in the next election.
+If we do not at least "tolerate" the government, there will be new elections in a few months. In the meantime, the President and Prime Minister may use the emergency powers granted by the constitution to essentially govern by decree. And it is not at all clear that we will do any better in the next election.
 
-- @join_guerard: Join the Guérard coalition.
-- @toleration_guerard: We will tolerate Guérard after all.
-- @brauns_dilemma
+- @join_maugham: Join the Maugham coalition.
+- @toleration_maugham: We will tolerate Maugham after all.
+- @lansburys_dilemma
 - @new_elections: New elections, it is!
 
-@toleration_guerard
+@toleration_maugham
 choose-if: neo_weimar_coalition >= 50
-unavailable-subtitle: The parties supporting Guérard do not have a majority.
-on-arrival: lab_in_government = 0; lab_toleration = 1; minority_government = 1; chancellor = "Guérard"; chancellor_party = "Z"; foreign_minister_party = "Z"; interior_minister_party = "lib"; justice_minister_party = "I"; labor_minister_party = "lib"; reichswehr_minister_party = "I"; economic_minister_party = cnlp_name; finance_minister_party = "Z,"; agriculture_minister_party = "Z"; pro_republic -= 4; new_middle_lib -= 5; new_middle_cnlp -= 5; old_middle_lib -= 5; old_middle_cnlp -= 5; old_middle_buf += 5; new_middle_buf += 5; rural_cup -= 5;
+unavailable-subtitle: The parties supporting Maugham do not have a majority.
+on-arrival: {!
 
-We have decided to tolerate Guérard's government. This means that we will vote against no-confidence votes to make sure they fail, but also that we will not be directly participating as ministers in the government. Thus, we can prevent a new election and stop the far right from entering government.
+Q.lab_in_government = 0; 
+Q.lab_toleration = 0; 
+Q.minority_government = 1;
+
+//Ministries
+Q.prime_minister = 'Maugham'; 
+Q.pm_party = 'CCP'; 
+Q.foreign_sec = 'Glassey';
+Q.foreign_sec_party = 'Lib';
+Q.home_sec = 'Hoare';
+Q.home_sec_party = 'Lib';
+Q.justice_minister = 'Hogg';
+Q.justice_minister_party = 'CCP';
+Q.labour_minister = 'Steel-Maitland';
+Q.labour_minister_party = 'Ind Con';
+Q.war_sec = 'Wood';
+Q.war_sec_party = 'CCP';
+Q.trade_president = 'Rennell Rodd';
+Q.trade_president_party = 'CCP';
+Q.chancellor = 'Jowitt';
+Q.chancellor_party = 'CCP';
+Q.agriculture_minister = 'Percy';
+Q.agriculture_minister_party = 'CCP';
+Q.health_minister = 'Craig';
+Q.health_minister_party = 'UUP';
+
+Q.pro_republic -= 4; 
+Q.white_collar_lib -= 5; 
+Q.white_collar_cnlp -= 5; 
+Q.uppere_lib -= 5; 
+Q.upper_cnlp -= 5; 
+Q.upper_buf += 5; 
+Q.white_collar_buf += 5; 
+Q.farmers_cup -= 5;
+!}
+We have decided to tolerate Maugham's government. This means that we will vote against no-confidence votes to make sure they fail, but also that we will not be directly participating as ministers in the government. Thus, we can prevent a new election and stop the far right from entering government.
 
 @radical_const
-subtitle: lab + Z + BVP + [+ cnlp_name +] + lib + Others ([+ neo_weimar_coalition +]%)
+subtitle: Lab + CCP + UUP + [? if cnlp_r > 0: CNLP + ?] Lib + Others ([+ neo_weimar_coalition +]%)
 view-if: neo_weimar_coalition >= 50 and grand_coalition < 50 
-choose-if: z_relation > 35 and lib_relation >= 30
-unavailable-subtitle: lab + Z + BVP + [+ cnlp_name +] + lib + Others ([+ neo_weimar_coalition +]%) - [? if z_relation <= 35 : We do not have adequate relations with the Center Party. ?][? if lib_relation < 30 : We do not have adequate relations with the lib. ?]
+choose-if: ccp_relation > 35 and lib_relation >= 30
+unavailable-subtitle: Lab + CCP + UUP + [? if cnlp_r > 0: CNLP + ?] Lib + Others ([+ neo_weimar_coalition +]%) [? if ccp_relation <= 35 : We do not have adequate relations with the Center Party. ?][? if lib_relation < 30 : We do not have adequate relations with the lib. ?]
+
+Some text here explaining that other parties are reluctant to join the coalition.
 
 - @rz_use_resources
 - @toleration_guerard: No. We will tolerate a minority government.
@@ -747,7 +868,39 @@ title: Use our resources to smooth over the creation of a coalition.
 subtitle: -2 resources
 unavailable-subtitle: Not enough resources (need 2).
 choose-if: resources >= 2
-on-arrival: resources -= 2; lab_in_government = 1; in_grand_coalition = 1; left_dissent += 4; chancellor = "Guérard"; chancellor_party = "Z"; foreign_minister_party = "Z"; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "lib"; reichswehr_minister_party = "I"; economic_minister_party = cnlp_name; finance_minister_party = "lib"; agriculture_minister_party = "Z"; leverage = 20 if leverage >= 20;
+on-arrival: {!
+Q.resources -= 2; 
+Q.lab_in_government = 1; 
+Q.in_grand_coalition = 1; 
+Q.left_dissent += 4; 
+Q.marxist_dissent += 4;
+
+//Ministries
+Q.prime_minister = 'Maugham'; 
+Q.pm_party = 'CCP'; 
+Q.foreign_sec = 'Glassey';
+Q.foreign_sec_party = 'Lib';
+Q.home_sec = 'Hoare';
+Q.home_sec_party = 'Lib';
+Q.justice_minister = 'Hogg';
+Q.justice_minister_party = 'CCP';
+Q.labour_minister = 'Steel-Maitland';
+Q.labour_minister_party = 'Ind Con';
+Q.war_sec = 'Wood';
+Q.war_sec_party = 'CCP';
+Q.trade_president = 'Rennell Rodd';
+Q.trade_president_party = 'CCP';
+Q.chancellor = 'Jowitt';
+Q.chancellor_party = 'CCP';
+Q.agriculture_minister = 'Percy';
+Q.agriculture_minister_party = 'CCP';
+Q.health_minister = 'Craig';
+Q.health_minister_party = 'UUP';
+
+if (Q.leverage >= 20) {
+    Q.leverage = 20;
+}
+!}
 achievement: constitutional_coalition
 go-to: ministries
 
@@ -755,12 +908,12 @@ We transfer some of our campaign funds to our putative coalition partners. Some 
 
 Now, we have a new grand coalition, a "Constitutional Coalition" of all the non-fascist and non-communist parties. Leftists in our party are somewhat sceptical of this arrangement. 
 
-The Chancellor will be Theodor von Guérard, of the Center Party. Now, we have our pick of ministries.
+The Chancellor will be Frederic Maugham, of the CCP. Now, we have our pick of ministries.
 
-@radical_z_buf
+@radical_ccp_buf
 on-arrival: pro_republic -= 4; nationalism += 4;
 
-Unfortunately, the right wing parties have discovered that the Nazi (buf) party could give them a majority. President Hindenburg seems to approve of the idea, and it is unlikely we will be able to pressure the Center away from their rightward turn.
+Unfortunately, the right wing parties have discovered that the Fascist (BUF) party could give them a majority. President Macready seems to approve of the idea, and it is unlikely we will be able to pressure the CCP away from their rightward turn.
 
 - @rz_nothing: There is nothing we can do.
 - @rz_wait: Wait! Can we dissuade the Center from going ahead with this?
@@ -768,49 +921,135 @@ Unfortunately, the right wing parties have discovered that the Nazi (buf) party 
 - @rz_our_pres: The president can stop this from happening!
 
 @rz_nothing
-on-arrival: lab_in_government = 0; lab_toleration = 0; chancellor = "Papen"; chancellor_party = "Z"; foreign_minister_party = "Z"; interior_minister_party = "buf"; justice_minister_party = "cup"; labor_minister_party = "lib"; reichswehr_minister_party = "I"; economic_minister_party = "lib"; finance_minister_party = "Z"; agriculture_minister_party = "cup"; education_ministry = 1; education_minister_party = "buf"; in_right_coalition = 1; buf_confidence = 1; workers_buf += 6; unemployed_buf += 6; old_middle_buf += 6; workers_lab -= 6; unemployed_lab -= 6; catholics_lab += 6;
-subtitle: The Nazis will use the government against us.
-choose-if: z_relation < 55 and right_coalition + buf_r >= 50
+on-arrival: {!
+Q.lab_in_government = 0; 
+Q.lab_toleration = 0; 
+
+Q.prime_minister = 'Wood'; 
+Q.pm_party = 'CCP';
+Q.foreign_sec = 'N Chamberlain';
+Q.foreign_sec_party = 'CUP';
+Q.home_sec = 'Mosley';
+Q.home_sec_party = 'BUF';
+Q.justice_minister = 'Cave';
+Q.justice_minister_party = 'CUP';
+Q.labour_minister = 'Steel-Maitland';
+Q.labour_minister_party = 'Ind Con';
+Q.war_sec = 'Worthington-Evans';
+Q.war_sec_party = 'Ind Con';
+Q.trade_president = 'Joynson-Hicks';
+Q.trade_president_party = 'Ind Con';
+Q.chancellor = 'Hoare';
+Q.chancellor_party = 'CCP';
+Q.agriculture_minister = 'Stanhope';
+Q.agriculture_minister_party = 'CUP';
+Q.health_minister = 'Craig';
+Q.health_minister_party = 'UUP';
+Q.education_minister = 'Risdon';
+Q.education_minister_party = 'BUF';
+
+Q.in_right_coalition = 1; 
+Q.buf_in_government = 1;
+Q.buf_confidence = 1; 
+Q.urban_workers_buf += 6;
+Q.unemployed_buf += 6; 
+Q.upper_buf += 6; 
+Q.urban_workers_lab -= 6; 
+Q.unemployed_lab -= 6;
+!}
+subtitle: The Fascists will use the government against us.
+choose-if: ccp_relation < 55 and right_coalition + buf_r >= 50
 unavailable-subtitle: We cannot let this happen.
 
-The buf is not yet in total control of Germany, but they are readying their iron grip. They take the Interior Ministry and the newly-created Education Ministry as their price for government, and are sure to use it for propaganda and persecuting socialists.
+The BUF is not yet in total control of Britain, but they are readying their iron grip. They take the Home Office and the newly-created Education Ministry as their price for government, and are sure to use them for propaganda and persecuting socialists.
 
-Not everyone supports this. Many leave the Center Party in protest. We are the resistance now. We must resist.
+Not everyone supports this. Many leave the CCP Party in protest. We are the resistance now.
 
 @rz_wait
 choose-if: z_relation >= 55 and right_coalition + buf_r >= 50
-subtitle: We can stop the Center from going ahead with this.
-on-arrival: z_relation -= 5; old_middle_lab -= 6; catholics_lab += 3;
+subtitle: We can stop the CCP from going ahead with this.
+on-arrival: ccp_relation -= 5; upper_lab -= 6;
 unavailable-subtitle: [? if z_relation < 55: There is nothing we can do. ?] [? if right_coalition + buf_r < 50: The authoritarian right does not hold a majority. ?]
-go-to: radical_z_schleicher
+go-to: radical_z_applin
 
-Thanks to our connections with the remaining moderates in the Center Party, we are able to stop them from going ahead, much to the chagrin of President Hindenburg and Papen.
+Thanks to our connections with the remaining moderates in the CCP, we are able to stop them from going ahead, much to the chagrin of President Macready and Wood.
 
 @rz_no_maj
 view-if: right_coalition + buf_r < 50
-go-to: radical_z_schleicher
+go-to: radical_z_applin
 
 Thankfully, the authoritarian right does not hold a majority.
 
 @rz_our_pres
-view-if: president != "Hindenburg"
-go-to: radical_z_lab
+view-if: president != "Macready"
+go-to: radical_ccp_lab
 
-Thankfully, President [+ president +] is beyond this. He demands that Papen negotiate.
+Thankfully, President [+ president +] is beyond this. He demands that Wood negotiate.
 
-@radical_z_schleicher
-on-arrival: chancellor = "Schleicher"; pro_republic -= 10; next_election_time = time+5; next_election_month = month + 5; next_election_year = year; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; workers_buf += 5; unemployed_buf += 10; old_middle_buf += 5; new_middle_buf += 5; rural_buf += 10; workers_lab -= 8 if pro_republic < 45; workers_lab *= 0.85 if pro_republic < 40; workers_buf += 5 if pro_republic < 40; finance_minister_party = "I"; interior_minister_party = "I"; economic_minister_party = "I"; labor_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "I"; reichswehr_minister = "I";
+@radical_z_applin
+on-arrival: {!
+Q.pro_republic -= 10; 
+Q.next_election_time = time+5; 
+Q.next_election_month = month + 5; 
+Q.next_election_year = year;
 
-There is no path to a majority government. Hindenburg is deeply displeased with Papen, whom he had expected to have a breakthrough from. Now, former army general Kurt von Schleicher has been appointed chancellor, again as part of a presidential government.
+if (next_election_month > 12) {
+    Q.next_election_year += 1;
+    Q.next_election_month -= 12
+}
+Q.urban_workers_buf += 5; 
+Q.other_workers_buf += 5; 
+Q.unemployed_buf += 10; 
+Q.upper_buf += 5; 
+Q.white_collar_buf += 5; 
+Q.farmers_buf += 10; 
 
-Schleicher's government is deeply unpopular among all parties of the Reichstag. Despite his support for a right wing coalition with Nazi support, the Nazis want power all to themselves, without Schleicher, and the right-wing parties do not trust him.
+if (pro_republic < 45) {
+    Q.urban_workers_lab -= 8;
+    urban_workers_buf += 5;
+    other_workers_buf += 5
+}
+
+if (pro_republic < 40) {
+workers_lab *= 0.85;
+}
+
+//Ministries
+
+Q.prime_minister = 'Applin'; 
+Q.pm_party = 'I';
+Q.foreign_sec = 'N Chamberlain';
+Q.foreign_sec_party = 'CUP';
+Q.home_sec = 'Joynson-Hicks';
+Q.home_sec_party = 'CUP';
+Q.justice_minister = 'Cave';
+Q.justice_minister_party = 'CUP';
+Q.labour_minister = 'Steel-Maitland';
+Q.labour_minister_party = 'Ind Con';
+Q.war_sec = 'Worthington-Evans';
+Q.war_sec_party = 'Ind Con';
+Q.trade_president = 'Wood';
+Q.trade_president_party = 'Ind Con';
+Q.chancellor = 'FitzAlan-Howard';
+Q.chancellor_party = 'Ind Lib';
+Q.agriculture_minister = 'Stanhope';
+Q.agriculture_minister_party = 'CUP';
+Q.health_minister = 'Vacant';
+Q.health_minister_party = 'Vacant';
+
+!}
+face-image: img-lab/portraits-lab/ApplinReginald.jpg
+
+There is no path to a majority government. Macready is deeply displeased with Wood, whom he had expected to have a breakthrough from. Now, former army senior officer Reginald Applin has been appointed Prime Minister, again as part of a presidential government.
+
+Consisting mostly of independents, Applin's government is deeply unpopular among all parties of the House of State, despite his concessions to the CUP. Despite his support for a coalition with the BUF, the Fascists want power all to themselves, without Applin.
 
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
-@radical_z_hitler
-on-arrival: chancellor = "Hitler"; chancellor_party = "buf"
+@radical_z_mosley
+on-arrival: chancellor = "Mosley"; chancellor_party = "BUF"
 
-There is no path to a majority government for now. The scheming around President Hindenburg is leading to only one path - that of Chancellor Adolf Hitler. [? if largest_party == "buf" : Since they are the largest party, it is not exactly contrary to parliamentary procedure, so it is difficult to raise objections solely on procedural grounds. ?] [? if hitler_deported: Despite his earlier deportation, the Nazi leaders and their reactionary allies have connived for the president to give him German citizenship after all. ?]
+There is no path to a majority government for now. The scheming around President Macready is leading to only one path - that of Chancellor Oswald Mosley. [? if largest_party == "BUF" : Since they are the largest party, it is not exactly contrary to parliamentary procedure, so it is difficult to raise objections solely on procedural grounds. ?] [? if mosley_exiled: Despite his earlier exile, the fascist leaders and their reactionary allies have connived for the president to give him a presidential pardon. ?]
 
 - @hitler_takes_power: What now?
 
