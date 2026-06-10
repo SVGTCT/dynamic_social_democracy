@@ -92,7 +92,9 @@ Economic growth: [+ economic_growth_2 +]%
 
 <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ cpb_relation : relationships +]
 
-**Special Interests**: [+ other_relation : relationships +]
+<span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ buf_relation +]
+
+**Special Interests** - [+ other_relation : relationships +]
 
 = Party Leadership
 
@@ -197,7 +199,9 @@ Q.socialism_disp = Math.floor(Q.socialism);
 
 <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ cpb_votes +]
 
-**Others**: [+ other_votes +]
+<span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ buf_votes +]
+
+**Others** - [+ other_votes +]
 
 Support for the Republic: [+ pro_republic_disp +]%
 
@@ -211,6 +215,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span style="color: #ffbb00;">**Liberal**</span> - [+ urban_workers_lib +]
 [? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ urban_workers_ilp +] ?]
 <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ urban_workers_cpb +]
+<span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ urban_workers_buf +]
 **Others**: [+ urban_workers_other +]
 
 <span class="tooltip-text" title="Uninsured, non-union, part-time workers, mostly in smaller cities.">Other Workers</span>: <span style="color: #e31414;">**Lab**</span>: [+ other_workers_lab +]
@@ -221,6 +226,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span style="color: #ffbb00;">**Liberal**</span> - [+ other_workers_lib +]
 [? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ other_workers_ilp +] ?]
 <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ other_workers_cpb +]
+<span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ other_workers_buf +]
 **Others**: [+ other_workers_other +]
 
 <span class="tooltip-text" title="The British middle class, working non-manual jobs e.g. office, bureaucrats etc.">White-collar Workers</span>: <span style="color: #e31414;">**Lab**</span>: [+ white_collar_lab +]
@@ -231,6 +237,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span style="color: #ffbb00;">**Liberal**</span> - [+ white_collar_lib +]
 [? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ white_collar_ilp +] ?]
 <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ white_collar_cpb +]
+<span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ white_collar_buf +]
 **Others**: [+ white_collar_other +]
 
 <span class="tooltip-text" title="Estat-owning former nobility influential as media moguls, industrialists, military leadership, and politicians. Concentrated around financial centres, with land in rural areas. Some are Labour-voting \"Champagne socialists"\">Upper class</span>: <span style="color: #e31414;">**Lab**</span>: [+ upper_lab +]
@@ -241,6 +248,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span style="color: #ffbb00;">**Liberal**</span> - [+ upper_lib +]
 [? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ upper_ilp +] ?]
 <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ upper_cpb +]
+<span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ upper_buf +]
 **Others**: [+ upper_other +]
 
 <span class="tooltip-text" title="Agricultural and farm workers, mostly in rural areas.">Famers</span>: <span style="color: #e31414;">**Lab**</span>: [+ farmers_lab +]
@@ -251,6 +259,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span style="color: #ffbb00;">**Liberal**</span> - [+ farmers_lib +]
 [? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ farmers_ilp +] ?]
 <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ farmers_cpb +]
+<span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ farmers_buf +]
 **Others**: [+ farmers_other +]
 
 <span class="tooltip-text" title="People who are able to work but not working.">Unemployed</span>: <span style="color: #e31414;">**Lab**</span>: [+ unemployed_lab +]
@@ -261,4 +270,5 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span style="color: #ffbb00;">**Liberal**</span> - [+ unemployed_lib +]
 [? if ilp_formed: <span class="tooltip-text" title="Independent Labour Party" style="color: #9c0606;">ILP</span> - [+ unemployed_ilp +] ?]
 <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> - [+ unemployed_cpb +]
+<span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ unemployed_buf +]
 **Others**: [+ unemployed_other +]
