@@ -1,208 +1,93 @@
 title: Post Event
 new-page: true
 on-arrival: {!
+Q.total_urban_workers = Q.urban_workers_lab + Q.urban_workers_cup + Q.urban_workers_ccp + Q.urban_workers_cpb + Q.urban_workers_lib + Q.urban_workers_cnlp + Q.urban_workers_buf + Q.urban_workers_other + Q.urban_workers_ilp;
 
-// 1. update dates
-if (Q.month_actions >= 1) {
-    Q.time += 1;
-    Q.month_actions = 0;
-    Q.month += 1;
-    if (Q.month >= 13) {
-        Q.month = 1;
-        Q.year += 1;
-        if (Q.historical_mode) {
-            Q.resources += 2;
-        }
-    }
-    // decrement timers
-    for (timer of Q.timers) {
-        if (Q[timer+'_timer'] && Q[timer+'_timer'] > 0) {
-            Q[timer+'_timer'] -= 1;
-        }
-    }
-    // append to historical party support records
-    var party_support_results = {'date': new Date(Q.year, Q.month - 1)};
+Q.total_other_workers = Q.other_workers_lab + Q.other_workers_cup + Q.other_workers_ccp + Q.other_workers_cpb + Q.other_workers_lib + Q.other_workers_cnlp + Q.other_workers_buf + Q.other_workers_other + Q.other_workers_ilp;
+
+Q.total_white_collar = Q.white_collar_lab + Q.white_collar_cup + Q.white_collar_ccp + Q.white_collar_cpb + Q.white_collar_lib + Q.white_collar_cnlp + Q.white_collar_buf + Q.white_collar_other + Q.white_collar_ilp;
+
+Q.total_upper = Q.upper_lab + Q.upper_cup + Q.upper_ccp + Q.upper_cpb + Q.upper_lib + Q.upper_cnlp + Q.upper_buf + Q.upper_other + Q.upper_ilp;
+
+Q.total_farmers = Q.farmers_lab + Q.farmers_cup + Q.farmers_ccp + Q.farmers_cpb + Q.farmers_lib + Q.farmers_cnlp + Q.farmers_buf + Q.farmers_other + Q.farmers_ilp;
+
+Q.total_unemployed = Q.unemployed_lab + Q.unemployed_cup + Q.unemployed_ccp + Q.unemployed_cpb + Q.unemployed_lib + Q.unemployed_cnlp + Q.unemployed_buf + Q.unemployed_other + Q.unemployed_ilp;
+
+if (Q.total_urban_workers != 100) {
     for (var party of Q.parties) {
-        party_support_results[party] = Q[party + '_normalized']*100;
-    }
-    Q.party_support_records.push(party_support_results);
-    Q.economic_records.push({'date': new Date(Q.year, Q.month - 1),
-                             'inflation': Q.inflation,
-                             'unemployment': Q.unemployed});
-    // change economic stats...
-    // we're basically implicity drawing a Philips curve
-    // budget deficits lead to some inflation
-    if (Q.budget <= 0 && Q.budget > -2 && Q.inflation < 2.5) {
-        Q.inflation += 0.1;
-    }
-    if (Q.budget <= -2 && Q.budget > -5 && Q.inflation < 5) {
-        Q.inflation += 0.2;
-        if (Q.unemployed >= 12) {
-            Q.inflation -= 0.1;
-        }
-    }
-    if (Q.budget <= -5 && Q.inflation < 10) {
-        Q.inflation += 0.3;
-        if (Q.unemployed >= 15) {
-            Q.inflation -= 0.1;
-        }
-    }
-    // deflation is bad
-    if (Q.inflation < -0.5 && Q.inflation > -5 && Q.unemployed < 15) {
-        Q.unemployed += 0.2;
-    }
-    if (Q.inflation <= -5 && Q.unemployed < 20) {
-        Q.unemployed += 0.3;
-    }
-    // economic growth
-    if (Q.economic_growth < -0.5 && Q.unemployed <= 18) {
-        Q.unemployed += 0.1;
-    }
-    if (Q.economic_growth < -5 && Q.unemployed <= 28) {
-        Q.unemployed += 0.1;
-    }
-    if (Q.economic_growth >= 2 && Q.unemployed >= 17) {
-        Q.unemployed -= 0.1;
-    }
-    if (Q.economic_growth >= 4 && Q.unemployed >= 12) {
-        Q.unemployed -= 0.1;
-    }
-    if (Q.economic_growth >= 6 && Q.unemployed >= 7) {
-        Q.unemployed -= 0.1;
-    }
-    if (Q.economic_growth >= 8 && Q.unemployed >= 3) {
-        Q.unemployed -= 0.1;
-    }
-    if (Q.economic_growth >= 4 && Q.inflation >= 7.5) {
-        Q.economic_growth -= 0.1;
-    }
-    if (Q.economic_growth >= -2.5 && Q.inflation <= -5) {
-        Q.economic_growth -= 0.1;
-    }
-    if (Q.economic_growth >= 7) {
-        Q.economic_growth -= 0.1;
-    }
-    if (Q.economic_growth >= 10) {
-        Q.economic_growth -= 0.2;
-    }
-    if (Q.economic_growth >= 12) {
-        Q.economic_growth -= 0.3;
-    }
-
-    //////////////////////////////// Education & Science support/economic changes
-    if (Q.major_curriculum && Q.major_curriculum == "democratic") {
-        if (Q.pro_republic < 60) {
-            Q.pro_republic += 0.5;
-        } 
-    }
-    if (Q.minor_curriculum && Q.minor_curriculum == "democratic") {
-        if (Q.pro_republic < 60) {
-            Q.pro_republic += 0.3;
-        } 
-    }
-    // science bonus to economic growth
-    // education bonus
-    Q.science_bonus = 0;
-    if (Q.education_science) {
-        Q.science_bonus += Q.education_science;
-        console.log(Q.science_bonus);
-    }
-    if (Q.science) {
-        if (Q.science >= 1) {
-            Q.science_bonus += 1;
-        } else if (Q.science >= 3) {
-            Q.science_bonus += 2;
-        } else if (Q.science >= 5) {
-            Q.science_bonus += 3;
-        }
-    }
-    if (Q.applied_research && Q.applied_research >= 1) {
-        Q.science_bonus += 0.5*Q.applied_research;
-    }
-    // cap the science bonus at 6
-    if (Q.science_bonus > 6) {
-        Q.science_bonus = 6;
-    }
-    console.log(Q.science_bonus);
-    // this is kinda messy but basically more science -> higher levels of baseline growth
-    if (Q.science_bonus >= 1) {
-        if (Q.return_to_normalcy && Q.economic_growth < Q.science_bonus + 3) {
-            Q.economic_growth += 0.1;
-        }
-        if (Q.return_to_normalcy && Q.economic_growth < Q.science_bonus) {
-            Q.economic_growth += 0.1;
-        }
-        if (Q.economic_growth < Q.science_bonus - 3) {
-            Q.economic_growth += 0.1;
-        }
-    }
-    // accumulated economic growth/decline
-    // Maybe there should be differences for positive/negative growth?
-    if (Q.economic_growth < 0) {
-        if (Q.economic_expansion > 0) {
-            Q.economic_expansion = 0;
-        } else {
-            Q.economic_expansion += Q.economic_growth;
-        }
-    }
-    if (Q.economic_growth > 0 && Q.reparations <= -2 && Q.spd_in_government) {
-        Q.economic_expansion += Q.economic_growth;
-    } else if (Q.economic_growth > 0 && Q.spd_in_government) {
-        Q.economic_expansion += Q.economic_growth/2;
-    }
-    /////////////////////////////// update opinions based on economy
-    if (Q.unemployed > 15 && Q.pro_republic > 40) {
-        Q.pro_republic -= 1;
-    }
-    if (Q.unemployed > 30 && Q.pro_republic > 20) {
-        Q.pro_republic -= 1;
-    }
-    if (Q.inflation >= 8 && Q.pro_republic > 40) {
-        Q.pro_republic -= 1;
-    }
-
-
-//conditional & time-based changes go here
-    
-Q.has_event = 0;
-// check if there are any cards in #event, and then go to main if not.
-var scene = this.game.scenes['post_event.events_choice'];
-var choices = this._compileChoices(scene);
-if (choices && choices[0].title != "Continue...") {
-    Q.has_event = 1;
-} else {
-    Q.has_event = 0;
-}
-// pre-load all of the event images
-if (this.ui && this.ui.show_portraits) {
-    for (var choice of choices) {
-        var cc = this.game.scenes[choice.id];
-        if (cc.faceImage) {
-            var im = new Image();
-            im.url = cc.faceImage;
-        }
+        Q['urban_workers_'+party] = Q['urban_workers_'+party]*(100/Q.total_urban_workers);
     }
 }
 
-if (Q.next_election_year == Q.year) {
-    Q.election_month_difference = Q.next_election_month - Q.month;
+if (Q.total_other_workers != 100) {
+    for (var party of Q.parties) {
+        Q['other_workers_'+party] = Q['other_workers_'+party]*(100/Q.total_other_workers);
+    }
 }
 
-Q.yearplusone = Q.year + 1;
-
-if (Q.next_election_year == Q.yearplusone && Q.next_election_month < 4) {
-    Q.election_month_difference = Q.next_election_month + 12 - Q.month;
+if (Q.total_white_collar != 100) {
+    for (var party of Q.parties) {
+        Q['white_collar_'+party] = Q['white_collar_'+party]*(100/Q.total_white_collar);
+    }
 }
 
-// manifesto and in_election
-if (Q.election_month_difference == 3) {
-    Q.manifesto_done = 0;
-    Q.manifesto_trigger = 1;
-    Q.in_election = 1;
+if (Q.total_upper != 100) {
+    for (var party of Q.parties) {
+        Q['upper_'+party] = Q['upper_'+party]*(100/Q.total_upper);
+    }
 }
 
-if (typeof window !== "undefined" && window.generateBar) {
+if (Q.total_farmers != 100) {
+    for (var party of Q.parties) {
+        Q['farmers_'+party] = Q['farmers_'+party]*(100/Q.total_farmers);
+    }
 }
+
+if (Q.total_unemployed != 100) {
+    for (var party of Q.parties) {
+        Q['unemployed_'+party] = Q['unemployed_'+party]*(100/Q.total_unemployed);
+    }
+}
+
+for (var party of Q.parties) {
+    Q[party+'_votes'] = ((Q['urban_workers_'+party]/100)*Q.urban_workers)+((Q['other_workers_'+party]/100)*Q.other_workers)+((Q['white_collar_'+party]/100)*Q.white_collar)+((Q['upper_'+party]/100)*Q.upper)+((Q['farmers_'+party]/100)*Q.farmers)+((Q['unemployed_'+party]/100)*Q.unemployed);
+}
+
+Q.total_votes = Q.lab_votes + Q.cup_votes + Q.ccp_votes + Q.cpb_votes + Q.lib_votes + Q.cnlp_votes + Q.buf_votes + Q.other_votes + Q.ilp_votes;
+
+if (Q.total_votes != 100) {
+    for (var party of Q.parties) {
+        Q[party+'_votes'] = (Math.round((Q[party+'_votes']*(100/Q.total_votes)*10)))/10;
+    }
+}
+
+for (var party of Q.parties) {
+    Q['urban_workers_'+party] = Math.round(Q['urban_workers_'+party]);
+    Q['other_workers_'+party] = Math.round(Q['other_workers_'+party]);
+    Q['white_collar_'+party] = Math.round(Q['white_collar_'+party]);
+    Q['upper_'+party] = Math.round(Q['upper_'+party]);
+    Q['farmers_'+party] = Math.round(Q['farmers_'+party]);
+    Q['unemployed_'+party] = Math.round(Q['unemployed_'+party]);
+}
+
+// set faction strength/dissent to 0
+for (var c of Q.factions) {
+    if (Q[c+'_dissent'] < 0) {
+        Q[c+'_dissent'] = 0;
+    } else if (Q[c+'_dissent'] >= 100) {
+        Q[c+'_dissent'] = 99;
+    }
+    if (Q[c+'_strength'] < 0) {
+        Q[c+'_strength'] = 0;
+    }
+}
+
+if (Q.unemployed < 1) {
+    Q.unemployed = 1;
+}
+
+// re-calculate dissent.
+var total_strength = Q.left_strength + Q.pragmatist_strength + Q.labour_strength + Q.reformist_strength + Q.cooperative_strength + Q.marxist_strength;
 !}
 go-to: events_choice if has_event = 1; main if has_event = 0 and difficulty >= 0; main.main_easy if has_event = 0 and difficulty < 0
 
