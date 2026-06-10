@@ -1,6 +1,25 @@
 title: Post Event
 new-page: true
 on-arrival: {!
+
+Q.last_advisor_action = 0;
+Q.last_cabinet_action = 0;
+// make sure no stat is below 0.
+for (var c of Q.classes) {
+    for (var party of Q.parties) {
+        if (Q[c+'_'+party] < 0) {
+            Q[c+'_'+party] = 0;
+        }
+    }
+}
+
+if (Q.pro_republic < 0) {
+    Q.pro_republic = 0;
+}
+if (Q.pro_republic >= 100) {
+    Q.pro_republic = 99;
+}
+
 Q.total_urban_workers = Q.urban_workers_lab + Q.urban_workers_cup + Q.urban_workers_ccp + Q.urban_workers_cpb + Q.urban_workers_lib + Q.urban_workers_cnlp + Q.urban_workers_buf + Q.urban_workers_other + Q.urban_workers_ilp;
 
 Q.total_other_workers = Q.other_workers_lab + Q.other_workers_cup + Q.other_workers_ccp + Q.other_workers_cpb + Q.other_workers_lib + Q.other_workers_cnlp + Q.other_workers_buf + Q.other_workers_other + Q.other_workers_ilp;
@@ -88,6 +107,155 @@ if (Q.unemployed < 1) {
 
 // re-calculate dissent.
 var total_strength = Q.left_strength + Q.pragmatist_strength + Q.labour_strength + Q.reformist_strength + Q.cooperative_strength + Q.marxist_strength;
+
+// 1. update dates
+if (Q.month_actions >= 1) {
+    Q.time += 1;
+    Q.month_actions = 0;
+    Q.month += 1;
+    if (Q.month >= 13) {
+        Q.month = 1;
+        Q.year += 1;
+        if (Q.historical_mode) {
+            Q.resources += 2;
+        }
+    }
+    // decrement timers
+    for (timer of Q.timers) {
+        if (Q[timer+'_timer'] && Q[timer+'_timer'] > 0) {
+            Q[timer+'_timer'] -= 1;
+        }
+    }
+
+    // change economic stats...
+    // we're basically implicity drawing a Philips curve
+    // budget deficits lead to some inflation
+    if (Q.budget <= 0 && Q.budget > -2 && Q.inflation < 2.5) {
+        Q.inflation += 0.1;
+    }
+    if (Q.budget <= -2 && Q.budget > -5 && Q.inflation < 5) {
+        Q.inflation += 0.2;
+        if (Q.unemployed >= 12) {
+            Q.inflation -= 0.1;
+        }
+    }
+    if (Q.budget <= -5 && Q.inflation < 10) {
+        Q.inflation += 0.3;
+        if (Q.unemployed >= 15) {
+            Q.inflation -= 0.1;
+        }
+    }
+    // deflation is bad
+    if (Q.inflation < -0.5 && Q.inflation > -5 && Q.unemployed < 15) {
+        Q.unemployed += 0.2;
+    }
+    if (Q.inflation <= -5 && Q.unemployed < 20) {
+        Q.unemployed += 0.3;
+    }
+    // economic growth
+    if (Q.economic_growth < -0.5 && Q.unemployed <= 18) {
+        Q.unemployed += 0.1;
+    }
+    if (Q.economic_growth < -5 && Q.unemployed <= 28) {
+        Q.unemployed += 0.1;
+    }
+    if (Q.economic_growth >= 2 && Q.unemployed >= 17) {
+        Q.unemployed -= 0.1;
+    }
+    if (Q.economic_growth >= 4 && Q.unemployed >= 12) {
+        Q.unemployed -= 0.1;
+    }
+    if (Q.economic_growth >= 6 && Q.unemployed >= 7) {
+        Q.unemployed -= 0.1;
+    }
+    if (Q.economic_growth >= 8 && Q.unemployed >= 3) {
+        Q.unemployed -= 0.1;
+    }
+    if (Q.economic_growth >= 4 && Q.inflation >= 7.5) {
+        Q.economic_growth -= 0.1;
+    }
+    if (Q.economic_growth >= -2.5 && Q.inflation <= -5) {
+        Q.economic_growth -= 0.1;
+    }
+    if (Q.economic_growth >= 7) {
+        Q.economic_growth -= 0.1;
+    }
+    if (Q.economic_growth >= 10) {
+        Q.economic_growth -= 0.2;
+    }
+    if (Q.economic_growth >= 12) {
+        Q.economic_growth -= 0.3;
+    }
+
+    //Education/science changes here    
+
+    // accumulated economic growth/decline
+    // Maybe there should be differences for positive/negative growth?
+    if (Q.economic_growth < 0) {
+        if (Q.economic_expansion > 0) {
+            Q.economic_expansion = 0;
+        } else {
+            Q.economic_expansion += Q.economic_growth;
+        }
+    }
+    if (Q.economic_growth > 0 && Q.reparations <= -2 && Q.spd_in_government) {
+        Q.economic_expansion += Q.economic_growth;
+    } else if (Q.economic_growth > 0 && Q.spd_in_government) {
+        Q.economic_expansion += Q.economic_growth/2;
+    }
+    /////////////////////////////// update opinions based on economy
+    if (Q.unemployed > 15 && Q.pro_republic > 40) {
+        Q.pro_republic -= 1;
+    }
+    if (Q.unemployed > 30 && Q.pro_republic > 20) {
+        Q.pro_republic -= 1;
+    }
+    if (Q.inflation >= 8 && Q.pro_republic > 40) {
+        Q.pro_republic -= 1;
+    }
+
+
+//conditional & time-based changes go here
+    
+Q.has_event = 0;
+// check if there are any cards in #event, and then go to main if not.
+var scene = this.game.scenes['post_event.events_choice'];
+var choices = this._compileChoices(scene);
+if (choices && choices[0].title != "Continue...") {
+    Q.has_event = 1;
+} else {
+    Q.has_event = 0;
+}
+// pre-load all of the event images
+if (this.ui && this.ui.show_portraits) {
+    for (var choice of choices) {
+        var cc = this.game.scenes[choice.id];
+        if (cc.faceImage) {
+            var im = new Image();
+            im.url = cc.faceImage;
+        }
+    }
+}
+
+if (Q.next_election_year == Q.year) {
+    Q.election_month_difference = Q.next_election_month - Q.month;
+}
+
+Q.yearplusone = Q.year + 1;
+
+if (Q.next_election_year == Q.yearplusone && Q.next_election_month < 4) {
+    Q.election_month_difference = Q.next_election_month + 12 - Q.month;
+}
+
+// manifesto and in_election
+if (Q.election_month_difference == 3) {
+    Q.manifesto_done = 0;
+    Q.manifesto_trigger = 1;
+    Q.in_election = 1;
+}
+
+if (typeof window !== "undefined" && window.generateBar) {
+}
 !}
 go-to: events_choice if has_event = 1; main if has_event = 0 and difficulty >= 0; main.main_easy if has_event = 0 and difficulty < 0
 
