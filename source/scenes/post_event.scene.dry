@@ -2,62 +2,74 @@ title: Post Event
 new-page: true
 on-arrival: {!
 
-Q.last_advisor_action = 0;
-// make sure no stat is below 0.
-for (var c of Q.classes) {
+Q.total_urban_workers = Q.urban_workers_lab + Q.urban_workers_cup + Q.urban_workers_ccp + Q.urban_workers_cpb + Q.urban_workers_lib + Q.urban_workers_cnlp + Q.urban_workers_buf + Q.urban_workers_other + Q.urban_workers_ilp;
+
+Q.total_other_workers = Q.other_workers_lab + Q.other_workers_cup + Q.other_workers_ccp + Q.other_workers_cpb + Q.other_workers_lib + Q.other_workers_cnlp + Q.other_workers_buf + Q.other_workers_other + Q.other_workers_ilp;
+
+Q.total_white_collar = Q.white_collar_lab + Q.white_collar_cup + Q.white_collar_ccp + Q.white_collar_cpb + Q.white_collar_lib + Q.white_collar_cnlp + Q.white_collar_buf + Q.white_collar_other + Q.white_collar_ilp;
+
+Q.total_upper = Q.upper_lab + Q.upper_cup + Q.upper_ccp + Q.upper_cpb + Q.upper_lib + Q.upper_cnlp + Q.upper_buf + Q.upper_other + Q.upper_ilp;
+
+Q.total_farmers = Q.farmers_lab + Q.farmers_cup + Q.farmers_ccp + Q.farmers_cpb + Q.farmers_lib + Q.farmers_cnlp + Q.farmers_buf + Q.farmers_other + Q.farmers_ilp;
+
+Q.total_unemployed = Q.unemployed_lab + Q.unemployed_cup + Q.unemployed_ccp + Q.unemployed_cpb + Q.unemployed_lib + Q.unemployed_cnlp + Q.unemployed_buf + Q.unemployed_other + Q.unemployed_ilp;
+
+if (Q.total_urban_workers > 100 || Q.total_urban_workers < 100) {
     for (var party of Q.parties) {
-        if (Q[c+'_'+party] < 0) {
-            Q[c+'_'+party] = 0;
-        }
+        Q['urban_workers_'+party] = Q['urban_workers_'+party]*(100/Q.total_urban_workers);
     }
 }
 
-Q.pro_republic = Math.round(Q.pro_republic);
-Q.nationalism = Math.round(Q.nationalism);
-Q.socialism = Math.round(Q.socialism);
+if (Q.total_other_workers > 100 || Q.total_other_workers < 100) {
+    for (var party of Q.parties) {
+        Q['other_workers_'+party] = Q['other_workers_'+party]*(100/Q.total_other_workers);
+    }
+}
 
-if (Q.pro_republic < 0) {
-    Q.pro_republic = 0;
-}
-if (Q.pro_republic >= 100) {
-    Q.pro_republic = 99;
-}
-// re-calculate party support
-// calculate normalized class voting for the achievements
-for (var c of Q.classes) {
-    var class_votes = 0;
+if (Q.total_white_collar > 100 || Q.total_white_collar < 100) {
     for (var party of Q.parties) {
-        if (Q[c+'_'+party] < 0) {
-            Q[c+'_'+party] = 0;
-        }
-        class_votes += Q[c+'_'+party];
-    }
-    for (var party of Q.parties) {
-        Q[c + '_' + party + '_normalized'] = 100*Q[c+'_'+party]/class_votes;
-        Q[c + '_' + party + '_display'] = Math.round(100*Q[c+'_'+party]/class_votes);
+        Q['white_collar_'+party] = Q['white_collar_'+party]*(100/Q.total_white_collar);
     }
 }
-// calculate support for each of the parties
-var total_support = 0; 
+
+if (Q.total_upper > 100 || Q.total_upper < 100) {
+    for (var party of Q.parties) {
+        Q['upper_'+party] = Q['upper_'+party]*(100/Q.total_upper);
+    }
+}
+
+if (Q.total_farmers > 100 || Q.total_farmers < 100) {
+    for (var party of Q.parties) {
+        Q['farmers_'+party] = Q['farmers_'+party]*(100/Q.total_farmers);
+    }
+}
+
+if (Q.total_unemployed > 100 || Q.total_unemployed < 100) {
+    for (var party of Q.parties) {
+        Q['unemployed_'+party] = Q['unemployed_'+party]*(100/Q.total_unemployed);
+    }
+}
+
 for (var party of Q.parties) {
-    var party_support = 0;
-    for (var c of Q.classes) {
-        if (Q.old_demographics) { 
-            party_support += Q[c]*Q[c+'_'+party];
-        } else  { 
-            party_support += Q[c]*Q[c+'_'+party+'_normalized'];
-        } 
-    }
-    Q[party + '_support'] = party_support;
-    total_support += party_support; 
-}
-// 2. normalize support (fraction)
-for (var party of Q.parties) {
-    Q[party+'_normalized'] = Q[party + '_support']/total_support;
-    Q[party+'_votes'] = Math.round(Q[party+'_normalized']*100);
-    Q[party+'_votes_display'] = Math.round(Q[party+'_normalized']*100);
+    Q[party+'_votes'] = ((Q['urban_workers_'+party]/100)*urban_workers)+((Q['other_workers_'+party]/100)*other_workers)+((Q['white_collar_'+party]/100)*white_collar)+((Q['upper_'+party]/100)*upper)+((Q['farmers_'+party]/100)*farmers)+((Q['unemployed_'+party]/100)*unemployed);
 }
 
+Q.total_votes = Q.lab_votes + Q.cup_votes + Q.ccp_votes + Q.cpb_votes + Q.lib_votes + Q.cnlp_votes + Q.buf_votes + Q.other_votes + Q.ilp_votes;
+
+if (Q.total_votes > 100 || Q.total_votes < 100) {
+    for (var party of Q.parties) {
+        Q[party+'_votes'] = Math.round((Q[party+'_votes']*(100/Q.total_votes)*10));
+    }
+}
+
+for (var party of Q.parties) {
+    Q['urban_workers_'+party] = Math.round(Q['urban_workers_'+party]);
+    Q['other_workers_'+party] = Math.round(Q['other_workers_'+party]);
+    Q['white_collar_'+party] = Math.round(Q['white_collar_'+party]);
+    Q['upper_'+party] = Math.round(Q['upper_'+party]);
+    Q['farmers_'+party] = Math.round(Q['farmers_'+party]);
+    Q['unemployed_'+party] = Math.round(Q['unemployed_'+party]);
+}
 
 // set faction strength/dissent to 0
 for (var c of Q.factions) {
@@ -76,16 +88,17 @@ if (Q.unemployed <= 1) {
 }
 
 // re-calculate dissent.
-var total_strength = Q.left_strength + Q.center_strength + Q.labor_strength + Q.reformist_strength + Q.neorevisionist_strength;
+var total_strength = Q.left_strength + Q.pragmatist_strength + Q.labour_strength + Q.reformist_strength + Q.cooperative_strength + Q.marxist_strength;
 
-// normalize strength for the different factions
+//normalise strength for the different factions
 Q.left_strength = 100*Q.left_strength/total_strength;
-Q.center_strength = 100*Q.center_strength/total_strength;
-Q.labor_strength = 100*Q.labor_strength/total_strength;
+Q.pragmatist_strength = 100*Q.pragmatist_strength/total_strength;
+Q.labour_strength = 100*Q.labour_strength/total_strength;
 Q.reformist_strength = 100*Q.reformist_strength/total_strength;
-Q.neorevisionist_strength = 100*Q.neorevisionist_strength/total_strength;
+Q.cooperative_strength = 100*Q.cooperative_strength/total_strength;
+Q.marxist_strength = 100*Q.marxist_strength/total_strength;
 
-var total_dissent = Q.left_strength*Q.left_dissent + Q.center_strength*Q.center_dissent + Q.labor_strength*Q.labor_dissent + Q.reformist_strength*Q.reformist_dissent + Q.neorevisionist_strength*Q.neorevisionist_dissent;
+var total_dissent = Q.left_strength*Q.left_dissent + Q.pragmatist_strength*Q.pragmatist_dissent + Q.labour_strength*Q.labour_dissent + Q.reformist_strength*Q.reformist_dissent + Q.cooperative_strength*Q.cooperative_dissent + Q.marxist_strength*Q.marxist.dissent;
 
 Q.dissent = 0.01*total_dissent/total_strength;
 Q.dissent_percent = Q.dissent*100;
@@ -256,211 +269,9 @@ if (Q.month_actions >= 1) {
         Q.pro_republic -= 1;
     }
 
-    ///////////////////////////// change party support based on pro_republic
-    // if pro_republic is less than the support of the Weimar coalition, reduce SPD support...
-    if (Q.pro_republic < (Q.spd_votes + Q.ddp_votes + Q.z_votes - 3)) {
-        if (Q.new_middle_spd > 0) {
-            Q.new_middle_spd -= 5/12;
-            Q.new_middle_nsdap += 3/12;
-        }
-        if (Q.old_middle_spd > 0) {
-            Q.old_middle_spd -= 5/12;
-            Q.old_middle_nsdap += 3/12;
-        }
-        if (Q.rural_spd > 0) {
-            Q.rural_spd -= 5/12;
-            Q.rural_nsdap += 3/12;
-        }
-        if (Q.workers_spd_normalized > 30) {
-            Q.workers_spd -= 4/12;
-        }
-        if (Q.catholics_spd > 0) {
-            Q.catholics_spd -= 4/12;
-        }
-        if (Q.unemployed_spd_normalized > 10) {
-            Q.unemployed_spd -= 4/12;
-        }
-        if (Q.new_middle_ddp > 0) {
-            Q.new_middle_ddp -= 4/12;
-            Q.new_middle_nsdap += 3/12;
-        }
-        if (Q.old_middle_ddp > 0) {
-            Q.old_middle_ddp -= 5/12;
-            Q.old_middle_nsdap += 4/12;
-        }
-        if (Q.rural_ddp > 0) {
-            Q.rural_ddp -= 5/12;
-            Q.rural_nsdap += 4/12;
-        }
-    }
 
-    ////////////////////////// annual support changes
-    if (Q.year == 1929) {
-        Q.unemployed += 3/12;
-        Q.inflation -= 1/12;
-        // increase NSDAP vote share
-        Q.new_middle_nsdap += 10/12;
-        Q.old_middle_nsdap += 10/12;
-        Q.new_middle_ddp -= 5/12;
-        Q.new_middle_dvp -= 5/12;
-        Q.workers_kpd += 5/12;
-        Q.sa_strength += 50/12;
-        Q.sh_strength += 100/12;
-        Q.rural_dnvp -= 15/12;
-        Q.rural_nsdap += 10/12;
-        Q.unemployed_nsdap += 18/12;
-    } else if (Q.year == 1930) {
-        Q.rural_nsdap += 10/12;
-        Q.rural_dnvp -= 15/12;
-        Q.new_middle_dvp -= 5/12;
-        Q.old_middle_dvp -= 6/12;
-        Q.new_middle_ddp -= 5/12;
-        Q.old_middle_ddp -= 6/12;
-        Q.new_middle_nsdap += 10/12;
-        Q.old_middle_nsdap += 10/12;
-        Q.new_middle_other += 4/12;
-        Q.old_middle_other += 4/12;
-        Q.unemployed_nsdap += 8/12;
-        Q.rural_other += 5/12;
-
-        Q.workers_z += 1/12;
-        Q.old_middle_z += 2/12;
-        Q.new_middle_z += 2/12;
-        if (!Q.works_program) {
-            Q.rural_nsdap += 3/12;
-            Q.old_middle_nsdap += 5/12;
-            Q.workers_nsdap += 2/12;
-            Q.workers_other += 5/12;
-            Q.workers_kpd += 2/12;
-        }
-        Q.sa_strength += 100/12;
-        Q.sh_strength += 100/12;
-    } else if (Q.year == 1931) {
-        Q.catholics_z += 2/12;
-        Q.rural_dvp -= 8/12;
-        Q.old_middle_dvp -= 8/12;
-        Q.new_middle_dvp -= 8/12;
-        Q.old_middle_ddp -= 8/12;
-        Q.new_middle_ddp -= 8/12;
-        Q.sa_strength += 50/12;
-        Q.sh_strength += 50/12;
-        Q.sa_militancy += 0.1/12;
-        Q.old_middle_nsdap += 10/12;
-        Q.rural_other -= 5/12;
-        Q.rural_nsdap += 9/12;
-        // TODO: economic policies should reduce NSDAP rurals
-        if (!Q.works_program) {
-            Q.old_middle_dvp -= 6/12;
-            Q.new_middle_dvp -= 6/12;
-            Q.rural_dvp -= 6/12;
-            Q.workers -= 4/12;
-            Q.unemployed_nsdap += 7/12;
-            Q.unemployed_kpd += 2/12;
-            Q.rural_other -= 12/12;
-            Q.rural_nsdap += 12/12;
-            Q.new_middle_nsdap += 12/12;
-            Q.old_middle_nsdap += 12/12;
-            Q.workers_nsdap += 2/12;
-            Q.workers_kpd += 4/12;
-            Q.sa_strength += 100/12;
-            Q.sh_strength += 50/12;
-        } else if (Q.unemployed > 15) {
-            Q.old_middle_dvp -= 4/12;
-            Q.new_middle_dvp -= 4/12;
-            Q.rural_dvp -= 4/12;
-            Q.unemployed_nsdap += 4/12;
-            Q.old_middle_nsdap += 4/12;
-            Q.new_middle_nsdap += 4/12;
-            Q.rural_nsdap += 4/12;
-        }
-    } else if (Q.year == 1932) {
-        Q.old_middle_other -= 7/12;
-        Q.rural_other -= 7/12;
-        Q.old_middle_nsdap += 7/12;
-        Q.rural_nsdap += 7/12;
-        Q.unemployed_nsdap += 4/12;
-        if (!Q.works_program) {
-            Q.unemployed += 5/12;
-            Q.inflation -= 2/12;
-            Q.catholics_z += 2/12;
-            Q.workers -= 4/12;
-            Q.rural_dnvp -= 4/12;
-            Q.rural_nsdap += 8/12;
-            Q.new_middle_nsdap += 10/12;
-            Q.old_middle_nsdap += 10/12;
-            Q.unemployed_nsdap += 8/12;
-            Q.unemployed_kpd += 2/12;
-            Q.workers_nsdap += 3/12;
-            Q.workers_kpd += 3/12;
-            Q.sa_strength += 200/12;
-            Q.new_middle_dnvp += 4/12;
-            Q.new_middle_dnvp += 4/12;
-            Q.new_middle_dvp -= 4/12;
-            Q.old_middle_dvp -= 4/12;
-            Q.rural_dvp -= 4/12;
-        } else if (Q.unemployed > 25) {
-            Q.rural_nsdap += 5/12;
-            Q.unemployed_nsdap += 5/12;
-            Q.old_middle_nsdap += 5/12;
-            Q.new_middle_nsdap += 4/12;
-            Q.sa_strength += 50/12;
-        } else if (Q.unemployed > 20) {
-            Q.rural_nsdap += 2/12;
-            Q.unemployed_nsdap += 3/12;
-            Q.old_middle_nsdap += 3/12;
-            Q.new_middle_nsdap += 2/12;
-        }
-    } else if (Q.year >= 1933) {
-        if (Q.return_to_normalcy) {
-            // return to normalcy -> voters return to the base
-            if (Q.new_middle_ddp_normalized < 40) {
-                Q.new_middle_ddp += 6/12;
-            }
-            if (Q.new_middle_dvp_normalized < 25) {
-                Q.new_middle_dvp += 3/12;
-            }
-            if (Q.old_middle_dvp_normalized < 40) {
-                Q.old_middle_dvp += 6/12;
-            }
-            if (Q.rural_dnvp_normalized < 40) {
-                Q.rural_dnvp += 6/12;
-            }
-            if (Q.catholics_z_normalized < 40) {
-                Q.catholics_z += 6/12;
-            }
-        }
-        if (Q.unemployed > 20) {
-            Q.rural_nsdap += 2/12;
-            Q.unemployed_nsdap += 2/12;
-            Q.old_middle_nsdap += 2/12;
-            Q.new_middle_nsdap += 2/12;
-            if (Q.spd_in_government) {
-                Q.workers_spd -= 4/12;
-            }
-        }
-    }
-    // prevent forever support if the economy is bad
-    if (Q.year >= 1934 && (Q.inflation >= 8 || Q.unemployed >= 20) && Q.pro_republic <= 45 && Q.spd_in_government) {
-        if (Q.workers_spd_normalized > 40) {
-            Q.workers_spd -= 6/12;
-        }
-        if (Q.unemployed_spd_normalized > 20) {
-            Q.unemployed_spd -= 6/12;
-        }
-        if (Q.new_middle_spd_normalized > 20) {
-            Q.new_middle_spd -= 6/12;
-        }
-        if (Q.old_middle_spd_normalized > 20) {
-            Q.old_middle_spd -= 6/12;
-        }
-        if (Q.rural_spd_normalized > 20) {
-            Q.rural_spd -= 6/12;
-        }
-        if (Q.catholics_spd_normalized > 20) {
-            Q.catholics_spd -= 6/12;
-        }
-    }
-}
+//conditional & time-based changes go here
+    
 Q.has_event = 0;
 // check if there are any cards in #event, and then go to main if not.
 var scene = this.game.scenes['post_event.events_choice'];
