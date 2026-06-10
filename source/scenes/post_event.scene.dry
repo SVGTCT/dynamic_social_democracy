@@ -14,37 +14,37 @@ Q.total_farmers = Q.farmers_lab + Q.farmers_cup + Q.farmers_ccp + Q.farmers_cpb 
 
 Q.total_unemployed = Q.unemployed_lab + Q.unemployed_cup + Q.unemployed_ccp + Q.unemployed_cpb + Q.unemployed_lib + Q.unemployed_cnlp + Q.unemployed_buf + Q.unemployed_other + Q.unemployed_ilp;
 
-if (Q.total_urban_workers > 100 || Q.total_urban_workers < 100) {
+if (Q.total_urban_workers != 100) {
     for (var party of Q.parties) {
         Q['urban_workers_'+party] = Q['urban_workers_'+party]*(100/Q.total_urban_workers);
     }
 }
 
-if (Q.total_other_workers > 100 || Q.total_other_workers < 100) {
+if (Q.total_other_workers != 100) {
     for (var party of Q.parties) {
         Q['other_workers_'+party] = Q['other_workers_'+party]*(100/Q.total_other_workers);
     }
 }
 
-if (Q.total_white_collar > 100 || Q.total_white_collar < 100) {
+if (Q.total_white_collar != 100) {
     for (var party of Q.parties) {
         Q['white_collar_'+party] = Q['white_collar_'+party]*(100/Q.total_white_collar);
     }
 }
 
-if (Q.total_upper > 100 || Q.total_upper < 100) {
+if (Q.total_upper != 100) {
     for (var party of Q.parties) {
         Q['upper_'+party] = Q['upper_'+party]*(100/Q.total_upper);
     }
 }
 
-if (Q.total_farmers > 100 || Q.total_farmers < 100) {
+if (Q.total_farmers != 100) {
     for (var party of Q.parties) {
         Q['farmers_'+party] = Q['farmers_'+party]*(100/Q.total_farmers);
     }
 }
 
-if (Q.total_unemployed > 100 || Q.total_unemployed < 100) {
+if (Q.total_unemployed != 100) {
     for (var party of Q.parties) {
         Q['unemployed_'+party] = Q['unemployed_'+party]*(100/Q.total_unemployed);
     }
@@ -56,7 +56,7 @@ for (var party of Q.parties) {
 
 Q.total_votes = Q.lab_votes + Q.cup_votes + Q.ccp_votes + Q.cpb_votes + Q.lib_votes + Q.cnlp_votes + Q.buf_votes + Q.other_votes + Q.ilp_votes;
 
-if (Q.total_votes > 100 || Q.total_votes < 100) {
+if (Q.total_votes != 100) {
     for (var party of Q.parties) {
         Q[party+'_votes'] = (Math.round((Q[party+'_votes']*(100/Q.total_votes)*10)))/10;
     }
@@ -83,7 +83,7 @@ for (var c of Q.factions) {
     }
 }
 
-if (Q.unemployed <= 1) {
+if (Q.unemployed < 1) {
     Q.unemployed = 1;
 }
 
@@ -104,7 +104,7 @@ Q.dissent = 0.01*total_dissent/total_strength;
 Q.dissent_percent = Q.dissent*100;
 console.log('new dissent: ' + Q.dissent);
 
-if (Q.dissent =< 0) {
+if (Q.dissent <= 0) {
     Q.dissent = 0.01;
 } else if (Q.dissent > 0.95) {
     Q.dissent = 0.95;
