@@ -44,7 +44,7 @@ face-image: img-lab/portraits-lab/PercyEustace.jpg
 
 With our connections, especially with the London branch of the party, we have been able to influence the <span style="color: #1375d6;">**CCP**</span> delegates to support Eustace Percy as the new <span style="color: #1375d6;">**CCP**</span> leader. He has long been a friend of the <span style="color: #e31414;">**Labour**</span> party, and will be more inclined to collaborate with us compared to Rennell. He also increases the appeal of the <span style="color: #1375d6;">**CCP**</span> to the working class, though it comes at the cost of white-collar support.
 
-@joos_campaign
+@percy_campaign
 choose-if: ccp_relation >= 60 and resources >= 1 and ccp_london
 view-if: ccp_relation < 70 and not london_fm == "Hume"
 unavailable-subtitle: [? if ccp_relation <= 60 : Our relations are not good enough. ?] [? if resources < 1 : We do not have enough resources. ?] [? if not ccp_london: We do not have the necessary influence. ?]
