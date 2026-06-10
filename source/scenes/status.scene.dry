@@ -104,7 +104,7 @@ TODO
 
 WIP
 
-= Internal Factions of the <span style="color: #c00000;">**lab**</span>
+= Internal Factions of the <span style="color: #c00000;">**Labour Party**</span>
 
 [? if left_split == 0: {!<span class="tooltip-text" title="The party's left wing members push for nationalisation, particularly of banks, and an anti-fascist united front.">Socialist League</span>!} strength: [+ left_strength : strength +],  dissent: [+ left_dissent : dissent +] ?]
 
@@ -162,13 +162,13 @@ Armed Forces: [+ mil_strength +] thousand troops.
 
 Armed Forces Loyalty: [+ mil_loyalty : loyalty +]
 
-Metropolitan Police: [+ met_strength +] thousand troops.
+Metropolitan Police force: [+ met_strength +] thousand troops.
 
-Metropolitan Police: [+ met_loyalty : loyalty +]
+Metropolitan Police loyalty: [+ met_loyalty : loyalty +]
 
 Local police units: [+ local_police_strength +] thousand members.
 
-Local police: [+ local_police_loyalty : loyalty +]
+Local police loyalty: [+ local_police_loyalty : loyalty +]
 
 [? if lab_in_government : Secret police loyalty: [+ interior_police_loyalty : loyalty +] ?]
 
@@ -240,7 +240,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ white_collar_buf +]
 **Others**: [+ white_collar_other +]
 
-<span class="tooltip-text" title="Estat-owning former nobility influential as media moguls, industrialists, military leadership, and politicians. Concentrated around financial centres, with land in rural areas. Some are Labour-voting \"Champagne socialists"\">Upper class</span>: <span style="color: #e31414;">**Lab**</span>: [+ upper_lab +]
+<span class="tooltip-text" title="Estate-owning former nobility; still very influential. Some are Labour-voting \"Champagne socialists"\">Upper class</span>: <span style="color: #e31414;">**Lab**</span>: [+ upper_lab +]
 [? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ upper_cup +] ?]
 [? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ upper_cup +] ?]
 [? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ upper_ccp +] ?]
@@ -251,7 +251,7 @@ Support for the Republic: [+ pro_republic_disp +]%
 <span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span> - [+ upper_buf +]
 **Others**: [+ upper_other +]
 
-<span class="tooltip-text" title="Agricultural and farm workers, mostly in rural areas.">Famers</span>: <span style="color: #e31414;">**Lab**</span>: [+ farmers_lab +]
+<span class="tooltip-text" title="Agricultural and farm workers, mostly in rural areas.">Farmers</span>: <span style="color: #e31414;">**Lab**</span>: [+ farmers_lab +]
 [? if cup_name = "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> - [+ farmers_cup +] ?]
 [? if cup_name != "CUP": <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**Con**</span> - [+ farmers_cup +] ?]
 [? if not ccp_gone: <span class="tooltip-text" title="Coalition Conservative Party + Ulster Unionist Party"><span style="color: #1375d6;">**CCP**</span> + <span style="color: #2f97ea;">**UUP**</span></span> - [+ farmers_ccp +] ?]
