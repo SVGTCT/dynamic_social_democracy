@@ -1,58 +1,67 @@
-title: [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Conference
-subtitle: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] chooses their new leader...
-view-if: year = 1928 and month = 12 and z_leader = "Marx"
+title: <span style="color: #1375d6;">**CCP**</span> Conference
+subtitle: The <span style="color: #1375d6;">**CCP**</span> chooses their new leader...
+view-if: year = 1928 and month = 12 and not ccp_gone and hogg_resigns
 max-visits: 1
 tags: event
 new-page: true
+face-image: img-lab/portraits-lab/HoggDouglas.jpeg
 
-= [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Conference
+= <span style="color: #1375d6;">**CCP**</span> Conference
 
-# reference: Evans, Ellen L. “Adam Stegerwald and the Role of the Christian Trade Unions in the Weimar Republic.” The Catholic Historical Review 59, no. 4 (1974): 602–26.
+# sources used: https://time.com/archive/6755213/great-britain-useless-eustace/ & others
 
-Wilhelm Marx, former [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] chancellor and presidential candidate, has chosen to resign from leadership of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. Now, the party holds a conference to replace him.
+Douglas Hogg, jurist, former prime minister, and presidential candidate for the <span style="color: #1375d6;">**CCP**</span> has chosen to resign from the party leadership, prompting a conference to replace him. 
 
-The consensus candidate on the right is Ludwig Kaas, a Catholic priest who represents the party's traditionalists. On the other hand, there is Joseph Joos, a leader of the Catholic trade unions, who has been more supportive of cooperation with the <span style="color: #c00000;">**SPD**</span> than most of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. [? if not prussia_leader == "Stegerwald": Christian labor union chairman Adam Stegerwald has fallen to a distant third, making it highly unlikely that he will win the leadership.?][? if prussia_leader == "Stegerwald": Christian labor union chairman and Minister-President Adam Stegerwald has lost some ground, but he retains strong support from the Prussian branch of the party, effectively securing him the nomination. ?]
+Historically, <span style="color: #1375d6;">**CCP**</span> members would convene in private and vote for a new leader. However, Hogg, who contributed to the writing of the constitution and creation of the justice ministry, [? if justice_minister = "Hogg": which he currently serves as, ?] has demanded the party adopt a <span style="color: #e31414;">**Labour**</span>-like, democratic approach and openly convene to elect his successor.
 
-- @kaas: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] elects Ludwig Kaas as the party chair.
-- @joos: Influence the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to select Joseph Joos as the party chair.
-- @joos_campaign: We must hold a campaign in support of Joseph Joos as party chair.
-- @stegerwald: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] elects Adam Stegerwald as the party chair.
+As he is an eminent voice in the party and has contributed to preventing a merger with the reactionary continuity <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span>, the party has reluctantly acceded. However, only select members will be allowed to vote for the new leader, making the chance of a <span style="color: #e31414;">**Labour**</span>-sympathetic leader far less likely. 
 
-@kaas
-view-if: not prussia_leader == "Stegerwald"
-on-arrival: z_leader = "Kaas"; z_relation -= 5; prussian_concordat_progress += 1; z_ideology = "Right"
-face-image: img/portraits/Ludwig_Kaas.jpg
+The consensus candidate on the right is James Rennell Rodd, a diplomat who represents the party's dominant <span class="tooltip-text" title="Here refers to what Labour would see as traditionalist: the mainstream conservatives of the time.>tradtionalist</span> wing. On the other hand, there is Eustace Percy. While a blue-blooded ex-aristocrat, he is a liberal-minded reformist and popular among <span style="color: #e31414;">**Labour**</span>'s MPs, who would push the two parties closer together. [? if not london_fm == "Hume": George Hume, a liberal-minded, London-based moderate with connections in the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> and <span style="color: #ffbb00;">liberal</span> <span style="color: #ffbb00;">parties</span>, has fallen to a distant third. ?][? if london_fm == "Hume": George Hume, a London-based moderate, has lost some ground but retains the critical support of the London branch of the party and its MPs, thus practically guaranteeing him the top role. ?]
 
-Ludwig Kaas has been selected as the chairman of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. He seems to represent a rightward turn from Marx, and will preside over a [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] less inclined to compromise with the left. 
+- @rennell: The <span style="color: #1375d6;">**CCP**</span> elects James Rennell Rodd as the party leader.
+- @percy: Influence the <span style="color: #1375d6;">**CCP**</span> to select Eustace Percy as the party leader.
+- @percy_campaign: We must hold a campaign in support of Eustace Percy as party leader.
+- @hume: The <span style="color: #1375d6;">**CCP**</span> elects Adam Stegerwald as the party leader.
 
-Despite this, Kaas is committed to the current constitutional order and the republic. He maintains a close friendship with Eugenio Pacelli, the Papal Nuncio to Germany, which may prove useful during concordat negotiations.
+@rennell
+view-if: not london_fm == "hume"
+on-arrival: ccp_leader = "Hume"; ccp_relation -= 5; ccp_ideology = "Conservative"
+face-image: img-lab/portraits-lab/RennellRoddJames.jpg
 
-@joos
-unavailable-subtitle: Our relations are not good enough.
-subtitle: Joos is likely to be friendlier to us than Kaas.
-view-if: not prussia_leader == "Stegerwald"
-choose-if: z_relation >= 70
-on-arrival: z_leader = "Joos"; z_ideology = "Left"; catholics_z -= 3; catholics_dnvp += 2; catholics_other += 2; catholics_spd += 5; workers_z += 5; z_relation += 4; zentrum_disintegration += 1; dvp_left += 1; ddp_left += 1; ddp_cohesion += 1; lvp_left += 1
-face-image: img/portraits/Joseph_Joos.jpg
+James Rennell Rodd has been selected as the leader of the <span style="color: #1375d6;">**CCP**</span>. He seems to represent a rightward turn from Hogg, and will preside over a <span style="color: #1375d6;">**CCP**</span> less inclined to compromise with the left. 
 
-With our grassroots connections, we have been able to influence the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] delegates to support Joseph Joos as the new [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] chairman. He has long been a friend of the <span style="color: #c00000;">**SPD**</span>, and will be more inclined to collaborate with us compared to Kaas. He also increases the appeal of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to the working class, though it comes at the cost of deepening the social and economic divisions once held together by religion.
+Despite this, Kaas is committed to the current constitutional order and the republic. He maintains friendly relations with the Italians, whom he was ambassador to, which would be helpful in fostering an anti-German coalition,
+
+@percy
+unavailable-subtitle: [? if ccp_relation < 70: Our relations are not good enough. ?] [? if not ccp_london: We do not have the necessary influence. ?]
+subtitle: Percy is likely to be friendlier to us than Rennell.
+view-if: not london_fm == "Hume"
+choose-if: ccp_relation >= 70  and ccp_london
+on-arrival: ccp_leader = "Percy"; ccp_ideology = "Liberal"; white_collar_ccp -= 3; white_collar_cup += 2; white_collar_other += 2; white_collar_lab += 1; urban_workers_ccp += 2; other_workers_ccp += 8; ccp_relation += 4; ccp_disintegration += 1; lib_left += 2; cnlp_left += 1; cnlp_cohesion += 1;
+face-image: img-lab/portraits-lab/PercyEustace.jpg
+
+#possibly something about liberal-ccp collaboration
+
+With our connections, especially with the London branch of the party, we have been able to influence the <span style="color: #1375d6;">**CCP**</span> delegates to support Eustace Percy as the new <span style="color: #1375d6;">**CCP**</span> leader. He has long been a friend of the <span style="color: #e31414;">**Labour**</span> party, and will be more inclined to collaborate with us compared to Rennell. He also increases the appeal of the <span style="color: #1375d6;">**CCP**</span> to the working class, though it comes at the cost of white-collar support.
 
 @joos_campaign
-choose-if: z_relation >= 60 and resources >= 1 
-view-if: z_relation < 70 and not prussia_leader == "Stegerwald"
-unavailable-subtitle: [? if z_relation <= 60 : Our relations are not good enough. ?] [? if resources < 1 : We do not have enough resources. ?]
-subtitle: -1 resource. Joos is likely to be friendlier to us than Kaas.
-on-arrival: resources -= 1; z_leader = "Joos"; z_ideology = "Left"; catholics_dnvp += 2; catholics_other += 2; catholics_spd += 5; workers_z += 5; z_relation += 4; zentrum_disintegration += 1; dvp_left += 1; ddp_left += 1; ddp_cohesion += 1; lvp_left += 1
-face-image: img/portraits/Joseph_Joos.jpg
+choose-if: ccp_relation >= 60 and resources >= 1 and ccp_london
+view-if: ccp_relation < 70 and not london_fm == "Hume"
+unavailable-subtitle: [? if ccp_relation <= 60 : Our relations are not good enough. ?] [? if resources < 1 : We do not have enough resources. ?] [? if not ccp_london: We do not have the necessary influence. ?]
+subtitle: -1 resource. Percy is likely to be friendlier to us than Kaas.
+on-arrival: resources -= 1; ccp_leader = "Percy"; ccp_ideology = "Liberal"; white_collar_ccp -= 3; white_collar_cup += 2; white_collar_other += 2; white_collar_lab += 1; urban_workers_ccp += 2; other_workers_ccp += 8; ccp_relation += 4; ccp_disintegration += 1; lib_left += 2; cnlp_left += 1; cnlp_cohesion += 1;
+face-image: img-lab/portraits-lab/PercyEustace.jpg
 
-With our grassroots connections as well as a professional campaign, we have been able to influence the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] delegates to support Joseph Joos as the new [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] chairman. He has long been a friend of the <span style="color: #c00000;">**SPD**</span>, and will be more inclined to collaborate with us compared to Kaas. He also increases the appeal of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to the working class, though it comes at the cost of deepening the social and economic divisions once held together by religion.
+#possibly something about liberal-ccp collaboration
 
-@stegerwald
-choose-if: prussia_leader == "Stegerwald"
-unavailable-subtitle: Stegerwald lacks the influence necessary to have a real chance.
-on-arrival: z_leader = "Stegerwald"; z_ideology = "Right"; stegerwald_path = 1; z_relation -= 8; zentrum_disintegration += 2; new_middle_z -= 5; old_middle_z -= 3; rural_z -= 1; catholics_z -= 5; workers_z += 5; unemployed_z += 3; catholics_spd += 8; catholics_other += 4; catholics_dnvp += 2 if dnvp_ideology == "Moderate"; catholics_dvp += 4; catholics_ddp += 2; catholics_lvp += 4; dvp_right += 1; ddp_left += 1; ddp_cohesion += 1; liberal_cooperation += 1; bourgeois_cooperation += 1; catholics -= 5; new_middle_dnvp -= 2 if dnvp_ideology == "Radical"; old_middle_dnvp -= 3 if dnvp_ideology == "Radical"; rural_dnvp -= 3 if dnvp_ideology == "Radical"; new_middle_z += 2 if dnvp_ideology == "Radical"; old_middle_z += 3 if dnvp_ideology == "Radical"; rural_z += 3 if dnvp_ideology == "Radical"; prussia_leader = "Brüning" if prussia_leader == "Stegerwald"
-face-image: img/portraits/stegerwald.jpg
+With our connections, especially with the London branch of the party, as well as a professional campaign, we have been able to influence the <span style="color: #1375d6;">**CCP**</span> delegates to support Eustace Percy as the new <span style="color: #1375d6;">**CCP**</span> leader. He has long been a friend of the <span style="color: #e31414;">**Labour**</span> party, and will be more inclined to collaborate with us compared to Rennell. He also increases the appeal of the <span style="color: #1375d6;">**CCP**</span> to the working class, though it comes at the cost of white-collar support.
 
-Adam Stegerwald has been elected as the chairman of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. He seems to represent a rightward turn from Marx, despite his trade union background, and will preside over a [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] less inclined to compromise with the left. He views the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] as a prototype for a <span style="color: #000000;">Christian</span>, <span style="color: #586593;">democratic</span>, <span style="color: #000000;">German</span>, and <span style="color: #c00000;">social</span> party, and aims to transform it according to the principles laid out in his proposed "Essen program" eight years prior. 
+@hume
+choose-if: london_fm == "Hume"
+unavailable-subtitle: Hume lacks the influence necessary to have a real chance.
+on-arrival: ccp_leader = "Hume"; ccp_ideology = "Moderate Conservative"; hume_path = 1; ccp_relation -= 8; ccp_disintegration += 2; white_collar_ccp += 8; upper_ccp += 5; farmers_ccp -= 15; farmers_cup += 10; urban_workers_ccp += 5; other_workers_ccp -= 5; unemployed_ccp += 3; farmers_lab += 5; other_workers_lab += 5; white_collar_other += 4; farmers_other += 2 if cup_ideology != "Moderate"; farmers_lib += 4; farmers_cnlp += 2; upper_lib -= 4; lib_right += 1; cnlp_left += 1; cnlp_cohesion += 1; liberal_cooperation += 1; bourgeois_cooperation += 1; white_collar_cup -= 2 if cup_ideology == "Radical"; upper_cup -= 3 if cup_ideology == "Radical"; farmers_cup += 3 if cup_ideology != "Radical"; london_fm = "Ray";
+face-image: img-lab/portraits-lab/HumeGeorge.jpg
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]'s middle class wing are in uproar over the vote, despite Stegerwald conceding his leadership of the Reichstag delegation and the Minister-Presidency to his protege Heinrich Brüning. [? if dnvp_ideology == "Radical": His election also attracts some Protestant <span style="color: #3E88B3;">**DNVP**</span> dissidents and industrialists, who may result in a shift of the party towards the right. ?]
+George Hume has been elected as the chairman of the <span style="color: #1375d6;">**CCP**</span>. He seems to represent a rightward turn from Hogg, despite his reformist background, and will preside over a <span style="color: #1375d6;">**CCP**</span> less inclined to compromise with the left. He views the <span style="color: #1375d6;">**CCP**</span> as a predecessor to a <span style="color: #1375d6;">united</span> <span style="color: #002c6e;">right</span>-<span style="color: #ffbb00;">wing</span> <span style="color: #ffd600;">party</span>, and will work to bring together <span style="color: #002c6e;">reactionaries</span>, <span style="color: #1375d6;">conservatives</span>, and <span style="color: #ffbb00;">liberals</span>, preferably to govern without the  <span style="color: #e31414;">**Labour**</span> party.
+
+The <span style="color: #1375d6;">**CCP**</span>'s farmer wing is in uproar over the vote, despite Hume conceding his leadership of the House delegation and the First-Ministership to his allies in Sam Hoare and William Ray, respectively. [? if cup_ideology == "Radical": His election also attracts some middle-class and industrialist members of the  <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span>, who may result in a shift of the party towards the right. ?]
