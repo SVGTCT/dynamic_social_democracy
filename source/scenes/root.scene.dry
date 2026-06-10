@@ -153,6 +153,11 @@ Q.right_london = 0;
 Q.cpb_london = 0;
 Q.london_fm = "Lansbury";
 Q.london_fm_party = "Lab";
+Q.ccp_london = 1;
+Q.cnlp_london = 1;
+Q.cup_london = 0;
+Q.buf_london = 0;
+Q.cpb_london = 0;
 
 // The array of forces - paramilitary groups
 // Unions (can mobilise in national crisis), Nationalist Paramilitaries (Sinn Fein's IRA), BUF Blackshirts & FDF, Gentlemen's Clubs (can mobilise in national crisis)
