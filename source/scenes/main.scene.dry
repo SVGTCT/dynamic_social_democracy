@@ -2581,6 +2581,7 @@ max-cards: 4
 - @party
 - @govt
 - @federalism
+- @election
 - @eco
 - @time
 - @time_2
@@ -2609,6 +2610,14 @@ card-image: img-lab/HomeGeography.jpg
 is-deck: true
 
 - #federalism
+
+@election
+title: Electoral Campaign
+view-if: in_election
+card-image: img-lab/greet-the-dawn.jpg
+is-deck: true
+
+- #electoral_campaign
 
 @time
 title: Bide our Time
