@@ -22,7 +22,9 @@ for (const party of Q.parties) {
 for (const party of Q.parties) {
     Q['old_' + party + '_r'] = (Number(Q[party + '_r']);
 }
- 
+
+Q.new_party_sum = 0;
+
 if (Q.constitutional_reform > 0) {
     for (const party of Q.parties) {
         if (Q[party + '_votes'] < Q.electoral_threshold || (Q.electoral_threshold > 1 && party == 'other') || Q[party + '_banned']) {
