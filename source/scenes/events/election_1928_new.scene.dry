@@ -46,7 +46,7 @@ Q.farmers_lab -= 5;
 Q.unemployed_lab -= 5; 
 
 if (Q.buf_normalised >= 0.3) {
-    coup_progress += 2;
+    Q.coup_progress += 2;
 }
 
 if (Q.buf_normalised + Q.cup_normalised >= 0.5) {
@@ -95,7 +95,7 @@ for (var party of Q.parties) {
 
 for (var party of Q.parties) {
     Q[party+'_change'] = Math.round(Q['old_' + party + '_r'] - Q[party + '_r']*10)/10;
-    Q.['str_change_'+party] = str(Q[party+'_change']);
+    Q['str_change_'+party] = str(Q[party+'_change']);
 }
 
 // The largest party can only be the CPB, BUF or Labour.
@@ -119,7 +119,7 @@ Q.far_right_coalition = Q.cup_r + Q.buf_r;
 Q.left_coalition = Q.lab_r + Q.cpb_r + Q.ilp_r;
 Q.purple_coalition = Q.lab_r + Q.ccp_r - 3;
 
-if (lib_reconciliation == 1) {
+if (Q.lib_reconciliation == 1) {
     Q.lab_lib_coalition = Q.lab_r + Q.lib_r;
 }
 else {
