@@ -1,0 +1,81 @@
+title: London
+new-page: true
+is-card: true
+view-if: london_affairs_timer <= 0
+on-arrival: month_actions += 1
+tags: federalism
+card-image: img-lab/portraits-lab/LansburyGeorge1920.jpg
+#subtitle: The state government of London is a bulwark of democracy...
+
+WIP
+
+Lansbury
+
+Industrialists presence
+
+Below are some actions that will be available. Others: further crackdowns etc., reversing
+
+- @wip1: Improve our relations with the Metropolitan Police service.
+- @wip5: Recruit more officers into the Met.
+- @wip6: Purge the bureaucracy of reactionary elements.
+- @wip7: Introduce a state ban on the Blackshirts.
+- @wip8: Introduce a state ban on the reactionary gentlemen's clubs.
+- @wip9: Introduce a state ban on the communist militias.
+- @wip10: Introduce a state ban on the BUF.
+- @wip11: Introduce a state ban on the CPB.
+- @wip12: Crack down on the reactionary media.
+- @wip13: Crack down on the communist trade unions.
+- @wip14: Introduce a state ban on the CUP.
+- @wip15: Introduce a state ban on the FDF.
+- @wip2: Renegotiate our ruling coalition.
+- @wip3: Renegotiate our ruling coalition.
+- @wip4: Call for a snap election.
+
+@wip1
+go-to: wip
+
+@wip2
+go-to: wip
+
+@wip3
+go-to: wip
+
+@wip4
+go-to: wip
+
+@wip5
+go-to: wip
+
+@wip6
+go-to: wip
+
+@wip7
+go-to: wip
+
+@wip8
+go-to: wip
+
+@wip9
+go-to: wip
+
+@wip10
+go-to: wip
+
+@wip11
+go-to: wip
+
+@wip12
+go-to: wip
+
+@wip13
+go-to: wip
+
+@wip14
+go-to: wip
+
+@wip15
+go-to: wip
+
+@wip
+
+WIP
