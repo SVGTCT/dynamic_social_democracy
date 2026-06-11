@@ -41,6 +41,25 @@ if (Q.year == 1928) {
     Q.other_modifier_london = 0.7;
 }
 
+//apply turnout modifier
+function getRandom() {
+  return Math.random();
+}
+
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+//Calculate votes using turnout modifier 0.95 to 1.05
+
+for (const party of Q.parties) {
+    Q['turnout_modifier_' + party] = (Number(0.95 + (getRndInteger(0,10)/100)));
+}
+
+for (const party of Q.parties) {
+    Q[party + '_votes'] *= Q['turnout_modifier_' + party];
+}
+
 for (const party of Q.parties) {
     Q[party + '_r_london'] = Q[party + '_votes'];
 }
@@ -69,6 +88,7 @@ for (const party of Q.parties) {
     }
 
     if (Q[party + '_change_r_london'] < 0) {
+        Q[party + '_change_r_london'] *= -1;
         Q[party + '_str_change_r_london'] = '<img src=img/arrowdown.png>' +  Q[party + '_change_r_london'];
     }
 }
@@ -237,7 +257,9 @@ if (window && d3) {
 !}
 go-to: coalition_menu
 
-= **Election results:**
+= Election results
+
+{!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!} 
 
