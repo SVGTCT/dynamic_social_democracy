@@ -159,7 +159,7 @@ There are some potential coalition arrangements.
 
 - @national_coalition_london_ccp
 
-@national_coalition_london
+@national_coalition_london_ccp
 title: We can form a <span style="color: #005eb8;">National</span> <span style="color: #00b041;">Coalition</span>!
 subtitle: <span style="color: #e31414;">**Labour**</span> + <span style="color: #1375d6;">**CCP**</span> + <span style="color: #ffd600;">**CNLP**</span> ([+ national_coalition_london +])
 view-if: national_coalition_london >= 50 and ccp_gone = 0
