@@ -114,7 +114,6 @@ Q.buf_london = 0;
 Q.cpb_london = 0;
 
 !}
-
 go-to: coalition_menu
 
 **Election results:**
