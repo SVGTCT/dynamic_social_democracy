@@ -403,7 +403,7 @@ Q.buf_r_london = 2.4;
 Q.other_r_london = 3.6;
 
 // diff from prev London
-Q.old_lab_r_london = 36.8;
+Q.old_lab_r_london = 36.9;
 Q.old_cpb_r_london = 10.1;
 Q.old_ccp_r_london = 10.5;
 Q.old_cnlp_r_london = 7.7;
@@ -413,7 +413,7 @@ Q.old_buf_r_london = 2.4;
 Q.old_other_r_london = 3.6;
 
 // old election votes London
-Q.previous_lab_last_election_votes_london = 36.8;
+Q.previous_lab_last_election_votes_london = 36.9;
 Q.previous_cpb_last_election_votes_london = 10.1;
 Q.previous_ccp_last_election_votes_london = 10.5;
 Q.previous_cnlp_last_election_votes_london = 7.7;
