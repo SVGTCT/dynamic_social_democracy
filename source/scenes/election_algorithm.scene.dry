@@ -32,6 +32,23 @@ for (const party of Q.parties) {
     Q[party + '_votes'] *= Q['turnout_modifier_' + party];
 }
 
+// Calculate total votes
+Q.total_votes = 0;
+
+for (const party of Q.parties) {
+    Q.total_votes += Number(Q[party + '_votes']) || 0;
+}
+
+//Normalise vote shares to 100
+if (Q.total_votes > 0 && Q.total_votes !== 100) {
+    for (const party of Q.parties) {
+        Q[party + '_votes'] =
+            Math.round(
+                (Q[party + '_votes'] * (100 / Q.total_votes)) * 10
+            ) / 10;
+    }
+}
+
 for (const party of Q.parties) {
     Q['old_' + party + '_r'] = (Number(Q[party + '_r']));
 }
@@ -70,9 +87,19 @@ for (const party of Q.parties) {
 }
 
 for (const party of Q.parties) {
-    Q[party+'_change'] = (Number(Q['old_' + party + '_r'] - Q[party + '_r']));
-    Q[party+'_change'] = (Number(Math.round(Q[party+'_change']*10))/10);
-    Q['str_change_'+party] = (str(Q[party+'_change']));
+    Q[party + '_change_r'] = (Number(Q[party + '_r'] - Q['old_' + party + '_r']));
+    Q[party + '_change_r'] = (Math.round(Q[party + '_change_r']*10))/10;
+}
+
+for (const party of Q.parties) {
+    if (Q[party + '_change_r'] > 0) {
+        Q[party + '_str_change_r'] = '<img src=img/arrowup.png>' +  Q[party + '_change_r'];
+    }
+
+    if (Q[party + '_change_r'] < 0) {
+        Q[party + '_change_r'] *= -1;
+        Q[party + '_str_change_r'] = '<img src=img/arrowdown.png>' +  Q[party + '_change_r'];
+    }
 }
 !}
 go-to: jumpScene
