@@ -178,7 +178,7 @@ Our man in London, George Lansbury, will remain London's First Minister.
 
 @hume
 subtitle: Lansbury would need to resign.
-on-arrival: right_coalition_dissent = 0; london_fm = "Hume"; london_fm = "Ray" if ccp_leader == "Hume"; ccp_relation += 15; cnlp_relation += 5; lib_relation += 5; lib_left += 2; cnlp_left += 1; cnlp_cohesion += 1; reformist_dissent += 10; pragmatist_dissent += 10; labour_dissent += 10; left_dissent += 5; cooperative_dissent += 10; marxist_dissent += 5; white_collar_lab -= 4; farmers_lab -= 2; lansbury_resign = 1;
+on-arrival: right_coalition_dissent = 0; london_fm_party = "CCP"; london_fm = "Hume"; london_fm = "Ray" if ccp_leader == "Hume"; ccp_relation += 15; cnlp_relation += 5; lib_relation += 5; lib_left += 2; cnlp_left += 1; cnlp_cohesion += 1; reformist_dissent += 10; pragmatist_dissent += 10; labour_dissent += 10; left_dissent += 5; cooperative_dissent += 10; marxist_dissent += 5; white_collar_lab -= 4; farmers_lab -= 2; lansbury_resign = 1;
 
 We no longer control the government of London. Hopefully, this move will pay off with a more friendly <span style="color: #1375d6;">**CCP**</span>, who are pleasantly surprised by our unexpected decision.
 
