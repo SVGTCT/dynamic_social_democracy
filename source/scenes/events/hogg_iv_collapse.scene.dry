@@ -35,7 +35,7 @@ The <span style="color: #ffbb00;">liberal</span> parties currently hold 17.7% of
 
 @ccp_abstain
 subtitle: The vote will fail.
-on-arrival: pro_republic -= 3; white_collar_cup += 3;
+on-arrival: pro_republic -= 3; white_collar_cup += 3; book_failed = 1;
 face-image: img-lab/portraits-lab/InskipThomas.jpg
 
 The vote has failed, meaning that the <span style="color: #ffbb00;">liberal</span> parties will call a vote of no confidence, which the government will not be able to survive. Thus, the government has collapsed.
