@@ -29,7 +29,7 @@ for (const party of Q.parties) {
 }
 
 for (const party of Q.parties) {
-    Q[party + '_votes'] *= Q['turnout_modifier_' + party]));
+    Q[party + '_votes'] *= Q['turnout_modifier_' + party];
 }
 
 for (const party of Q.parties) {
