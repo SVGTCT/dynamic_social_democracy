@@ -8,7 +8,7 @@ face-image: img-lab/portraits-lab/WoodCharles.jpg
 
 = Book of Common Prayer Crisis
 
-One of the remnants of the old monarchist order is the tying of the Church of England to the Commonwealth government. When the <span style="color: #e31414;">**Labour**</span> Party tried to reverse this, it faced heavy resistance from the right.
+One of the remnants of the old monarchist order is the tying of the Church of England to the Commonwealth government. When the <span style="color: #e31414;">**Labour**</span> Party tried to reverse this, it faced heavy resistance from the <span style="color: #002c6e;">right</span>.
 
 A push led by chaplains, who in the Great War saw the Church's *Book of Common Prayer* as "too Protestant", and Anglo-Catholics, led by Charles Wood, leader of the ecumenist Church Union, have joined forces with fellow interdenominationalists in the Church to propose a new *Book of Common Prayer*. As a formality, this has to be approved by the House of State.
 
@@ -26,6 +26,7 @@ The <span style="color: #e31414;">**Labour**</span> and <span class="tooltip-tex
 @abstain
 subtitle: This is our expected decision.
 face-image: img-lab/portraits-lab/InskipThomas.jpg
+on-arrival: lib_relation -= 5; cnlp_relation -= 5;
 
 We have abstained from the vote, as was expected. The <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> does so as well.
 
