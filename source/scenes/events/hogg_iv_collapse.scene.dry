@@ -33,7 +33,7 @@ We have abstained from the vote, as was expected. The <span class="tooltip-text"
 The <span style="color: #ffbb00;">liberal</span> parties currently hold 17.7% of House seats, whereas the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> holds 21.2% of seats. The special interest parties, with 3.6% of seats, join them in voting against, as do the <span class="tooltip-text" title="Ulster Unionist Party" style="color: #2f97ea;">**UUP**</span> and <span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span>, with 3.6% and 2.9% of seats, respectively. This means the decision is in the hands of the <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span>.
 
 - @ccp_abstain: The <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> also abstains from the vote.
-- @ccp_for: Pressure the <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span>to vote for the revision.
+- @ccp_for: Pressure the <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> to vote for the revision.
 
 @ccp_abstain
 subtitle: The vote will fail.
