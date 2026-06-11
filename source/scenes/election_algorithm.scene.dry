@@ -51,7 +51,7 @@ if (Q.constitutional_reform > 0) {
 }
 
 for (const party of Q.parties) {
-    Q[party + '_r] *= Q[party + '_modifier'];
+    Q[party + '_r'] *= Q[party + '_modifier'];
     Q.new_party_sum += Q[party + '_r'];
 }
 
