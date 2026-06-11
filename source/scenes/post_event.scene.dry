@@ -69,6 +69,15 @@ if (Q.total_votes > 0 && Q.total_votes !== 100) {
     }
 }
 
+//Round party values
+
+for (const party of Q.parties) {
+        Q[party + '_votes'] =
+            Math.round(
+                (Q[party + '_votes'] * 10)
+            ) / 10;
+    }
+
 // Round support values
 for (const group of Q.classes) {
     for (const party of Q.parties) {
