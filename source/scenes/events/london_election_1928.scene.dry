@@ -204,6 +204,15 @@ if (Q.ccp_r_london) {
     });
 }
 
+if (Q.uup_r_london) {
+    data.push({
+        "id": "uup",
+        "legend": "UUP",
+        "name": "UUP",
+        "seats": Math.round(Q.ccp_minus_uup_r_london * 4.75),
+    });
+}
+
 if (Q.lib_r_london) {
     data.push({
         "id": "lib",
