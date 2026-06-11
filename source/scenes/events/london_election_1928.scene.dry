@@ -60,6 +60,7 @@ for (const party of Q.parties) {
 
 for (const party of Q.parties) {
     Q[party + '_change_r_london'] = (Number(Q[party + '_r_london'] - Q['old_' + party + '_r_london']));
+    Q[party + '_change_r_london'] = (Math.round(Q[party + '_change_r_london']*10))/10;
 }
 
 // coalitions
@@ -120,7 +121,7 @@ go-to: coalition_menu
 
 {!<table>!} 
 {!<tr><td>Party</td><td>Result</td><td>% Change</td></tr>!}
-{!<tr><td><td><div class="box" style='background-color:#e31414; outline: 2px; outline-style: solid;'> </div> !} **Labour:** {!</td><td>!} [+ lab_r_london +]% {!</td><td>!} [+ lab_change_r_london +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#e31414; outline: 2px; outline-style: solid;'> </div> !} **Labour:** {!</td><td>!} [+ lab_r_london +]% {!</td><td>!} [+ lab_change_r_london +] {!</td></tr>!}
 
 [? if ilp_formed : {!<tr><td><div class="box" style='background-color:#9c0606'> </div> !}ILP: {!</td><td>!} [+ ilp_r_london +] {!</td><td>!} [+ ilp_change_r_london +] {!</td></tr>!} ?]
 
