@@ -67,6 +67,8 @@ Let us hope this does not backfire.
 @post_election_1928
 on-arrival: {!
 
+Q.uup_r = 3;
+
 // The largest party can only be the CPB, BUF or Labour.
 Q.largest_party = 'Labour';
 
@@ -170,82 +172,107 @@ Q.election_records.push(election_result);
 !}
 on-departure: fascist_urgency = 1 if (fascist_urgency == 0 and buf_r >= 15)
 on-display: {!
-data = [
-    {
+const data = [];
+
+if (Q.cpb_r) {
+    data.push({
         "id": "cpb",
         "legend": "CPB",
         "name": "CPB",
-        "seats": Math.round(Q.cpb_r*4.75),
-    }
-];
-if (Q.ilp_formed && Q.ilp_r) {
-    data.push({
-            "id": "ilp",
-            "legend": "ILP",
-            "name": "ILP",
-            "seats": Math.round(Q.ilp_r*4.75),
-            });
+        "seats": Math.round(Q.cpb_r * 4.75),
+    });
 }
-data = data.concat([
-    {
+
+if (Q.ilp_r && Q.ilp_formed) {
+    data.push({
+        "id": "ilp",
+        "legend": "ILP",
+        "name": "ILP",
+        "seats": Math.round(Q.ilp_r * 4.75),
+    });
+}
+
+if (Q.lab_r) {
+    data.push({
         "id": "lab",
         "legend": "Lab",
-        "name": "Labour",
-        "seats": Math.round(Q.lab_r*4.75),
-    },
-    {
+        "name": "Lab",
+        "seats": Math.round(Q.lab_r * 4.75),
+    });
+}
+
+if (Q.cnlp_r) {
+    data.push({
         "id": "cnlp",
-        "legend": CNLP,
-        "name": CNLP,
-        "seats": Math.round(Q.cnlp_r*4.75),
-    },
-    {
-        "id": "CCP",
+        "legend": "CNLP",
+        "name": "CNLP",
+        "seats": Math.round(Q.cnlp_r * 4.75),
+    });
+}
+
+if (Q.ccp_minus_uup_r) {
+    data.push({
+        "id": "ccp",
         "legend": "CCP",
         "name": "CCP",
-        "seats": Math.round((Q.ccp_r - 3)*4.75),
-    },
-    {
-        "id": "UUP",
+        "seats": Math.round(Q.ccp_minus_uup_r * 4.75),
+    });
+}
+
+if (Q.uup_r) {
+    data.push({
+        "id": "uup",
         "legend": "UUP",
         "name": "UUP",
-        "seats": Math.round(3*4.75),
-    },
-    {
-        "id": "Lib",
+        "seats": Math.round(Q.uup_r * 4.75),
+    });
+}
+
+if (Q.lib_r) {
+    data.push({
+        "id": "lib",
         "legend": "Lib",
-        "name": "Liberal",
-        "seats": Math.round(Q.lib_r*4.75),
-    },
-    {
+        "name": "Lib",
+        "seats": Math.round(Q.lib_r * 4.75),
+    });
+}
+
+if (Q.other_r) {
+    data.push({
         "id": "other",
         "legend": "Other",
         "name": "Other",
-        "seats": Math.round(Q.other_r*4.75),
-    },
-    {
+        "seats": Math.round(Q.other_r * 4.75),
+    });
+}
+
+if (Q.cup_r) {
+    data.push({
         "id": "cup",
         "legend": "CUP",
         "name": "CUP",
-        "seats": Math.round(Q.cup_r*4.75),
-    },
-    {
+        "seats": Math.round(Q.cup_r * 4.75),
+    });
+}
+
+if (Q.buf_r) {
+    data.push({
         "id": "buf",
         "legend": "BUF",
         "name": "BUF",
-        "seats": Math.round(Q.buf_r*4.75),
-    },
-]);
+        "seats": Math.round(Q.buf_r * 4.75),
+    });
+}
 
 if (window && d3) {
-    var width = 500; 
+    var width = 500;
     var height = 500;
     var screenWidth = document.getElementById('content').offsetWidth;
     if (screenWidth < width - 50) {
-        width = screenWidth - 50; 
+        width = screenWidth - 50;
         height = width;
         document.getElementById("reichstag").style.height = screenWidth/2 + "px";
-    } 
+    }
 
     var parliament = d3.parliament();
     parliament.width(width).height(height).innerRadiusCoef(0.4);
@@ -253,6 +280,7 @@ if (window && d3) {
     parliament.exit.toCenter(false).bigToSmall(true);
     d3.select("#reichstag").datum(data).call(parliament);
 }
+
 !}
 go-to: coalition_menu
 
