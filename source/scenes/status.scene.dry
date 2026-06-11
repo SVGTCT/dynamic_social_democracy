@@ -46,7 +46,7 @@ Internal dissent: [+ dissent_percent : dissent +]
 
 Prime Minister: [? if pm_party == "CUP" or pm_party == "Con" : <span style="color: #002c6e;">**[+ prime_minister +]**</span> <span style="color: #002c6e;">([+ cup_name +])</span> ?][? if pm_party == "Lab" : <span style="color: #e31414;">**[+ prime_minister +]**</span> <span style="color: #e31414;">(Lab)</span> ?][? if pm_party == "CCP" : <span style="color: #1375d6;">**[+ prime_minister +]**</span> <span style="color: #1375d6;">(CCP)</span> ?][? if pm_party == "I" : <span style="color: #808080;">**[+ prime_minister +]**</span> <span style="color: #8080808;">(Ind)</span> ?]
 
-London First Minister: [? if london_fm_party == "CUP" or london_fm_party == "Con" : <span style="color: #002c6e;">**[+ london_fm +]**</span> <span style="color: #002c6e;">([+ cup_name +])</span> ?][? if london_fm_party == "Lab" : <span style="color: #e31414;">**[+ london_fm +]**</span> <span style="color: #e31414;">(Labour)</span> ?]
+London First Minister: [? if london_fm_party == "CUP" or london_fm_party == "Con" : <span style="color: #002c6e;">**[+ london_fm +]**</span> <span style="color: #002c6e;">([+ cup_name +])</span> ?][? if london_fm_party == "Lab" : <span style="color: #e31414;">**[+ london_fm +]**</span> <span style="color: #e31414;">(Labour)</span> ?][? if london_fm_party == "CCP" : <span style="color: #1375d6;">**[+ london_fm +]**</span> <span style="color: #1375d6;">(CCP)</span> ?]
 
 House of State composition:
 
