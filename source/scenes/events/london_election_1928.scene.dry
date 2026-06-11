@@ -63,8 +63,18 @@ for (const party of Q.parties) {
     Q[party + '_change_r_london'] = (Math.round(Q[party + '_change_r_london']*10))/10;
 }
 
+for (const party of Q.parties) {
+    if (Q[party + '_change_r_london'] > 0) {
+        Q[party + '_str_change_r_london'] = '<img src=img/arrowup.png>' +  Q[party + '_change_r_london'];
+    }
+
+    if (Q[party + '_change_r_london'] < 0) {
+        Q[party + '_str_change_r_london'] = '<img src=img/arrowdown.png>' +  Q[party + '_change_r_london'];
+    }
+}
+
 // coalitions
-Q.national_coalition_london = (Number(Q.lab_r_london + Q.cnlp_r_london + Q.ccp_r_london));
+Q.national_coalition_london = (Math.round((Q.lab_r_london + Q.cnlp_r_london + Q.ccp_r_london)*10))/10;
 Q.grand_coalition_london = (Number(Q.lab_r_london + Q.cnlp_r_london + Q.ccp_r_london + Q.lib_r_london));
 Q.bourgeois_coalition_london = (Number(Q.cnlp_r_london + Q.ccp_r_london + Q.lib_r_london + Q.other_r_london));
 Q.center_right_coalition_london = (Number(Q.ccp_r_london + Q.cnlp_r_london + Q.lib_r_london + Q.other_r_london + Q.cup_r_london));
@@ -119,24 +129,27 @@ go-to: coalition_menu
 **Election results:**
 
 {!<table>!} 
-{!<tr><td>Party</td><td>Result</td><td>% Change</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#e31414; outline: 2px; outline-style: solid;'> </div> !} **Labour:** {!</td><td>!} {!</td><td>!} [+ lab_r_london +]% {!</td><td>!} {!</td><td>!} [+ lab_change_r_london +] {!</td></tr>!}
 
-[? if ilp_formed : {!<tr><td><div class="box" style='background-color:#9c0606'> </div> !}ILP: {!</td><td>!} {!</td><td>!} [+ ilp_r_london +] {!</td><td>!} {!</td><td>!} [+ ilp_change_r_london +] {!</td></tr>!} ?]
+{!<tr><td>Party</td><td></td><td>Result</td><td></td><td>Change (<span class="tooltip-text" title="Percentage point">pp</span>)</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#8e000a'> </div> !}CPB: {!</td><td>!} {!</td><td>!} [+ cpb_r_london +]% {!</td><td>!} {!</td><td>!} {!</td><td>!} [+ cpb_change_r_london +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#e31414; outline: 2px; outline-style: solid;'> </div> !} **Labour:** {!</td><td>!} {!</td><td>!} [+ lab_r_london +]% {!</td><td>!} {!</td><td>!} [+ lab_str_change_r_london +] {!</td></tr>!}
 
-[? if cnlp_r_london > 0: {!<tr><td><div class="box" style='background-color:#ffd600'> </div> !} CNLP: {!</td><td>!} {!</td><td>!} [+ cnlp_r_london +]% {!</td><td>!} {!</td><td>!} [+ cnlp_change_r_london +] {!</td></tr>!} ?]
+[? if ilp_formed : {!<tr><td><div class="box" style='background-color:#9c0606'> </div> !}ILP: {!</td><td>!} {!</td><td>!} [+ ilp_r_london +] {!</td><td>!} {!</td><td>!} [+ ilp_str_change_r_london +] {!</td></tr>!} ?]
 
-[? if ccp_r_london > 0: {!<tr><td><div class="box" style='background-color:#1375d6'> </div> !} CCP: {!</td><td>!} {!</td><td>!} [+ ccp_r_london +]% {!</td><td>!} {!</td><td>!} [+ ccp_change_r_london +] {!</td></tr>!} ?]
+{!<tr><td><div class="box" style='background-color:#8e000a'> </div> !}CPB: {!</td><td>!} {!</td><td>!} [+ cpb_r_london +]% {!</td><td>!} {!</td><td>!} [+ cpb_str_change_r_london +] {!</td></tr>!}
+
+[? if cnlp_r_london > 0: {!<tr><td><div class="box" style='background-color:#ffd600'> </div> !} CNLP: {!</td><td>!} {!</td><td>!} [+ cnlp_r_london +]% {!</td><td>!} {!</td><td>!} [+ cnlp_str_change_r_london +] {!</td></tr>!} ?]
+
+[? if ccp_r_london > 0: {!<tr><td><div class="box" style='background-color:#1375d6'> </div> !} CCP: {!</td><td>!} {!</td><td>!} [+ ccp_r_london +]% {!</td><td>!} {!</td><td>!} [+ ccp_str_change_r_london +] {!</td></tr>!} ?]
  
-{!<tr><td><div class="box" style='background-color:#ffbb00'> </div> !} Liberal: {!</td><td>!} {!</td><td>!} [+ lib_r_london +]% {!</td><td>!} {!</td><td>!} [+ lib_change_r_london +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#ffbb00'> </div> !} Liberal: {!</td><td>!} {!</td><td>!} [+ lib_r_london +]% {!</td><td>!} {!</td><td>!} [+ lib_str_change_r_london +] {!</td></tr>!}
  
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} {!</td><td>!} [+ other_r_london +] % {!</td><td>!} {!</td><td>!} [+ other_change_r_london +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} {!</td><td>!} [+ other_r_london +] % {!</td><td>!} {!</td><td>!} [+ other_str_change_r_london +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#002c6e'> </div> !} CUP: {!</td><td>!} {!</td><td>!} [+ cup_r_london +]% {!</td><td>!} {!</td><td>!} [+ cup_change_r_london +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#002c6e'> </div> !} CUP: {!</td><td>!} {!</td><td>!} [+ cup_r_london +]% {!</td><td>!} {!</td><td>!} [+ cup_str_change_r_london +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#262626'> </div> !} BUF: {!</td><td>!} {!</td><td>!} [+ buf_r_london +]% {!</td><td>!} {!</td><td>!} [+ buf_change_r_london +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#262626'> </div> !} BUF: {!</td><td>!} {!</td><td>!} [+ buf_r_london +]% {!</td><td>!} {!</td><td>!} [+ buf_str_change_r_london +] {!</td></tr>!}
+
 {!</table>!} 
 
 **Potential coalitions:**
