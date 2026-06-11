@@ -26,6 +26,11 @@ The London State Assembly elections are to be held now.
 on-arrival: {!
 
 for (const party of Q.parties) {
+    Q[party + '_votes_b4'] = Q[party + '_votes'];
+}
+
+
+for (const party of Q.parties) {
     Q['old_' + party + '_r_london'] = Q[party + '_r_london'];
 }
 
@@ -142,6 +147,13 @@ Q.cnlp_london = 0;
 Q.cup_london = 0;
 Q.buf_london = 0;
 Q.cpb_london = 0;
+
+!}
+on-departure: {!
+
+for (const party of Q.parties) {
+    Q[party + '_votes'] = Q[party + '_votes_b4'];
+}
 
 !}
 on-display: {!
