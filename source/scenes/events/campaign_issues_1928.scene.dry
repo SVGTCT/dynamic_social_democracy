@@ -56,6 +56,8 @@ on-arrival: urban_workers_lab += 1; other_workers_lab += 1; unemployed_lab += 1;
 
 This is our traditional position, and affirming it reduces dissent[? if book_revision: , especially since we broke tradition to ensure the *Book*'s passage, ?] and slightly improves our relations with the <span style="color: #ffd600;">**CNLP**</span>.
 
+- @horizon: Now, onto the *Horizon* issue.
+
 @relief
 on-arrival: other_workers_lab += 1; unemployed_lab += 1; white_collar_lab -= 2; upper_lab -= 5; farmers_lab += 1; urban_workers_cup += 1; pragmatist_dissent += 5; left_dissent += 5; reformist_dissent -= 5; labour_dissent += 5; marxist_dissent += 5; reformist_strength += 5; cnlp_relation += 5; lib_relation += 2;
 
@@ -64,3 +66,5 @@ This is a [? if book_revision: further ?] break from tradition, but, while Catho
 This is a policy advocated for by our idealist reformist wing in the Fabian Society. After all, Roman Catholics still face much discrimination in Britain, especially after the conflict in Ireland. Even for many Protestants, the image of <span style="color: #e67038;">Orange</span><span style="color: #070863;">men</span> brutally suppressing a Catholic parade in Belfast two years ago is still fresh.
 
 However, the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> has a field day with social conservatives, even workers. But they were not going to vote for us anyway.
+
+- @horizon: Now, onto the *Horizon* issue.
