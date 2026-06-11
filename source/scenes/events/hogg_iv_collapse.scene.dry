@@ -50,7 +50,7 @@ on-arrival: next_election_month = 5; next_election_time = 5; in_election = 1; ho
 
 Our task is to prepare for the next elections, where we stand to gain.
 
-Having failed to preserve the coalition, Prime Minister Douglas Hogg has stated he does not intend to contend for the premiership after the election and will resign from the leadership of the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span>.
+Having failed to preserve the coalition, Prime Minister Douglas Hogg has stated he does not intend to contend for the premiership after the election and will resign from the leadership of the <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span>.
 
 @ccp_for
 face-image: img-lab/portraits-lab/HoggDouglas.jpeg
