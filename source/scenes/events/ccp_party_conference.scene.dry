@@ -30,7 +30,7 @@ face-image: img-lab/portraits-lab/RennellRoddJames.jpg
 
 James Rennell Rodd has been selected as the leader of the <span style="color: #1375d6;">**CCP**</span>. He seems to represent a rightward turn from Hogg, and will preside over a <span style="color: #1375d6;">**CCP**</span> less inclined to compromise with the left. 
 
-Despite this, Kaas is committed to the current constitutional order and the republic. He maintains friendly relations with the Italians, whom he was ambassador to, which would be helpful in fostering an anti-German coalition,
+Despite this, Rennnell is committed to the current constitutional order and the republic. He maintains friendly relations with the Italians, whom he was ambassador to, which would be helpful in fostering an anti-German coalition,
 
 @percy
 unavailable-subtitle: [? if ccp_relation < 70: Our relations are not good enough. ?] [? if not ccp_london: We do not have the necessary influence. ?]
@@ -48,7 +48,7 @@ With our connections, especially with the London branch of the party, we have be
 choose-if: ccp_relation >= 60 and resources >= 1 and ccp_london
 view-if: ccp_relation < 70 and not london_fm == "Hume"
 unavailable-subtitle: [? if ccp_relation <= 60 : Our relations are not good enough. ?] [? if resources < 1 : We do not have enough resources. ?] [? if not ccp_london: We do not have the necessary influence. ?]
-subtitle: -1 resource. Percy is likely to be friendlier to us than Kaas.
+subtitle: -1 resource. Percy is likely to be friendlier to us than Rennnell.
 on-arrival: resources -= 1; ccp_leader = "Percy"; ccp_ideology = "Liberal"; white_collar_ccp -= 3; white_collar_cup += 2; white_collar_other += 2; white_collar_lab += 1; urban_workers_ccp += 2; other_workers_ccp += 8; ccp_relation += 4; ccp_disintegration += 1; lib_left += 2; cnlp_left += 1; cnlp_cohesion += 1;
 face-image: img-lab/portraits-lab/PercyEustace.jpg
 
