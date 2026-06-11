@@ -1,6 +1,19 @@
 title: Election
 on-arrival: {!
 
+if (Q.year == 1928) {
+    Q.lab_modifier = 1.032823995;
+    Q.ilp_modifier = 0;
+    Q.cup_modifier = 1.034164358;
+    Q.ccp_modifier = 1.063968953;
+    Q.cpb_modifier = 1.050649222;
+    Q.lib_modifier = 1.087679014;
+    Q.cnlp_modifier = 1.050443156;
+    Q.uup_modifier = 0.9600548603;
+    Q.buf_modifier = 0.9605763458;
+    Q.other_modifier = 0.9315323726;
+}
+
 function getRandom() {
   return Math.random();
 }
@@ -16,7 +29,7 @@ for (const party of Q.parties) {
 }
 
 for (const party of Q.parties) {
-    Q[party + '_votes'] = (Number(Q[party + '_votes'] * Q['turnout_modifier_' + party]));
+    Q[party + '_votes'] *= Q['turnout_modifier_' + party]));
 }
 
 for (const party of Q.parties) {
