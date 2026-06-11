@@ -36,6 +36,10 @@ for (const party of Q.parties) {
     Q['old_' + party + '_r'] = (Number(Q[party + '_r']));
 }
 
+for (const party of Q.parties) {
+    Q[party + '_r'] = Q[party + '_votes'];
+}
+
 Q.new_party_sum = 0;
 
 if (Q.constitutional_reform > 0) {
@@ -43,7 +47,7 @@ if (Q.constitutional_reform > 0) {
         if (Q[party + '_votes'] < Q.electoral_threshold || (Q.electoral_threshold > 1 && party == 'other') || Q[party + '_banned']) {
             Q[party + '_r'] = 0;
         } else {
-            Q[party + '_r'] = Q[party + '_votes']*Q[party + '_modifier'];
+            Q[party + '_r'] *= Q[party + '_modifier'];
         }
         Q.new_party_sum += Q[party + '_r'];
     }
