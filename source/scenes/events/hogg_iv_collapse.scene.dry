@@ -1,0 +1,84 @@
+title: Book of Common Prayer Crisis
+subtitle: The governing coalition faces off against itself
+new-page: true
+view-if: year = 1928 and month >= 2
+tags: event
+max-visits: 1
+face-image: img-lab/portraits-lab/WoodCharles.jpg
+
+= Book of Common Prayer Crisis
+
+One of the remnants of the old monarchist order is the tying of the Church of England to the Commonwealth government. When the <span style="color: #e31414;">**Labour**</span> Party tried to reverse this, it faced heavy resistance from the right.
+
+A push led by chaplains, who in the Great War saw the Church's *Book of Common Prayer* as "too Protestant", and Anglo-Catholics, led by Charles Wood, leader of the ecumenist Church Union, have joined forces with fellow interdenominationalists in the Church to propose a new *Book of Common Prayer*. As a formality, this has to be approved by the House of State.
+
+This follows broader efforts to end the discrimination British Catholics face, such as the failed 1926 Roman Catholic Relief Bill, which led to the CNLP withdrawing from government.
+
+First put to a vote in December of last year, critics such as Home Secretary Joynson-Hicks and senior parliamentarian Thomas Inskip conspired to stop what they see as an erosion of English identity, whipping the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> to prevent the *Book* from going into use.
+
+Now, after negotiations between <span style="color: #ffbb00;">liberals</span> and <span style="color: #002c6e;">conservatives</span> in the Cabinet, a modified version will be put up for a vote.
+
+The <span style="color: #e31414;">**Labour**</span> and <span class="tooltip-text" title="Communist Party of Britain (CPB)" style="color: #8e000a;">**Communist**</span> parties have historically abstained from these votes to protest the remaining influence of the Church in a supposedly secular government. However, the <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span>, to avoid the collapse of the coalition, has also abstained, meaning a revision which many of our members support could be put down, as well as damaging our relations with the <span style="color: #ffbb00;">liberal</span> parties.
+
+- @abstain: We will abstain from the vote.
+- @for: We will vote in favour of the new revision.
+
+@abstain
+subtitle: This is our expected decision.
+
+We have abstained from the vote, as was expected. The <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> does so as well.
+
+The <span style="color: #ffbb00;">liberal</span> parties currently hold 17.7% of House seats, whereas the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> holds 21.2% of seats. The special interest parties, with 3.6% of seats, join them in voting against, as do the <span class="tooltip-text" title="Ulster Unionist Party" style="color: #2f97ea;">**UUP**</span> and <span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span>, with 3.6% and 2.9% of seats, respectively. This means the decision is in the hands of the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span>.
+
+- @ccp_abstain: The <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> also abstains from the vote.
+- @ccp_for: Pressure the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> to vote for the revision.
+
+@ccp_abstain
+subtitle: The vote will fail.
+on-arrival: pro_republic -= 3; white_collar_cup += 3;
+face-image: img-lab/portraits-lab/InskipThomas.jpg
+
+The vote has failed, meaning that the <span style="color: #ffbb00;">liberal</span> parties will call a vote of no confidence, which the government will not be able to survive. Thus, the government has collapsed.
+
+Seeking to avoid humiliation, Prime Minister Hogg has called for snap elections to be scheduled for May, but the government will continue in a caretaker capacity.
+
+- @good: Great!
+
+@good
+on-arrival: next_election_month = 5; next_election_time = 5; in_election = 1; hogg_resigns = 1; urban_workers_lab += 1; other_workers_lab += 3;
+
+Our task is to prepare for the next elections, where we stand to gain.
+
+Having failed to preserve the coalition, Prime Minister Douglas Hogg has stated he does not intend to contend for the premiership after the election and will resign from the leadership of the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span>.
+
+@ccp_for
+face-image: img-lab/portraits-lab/InskipThomas.jpg
+subtitle: They are in a better position to suffer the consequences.
+choose-if: ccp_relation >= 60
+unavailable-subtitle: We do not have good enough relations.
+on-arrival: book_revision = 1; lib_ccp_collab += 1; white_collar_lab -= 3; upper_ccp -= 5; white_collar_ccp -= 3; white_collar_cup += 3; lib_relation += 2; cnlp_relation += 5; urban_workers_lab += 2; urban_workers_ccp += 2; other_workers_lib += 3; other_workers_cnlp += 3; urban_workers_cup -= 3; other_workers_cup -=5; upper_cup += 5;
+
+We canvass in favour of pro-revision voices in the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span>, leading to the party whipping its members to vote for the revision. While not all comply, enough do that the vote passes.
+
+The new *Book of Common Prayer* will begin to be used by the Church of England! This is a victory for the <span style="color: #ffbb00;">liberals</span> and serves to illustrate how out of touch the reactionaries are!
+
+Our relations with the <span style="color: #ffbb00;">liberals</span> have improved, and the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> bears the brunt of the weight of the decision. However, the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> is outraged and will call a vote of no confidence, which the government will not be able to survive. Thus, the government has collapsed.
+
+Seeking to avoid humiliation, Prime Minister Hogg has called for snap elections to be scheduled for May, but the government will continue in a caretaker capacity.
+
+- @good: Great!
+
+@for
+subtitle: This will be a change in course for the party.
+on-arrival: left_dissent += 5; marxist_dissent += 5; book_revision = 1; lib_ccp_collab += 1; white_collar_lab -= 6; upper_lab -= 6; white_collar_cup += 3; lib_relation += 5; cnlp_relation += 5; urban_workers_lab += 2; other_workers_lab += 3; other_workers_lib += 3; other_workers_cnlp += 3; urban_workers_cup -= 3; other_workers_cup -=5; upper_cup += 5;
+face-image: img-lab/portraits-lab/CraigJames.jpg
+
+We have voted for the revision, breaking course from our traditional abstentionism in Church matters. This angers the left wing of our party.
+
+However, the vote passes and the new *Book of Common Prayer* will begin to be used by the Church of England! This is a victory for the <span style="color: #ffbb00;">liberals</span> and serves to illustrate how out of touch the <span style="color: #1375d6;">reactionaries</span> are!
+
+Our relations with the <span style="color: #ffbb00;">liberals</span> have improved. However, the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> has abstained from the vote. Voting against it could have stopped the revision, which has angered its coalition partners, particularly the staunchly Anti-Catholic <span style="color: #2f97ea;">**Ulster Unionist Party**</span>, which has called for a vote of no confidence, which the government will not be able to survive. Thus, the government has collapsed.
+
+Seeking to avoid humiliation, Prime Minister Hogg has called for snap elections to be scheduled for May, but the government will continue in a caretaker capacity.
+
+- @good: Great!
