@@ -732,7 +732,7 @@ Q.no_majority_elections_london = 0;
 Q.elections_1932 = 0;
 Q.london_directrule_timer = 0;
 // elections are not on a timer, but rather, there is an indicator for whether you're in an electoral cycle.
-Q.in_election = 1;
+Q.in_election = 0;
 Q.in_election_london = 1;
 Q.next_election_time_london = 5;
 Q.next_election_year_london = 1928;
