@@ -266,13 +266,13 @@ go-to: coalition_menu
 
 [? if ilp_formed : {!<tr><td><div class="box" style='background-color:#9c0606'> </div> !}ILP: {!</td><td>!} [+ ilp_votes +]% {!</td><td>!} [+ ilp_r +]% {!</td><td>!} [+ str_change_ilp +] {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#8e000a'> </div> !}CPB: {!</td><td>!} [+ cpb_votes +]% {!</td><td>!} [+ cpb_r +]% {!</td><td>!} {!</td><td>!} [+ str_change_cpb +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#8e000a'> </div> !}CPB: {!</td><td>!} [+ cpb_votes +]% {!</td><td>!} [+ cpb_r +]% {!</td><td>!} [+ str_change_cpb +] {!</td></tr>!}
 
 [? if cnlp_r > 0: {!<tr><td><div class="box" style='background-color:#ffd600'> </div> !} CNLP: {!</td><td>!} [+ cnlp_votes +]% {!</td><td>!} [+ cnlp_r +]% {!</td><td>!} [+ str_change_cnlp +] {!</td></tr>!} ?]
 
 [? if ccp_r > 0: {!<tr><td><div class="box" style='background-color:#1375d6'> </div> !} CCP: {!</td><td>!} [+ ccp_minus_uup_votes +]% {!</td><td>!} [+ ccp_minus_uup_r +]% {!</td><td>!} [+ str_change_ccp +] {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#5eaeee'> </div> !} UUP: {!</td><td>!} 3.1% {!</td><td>!} {!</td><td>!} 3% {!</td><td>!} 0 {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#5eaeee'> </div> !} UUP: {!</td><td>!} 3.1% {!</td><td>!} 3% {!</td><td>!} 0 {!</td></tr>!}
 
 {!<tr><td><div class="box" style='background-color:#ffbb00'> </div> !} Liberal: {!</td><td>!} [+ lib_votes +]% {!</td><td>!} [+ lib_r +]% {!</td><td>!} [+ str_change_lib +] {!</td></tr>!}
  
