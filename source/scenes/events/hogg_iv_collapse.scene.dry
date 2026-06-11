@@ -25,18 +25,19 @@ The <span style="color: #e31414;">**Labour**</span> and <span class="tooltip-tex
 
 @abstain
 subtitle: This is our expected decision.
+face-image: img-lab/portraits-lab/InskipThomas.jpg
 
 We have abstained from the vote, as was expected. The <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> does so as well.
 
-The <span style="color: #ffbb00;">liberal</span> parties currently hold 17.7% of House seats, whereas the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> holds 21.2% of seats. The special interest parties, with 3.6% of seats, join them in voting against, as do the <span class="tooltip-text" title="Ulster Unionist Party" style="color: #2f97ea;">**UUP**</span> and <span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span>, with 3.6% and 2.9% of seats, respectively. This means the decision is in the hands of the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span>.
+The <span style="color: #ffbb00;">liberal</span> parties currently hold 17.7% of House seats, whereas the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> holds 21.2% of seats. The special interest parties, with 3.6% of seats, join them in voting against, as do the <span class="tooltip-text" title="Ulster Unionist Party" style="color: #2f97ea;">**UUP**</span> and <span class="tooltip-text" title="British Union of Fascists" style="color: #262626;">**BUF**</span>, with 3.6% and 2.9% of seats, respectively. This means the decision is in the hands of the <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span>.
 
-- @ccp_abstain: The <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> also abstains from the vote.
-- @ccp_for: Pressure the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> to vote for the revision.
+- @ccp_abstain: The <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> also abstains from the vote.
+- @ccp_for: Pressure the <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span>to vote for the revision.
 
 @ccp_abstain
 subtitle: The vote will fail.
 on-arrival: pro_republic -= 3; white_collar_cup += 3; book_failed = 1;
-face-image: img-lab/portraits-lab/InskipThomas.jpg
+face-image: img-lab/portraits-lab/HoggDouglas.jpeg
 
 The vote has failed, meaning that the <span style="color: #ffbb00;">liberal</span> parties will call a vote of no confidence, which the government will not be able to survive. Thus, the government has collapsed.
 
@@ -52,17 +53,17 @@ Our task is to prepare for the next elections, where we stand to gain.
 Having failed to preserve the coalition, Prime Minister Douglas Hogg has stated he does not intend to contend for the premiership after the election and will resign from the leadership of the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span>.
 
 @ccp_for
-face-image: img-lab/portraits-lab/InskipThomas.jpg
+face-image: img-lab/portraits-lab/HoggDouglas.jpeg
 subtitle: They are in a better position to suffer the consequences.
 choose-if: ccp_relation >= 60
 unavailable-subtitle: We do not have good enough relations.
 on-arrival: book_revision = 1; lib_ccp_collab += 1; white_collar_lab -= 3; upper_ccp -= 5; white_collar_ccp -= 3; white_collar_cup += 3; lib_relation += 2; cnlp_relation += 5; urban_workers_lab += 2; urban_workers_ccp += 2; other_workers_lib += 3; other_workers_cnlp += 3; urban_workers_cup -= 3; other_workers_cup -=5; upper_cup += 5;
 
-We canvass in favour of pro-revision voices in the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span>, leading to the party whipping its members to vote for the revision. While not all comply, enough do that the vote passes.
+We canvass in favour of pro-revision voices in the <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span>, leading to the party whipping its members to vote for the revision. While not all comply, enough do that the vote passes.
 
 The new *Book of Common Prayer* will begin to be used by the Church of England! This is a victory for the <span style="color: #ffbb00;">liberals</span> and serves to illustrate how out of touch the reactionaries are!
 
-Our relations with the <span style="color: #ffbb00;">liberals</span> have improved, and the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> bears the brunt of the weight of the decision. However, the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> is outraged and will call a vote of no confidence, which the government will not be able to survive. Thus, the government has collapsed.
+Our relations with the <span style="color: #ffbb00;">liberals</span> have improved, and the <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> bears the brunt of the weight of the decision. However, the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> is outraged and will call a vote of no confidence, which the government will not be able to survive. Thus, the government has collapsed.
 
 Seeking to avoid humiliation, Prime Minister Hogg has called for snap elections to be scheduled for May, but the government will continue in a caretaker capacity.
 
