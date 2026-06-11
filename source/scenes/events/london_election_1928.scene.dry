@@ -120,34 +120,34 @@ go-to: coalition_menu
 
 {!<table>!} 
 {!<tr><td>Party</td><td>Result</td><td>% Change</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#e31414; outline: 2px; outline-style: solid;'> </div> !} **Labour:** {!</td><td>!} [+ lab_r_london +]% {!</td><td>!} [+ lab_change_r_london +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#e31414; outline: 2px; outline-style: solid;'> </div> !} **Labour:** {!</td><td>!} {!</td><td>!} [+ lab_r_london +]% {!</td><td>!} {!</td><td>!} [+ lab_change_r_london +] {!</td></tr>!}
 
-[? if ilp_formed : {!<tr><td><div class="box" style='background-color:#9c0606'> </div> !}ILP: {!</td><td>!} [+ ilp_r_london +] {!</td><td>!} [+ ilp_change_r_london +] {!</td></tr>!} ?]
+[? if ilp_formed : {!<tr><td><div class="box" style='background-color:#9c0606'> </div> !}ILP: {!</td><td>!} {!</td><td>!} [+ ilp_r_london +] {!</td><td>!} {!</td><td>!} [+ ilp_change_r_london +] {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#8e000a'> </div> !}CPB: {!</td><td>!} [+ cpb_r_london +]% {!</td><td>!} {!</td><td>!} [+ cpb_change_r_london +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#8e000a'> </div> !}CPB: {!</td><td>!} {!</td><td>!} [+ cpb_r_london +]% {!</td><td>!} {!</td><td>!} {!</td><td>!} [+ cpb_change_r_london +] {!</td></tr>!}
 
-[? if cnlp_r_london > 0: {!<tr><td><div class="box" style='background-color:#ffd600'> </div> !} CNLP: {!</td><td>!} [+ cnlp_r_london +]% {!</td><td>!} [+ cnlp_change_r_london +] {!</td></tr>!} ?]
+[? if cnlp_r_london > 0: {!<tr><td><div class="box" style='background-color:#ffd600'> </div> !} CNLP: {!</td><td>!} {!</td><td>!} [+ cnlp_r_london +]% {!</td><td>!} {!</td><td>!} [+ cnlp_change_r_london +] {!</td></tr>!} ?]
 
-[? if ccp_r_london > 0: {!<tr><td><div class="box" style='background-color:#1375d6'> </div> !} CCP: {!</td><td>!} [+ ccp_r_london +]% {!</td><td>!} [+ ccp_change_r_london +] {!</td></tr>!} ?]
-
-{!<tr><td><div class="box" style='background-color:#ffbb00'> </div> !} Liberal: {!</td><td>!} [+ lib_r_london +]% {!</td><td>!} [+ lib_change_r_london +] {!</td></tr>!}
+[? if ccp_r_london > 0: {!<tr><td><div class="box" style='background-color:#1375d6'> </div> !} CCP: {!</td><td>!} {!</td><td>!} [+ ccp_r_london +]% {!</td><td>!} {!</td><td>!} [+ ccp_change_r_london +] {!</td></tr>!} ?]
  
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_r_london +] % {!</td><td>!} [+ other_change_r_london +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#ffbb00'> </div> !} Liberal: {!</td><td>!} {!</td><td>!} [+ lib_r_london +]% {!</td><td>!} {!</td><td>!} [+ lib_change_r_london +] {!</td></tr>!}
+ 
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} {!</td><td>!} [+ other_r_london +] % {!</td><td>!} {!</td><td>!} [+ other_change_r_london +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#002c6e'> </div> !} CUP: {!</td><td>!} [+ cup_r_london +]% {!</td><td>!} [+ cup_change_r_london +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#002c6e'> </div> !} CUP: {!</td><td>!} {!</td><td>!} [+ cup_r_london +]% {!</td><td>!} {!</td><td>!} [+ cup_change_r_london +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#262626'> </div> !} BUF: {!</td><td>!} [+ buf_r_london +]% {!</td><td>!} [+ buf_change_r_london +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#262626'> </div> !} BUF: {!</td><td>!} {!</td><td>!} [+ buf_r_london +]% {!</td><td>!} {!</td><td>!} [+ buf_change_r_london +] {!</td></tr>!}
 {!</table>!} 
 
 **Potential coalitions:**
 
-<span style="color: #005eb8;">National</span> <span style="color: #00b041;">Coalition</span> (<span style="color: #e31414;">**Labour**</span> + <span style="color: #1375d6;">**CCP**</span> + <span style="color: #ffd600;">**CNLP**</span>): [+ national_coalition +]%
+<span style="color: #005eb8;">National</span> <span style="color: #00b041;">Coalition</span> (<span style="color: #e31414;">**Labour**</span> + <span style="color: #1375d6;">**CCP**</span> + <span style="color: #ffd600;">**CNLP**</span>): [+ national_coalition_london +]%
 
-Grand Coalition (<span style="color: #e31414;">**Labour**</span> + <span style="color: #1375d6;">**CCP**</span> + <span style="color: #ffd600;">**CNLP**</span> + <span style="color: #ffbb00;">**Liberals**</span>): [+ grand_coalition +]%
+Grand Coalition (<span style="color: #e31414;">**Labour**</span> + <span style="color: #1375d6;">**CCP**</span> + <span style="color: #ffd600;">**CNLP**</span> + <span style="color: #ffbb00;">**Liberals**</span>): [+ grand_coalition_london +]%
 
-Bourgeois Coalition (<span style="color: #1375d6;">**CCP**</span> + <span style="color: #5eaeee;">**UUP**</span> + <span style="color: #ffd600;">**CNLP**</span> + <span style="color: #ffbb00;">**Liberals**</span> + <span style="color: #a0a0a0;">**Others**</span>): [+ bourgeois_coalition +]%
+Bourgeois Coalition (<span style="color: #1375d6;">**CCP**</span> + <span style="color: #5eaeee;">**UUP**</span> + <span style="color: #ffd600;">**CNLP**</span> + <span style="color: #ffbb00;">**Liberals**</span> + <span style="color: #a0a0a0;">**Others**</span>): [+ bourgeois_coalition_london +]%
 
-Right-wing Coalition (<span style="color: #1375d6;">**CCP**</span> + <span style="color: #5eaeee;">**UUP**</span> + <span style="color: #ffbb00;">**Liberals**</span> + <span style="color: #a0a0a0;">**Others**</span> + <span style="color: #002c6e;">**CUP**</span>): [+ right_coalition +]%
+Right-wing Coalition (<span style="color: #1375d6;">**CCP**</span> + <span style="color: #5eaeee;">**UUP**</span> + <span style="color: #ffbb00;">**Liberals**</span> + <span style="color: #a0a0a0;">**Others**</span> + <span style="color: #002c6e;">**CUP**</span>): [+ right_coalition_london +]%
 
 [? if fascist_urgency <= 1 and buf_r_london >= 15 : The rapid rise in BUF votes is extremely worrying. Many had believed that the party was moribund; now, some of us consider it to be the greatest threat to democracy in Britain. ?]
 
@@ -161,7 +161,7 @@ There are some potential coalition arrangements.
 
 @national_coalition_london_ccp
 title: We can form a <span style="color: #005eb8;">National</span> <span style="color: #00b041;">Coalition</span>!
-subtitle: <span style="color: #e31414;">**Labour**</span> + <span style="color: #1375d6;">**CCP**</span> + <span style="color: #ffd600;">**CNLP**</span> ([+ national_coalition_london +])
+subtitle: <span style="color: #e31414;">**Labour**</span> + <span style="color: #1375d6;">**CCP**</span> + <span style="color: #ffd600;">**CNLP**</span> ([+ national_coalition_london +]%)
 view-if: national_coalition_london >= 50 and ccp_gone = 0
 on-arrival: lab_london = 1; ccp_london = 1; cnlp_london = 1; reformist_dissent -= 10; cnlp_relation += 5; ccp_relation += 5; in_national_coalition_london = 1; pro_republic += 3 if year >= 1929;
 
