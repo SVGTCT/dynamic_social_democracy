@@ -12,7 +12,7 @@ Now that we are into the campaign, there are several issues we must discuss.
 
 The War Ministry is lobbying for a naval modernisation program centred on the construction of a new battlecruiser, the *BCS Horizon*. The bourgeois parties are united in support, and the <span style="color: #ffd600;">**CNLP**</span> is likely to yield to right-wing pressure. A vote on the project is expected once a new government is formed after the May elections.
 
-This presents us with an opportunity: we could campaign against the ship’s construction and demand its cancellation in favour of greater social spending. The workers have rallied behind our slogan, "CS: Children's Meals Not Commonwealth Ship", but the mire of coalition politics may yet force us to backtrack—should we enter government.
+This presents us with an opportunity: we could campaign against the ship’s construction and demand its cancellation in favour of greater social spending. The workers have rallied behind our slogan, "CS: Children's Meals Not Commonwealth Ship", but the mire of coalition politics may yet force us to backtrack -- should we enter government.
 
 Additionally, there is the issue of the Church of England's *Book of Common Prayer*. [? if book_failed: A blow to <span style="color: #ffbb00;">liberals</span> and <span style="color: #53a84f;">progressives</span>, the vote failed due to the left's abstention. ?] [? if book_revision: In a major win for the <span style="color: #53a84f;">progressive</span> movement, the ecumenist revision passed! ?]
 
@@ -38,7 +38,7 @@ Our catchy slogan has helped rally the workers’ vote and limit defections to t
 @pro_ship
 on-arrival: urban_workers_cpb += 2; unemployed_cpb += 2; labour_dissent += 5; left_dissent += 5; marxist_dissent += 5; cpb_relation -= 6; horizon_campaign = 0; pragmatist_strength += 5;
 
-Our silence has left the <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> as the sole party vocally opposing the ship’s construction—and they waste no time accusing us of betrayal. The Left and Labour factions voice their displeasure.
+Our silence has left the <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> as the sole party vocally opposing the ship’s construction. They waste no time accusing us of betrayal. The Left and Labour factions voice their displeasure.
 
 - @book: Now, onto the *Book* issue.
 
@@ -54,17 +54,17 @@ How should we deal with the *Book* issue?
 @secular
 on-arrival: urban_workers_lab += 1; other_workers_lab += 1; unemployed_lab += 1; white_collar_lab -= 1; upper_lab -= 5; farmers_lab -= 2; pragmatist_dissent -= 5; left_dissent -= 5; reformist_dissent -= 5; labour_dissent -= 5; marxist_dissent -= 5; cnlp_relation += 2;
 
-This is our traditional position, and affirming it reduces dissent[? if book_revision: , especially since we broke tradition to ensure the *Book*'s passage, ?] and slightly improves our relations with the <span style="color: #ffd600;">**CNLP**</span>.
+This is our traditional position, and affirming it reduces dissent[? if book_revision: , especially since we broke tradition to ensure the *Book* 's passage, ?] and slightly improves our relations with the <span style="color: #ffd600;">**CNLP**</span>.
 
 - @horizon: Now, onto the *Horizon* issue.
 
 @relief
 on-arrival: other_workers_lab += 1; unemployed_lab += 1; white_collar_lab -= 2; upper_lab -= 5; farmers_lab += 1; urban_workers_cup += 1; pragmatist_dissent += 5; left_dissent += 5; reformist_dissent -= 5; labour_dissent += 5; marxist_dissent += 5; reformist_strength += 5; cnlp_relation += 5; lib_relation += 2;
 
-This is a [? if book_revision: further ?] break from tradition, but, while Catholics are not a major voting bloc in Britain, it helps us win some votes, and improves our relations with the <span style="color: #ffbb00;">liberas</span> parties, especially the <span style="color: #ffd600;">**CNLP**</span>.
+This is a [? if book_revision: further ?] break from tradition, but, while Catholics are not a major voting bloc in Britain, it helps us win some votes, and improves our relations with the <span style="color: #ffbb00;">liberal</span> parties, especially the <span style="color: #ffd600;">**CNLP**</span>.
 
 This is a policy advocated for by our idealist reformist wing in the Fabian Society. After all, Roman Catholics still face much discrimination in Britain, especially after the conflict in Ireland. Even for many Protestants, the image of <span style="color: #e67038;">Orange</span><span style="color: #070863;">men</span> brutally suppressing a Catholic parade in Belfast two years ago is still fresh.
 
-However, the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> has a field day with social conservatives, even workers. But they were not going to vote for us anyway.
+However, the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> has a field day rallying Protestant social conservatives, even workers, against this. But they were not going to vote for us anyway.
 
 - @horizon: Now, onto the *Horizon* issue.
