@@ -42,7 +42,7 @@ if (Q.cpb_relation >= 60 and Q.cpb_leader == "Conciliators") {
 
 Q.anti_jpa_coalition = Q.buf_r + Q.cup_r + Q.other_r + Q.uup_r + 3;
 
-!};
+!}
 go-to: jpa_passed if jpa_coalition > anti_jpa_coalition; jpa_failed
 
 @jpa_passed
@@ -67,6 +67,9 @@ However, this improves our relations with the <span style="color: #ffbb00;">libe
 
 @rcra
 view-if: rcra_passed = 0
+subtitle: British Catholics face discrimination from the <span style="color: #e67038;">**Orange**</span><span style="color: #070863;">**men**</span>\...\
+choose-if: rcra_support = 1 and church_separation = 0
+unavailable subtitle: [? if not rcra_support: This is not party policy. ?] [? if church_separation: Constitutional scholars in the party argue this would contradict our reforms to it. ?]
 on-arrival: {!
 
 Q.rcra_coalition = Q.lab_r + Q.lib_r + Q.cnlp_r + Q.ilp_r;
@@ -78,9 +81,6 @@ if (Q.ccp_relation >= 70 or Q.ccp_leader == "Percy") {
              
 Q.anti_rcra_coalition = Q.buf_r + Q.cup_r + Q.other_r + 9;             
 !}
-subtitle: British Catholics face discrimination from the <span style="color: #e67038;">**Orange**</span><span style="color: #070863;">**men**</span>\...\
-choose-if: rcra_support = 1 and church_separation = 0
-unavailable subtitle: [? if not rcra_support: This is not party policy. ?] [? if church_separation: Constitutional scholars in the party argue this would contradict our reforms to it. ?]
 
 The Roman Catholic Relief Bill was first introduced in 1926 by the <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span>, and seeks to write into law a removal of all remaining social barriers that British Catholics face, building on the Constitution's recognition of religious equality.
 
