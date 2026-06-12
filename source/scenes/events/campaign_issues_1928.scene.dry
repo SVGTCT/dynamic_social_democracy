@@ -61,7 +61,7 @@ This is our traditional position, and affirming it reduces dissent[? if book_rev
 - @horizon: Now, onto the *Horizon* issue.
 
 @relief
-on-arrival: other_workers_lab += 1; unemployed_lab += 1; white_collar_lab -= 2; upper_lab -= 5; farmers_lab += 1; urban_workers_cup += 1; pragmatist_dissent += 5; left_dissent += 5; reformist_dissent -= 5; labour_dissent += 5; marxist_dissent += 5; reformist_strength += 5; cnlp_relation += 5; lib_relation += 2;
+on-arrival: rcra_support = 1; other_workers_lab += 1; unemployed_lab += 1; white_collar_lab -= 2; upper_lab -= 5; farmers_lab += 1; urban_workers_cup += 1; pragmatist_dissent += 5; left_dissent += 5; reformist_dissent -= 5; labour_dissent += 5; marxist_dissent += 5; reformist_strength += 5; cnlp_relation += 5; lib_relation += 2;
 
 This is a [? if book_revision: further ?] break from tradition, but, while Catholics are not a major voting bloc in Britain, it helps us win some votes, and improves our relations with the <span style="color: #ffbb00;">liberal</span> parties, especially the <span style="color: #ffd600;">**CNLP**</span>.
 
