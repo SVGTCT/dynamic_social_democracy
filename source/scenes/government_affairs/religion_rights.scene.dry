@@ -42,7 +42,7 @@ if (Q.cpb_relation >= 60 and Q.cpb_leader == "Conciliators") {
 
 Q.anti_jpa_coalition = Q.buf_r + Q.cup_r + Q.other_r + Q.uup_r + 3;
 
-!}
+!};
 go-to: jpa_passed if jpa_coalition > anti_jpa_coalition; jpa_failed
 
 @jpa_passed
