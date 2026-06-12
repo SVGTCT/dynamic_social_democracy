@@ -2,17 +2,15 @@ title: Religious Rights
 new-page: true
 is-card: true
 tags: govt_affairs, cabinet
-#view-if: (lab_in_government = 1 and religion_rights_timer = 0 and pm_party == "Lab") and ((church_separation = 0) or (jpa_passed = 0 and buf_votes >= 15 and fascist_urgency >= 1) or (rcra_passed = 0) or (book_revision = 0))
+view-if: (lab_in_government = 1 and religion_rights_timer = 0 and pm_party == "Lab") and ((church_separation = 0) or (jpa_passed = 0 and buf_votes >= 15 and fascist_urgency >= 1) or (rcra_passed = 0) or (book_revision = 0))
 on-arrival: religion_rights_timer += 10; month_actions += 1
 card-image: img-lab/portraits-lab/KaplanskyShlomo.jpg
 frequency: 50
 go-to: religion_menu
 
-#note for testing: view-if condition removed. Remember to revert back.
+= Religious Rights
 
 @religion_menu
-
-= Religious Rights
 
 According to the Constitution, freedom of religion is guaranteed. However, this is not followed in practice. A holdover of the monarchist era, the Church of England is still tied to the state despite nominal separation of church and state, and religious minorities such as Catholics and Jews face discrimination and intimidation from organisations such as the <span style="color: #e67038;">**Orange**</span><span style="color: #070863;">**men**</span> and <span style="color: #262626;">**Blackshirts**</span>.
 
