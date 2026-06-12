@@ -1999,7 +1999,7 @@ This coalition arrangement is tolerable to all.
 @drop_labour
 title: Drop the Labour Ministry.
 view-if: lab_labour = 1
-on-arrival: lab_labour = 0; ; leverage += 4;
+on-arrival: lab_labour = 0; leverage += 4;
 tags: drop_mins_1928
 go-to: ministries
 
