@@ -2026,7 +2026,7 @@ go-to: ministries
 
 @drop_justice
 title: Drop the Justice Ministry.
-view-if: lab_justice = 1;
+view-if: lab_justice
 on-arrival: lab_justice = 0; leverage += 10;
 tags: drop_mins_1928
 go-to: ministries
