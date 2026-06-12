@@ -90,11 +90,11 @@ for (const party of Q.parties) {
 for (const party of Q.parties) {
     if (Q[party + '_change_r_london'] > 0) {
         Q[party + '_str_change_r_london'] = '<img src=img/arrowup.png>' +  Q[party + '_change_r_london'];
-    }
-
-    if (Q[party + '_change_r_london'] < 0) {
+    } else if (Q[party + '_change_r_london'] < 0) {
         Q[party + '_change_r_london'] *= -1;
         Q[party + '_str_change_r_london'] = '<img src=img/arrowdown.png>' +  Q[party + '_change_r_london'];
+    } else {
+        Q['str_change_' + party] = '<img src=img/steady.png';
     }
 }
 
