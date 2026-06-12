@@ -98,7 +98,7 @@ for (const party of Q.parties) {
         Q[party + '_change_r'] *= -1;
         Q['str_change_' + party] = '<img src=img/arrowdown.png>' +  Q[party + '_change_r'];
     } else {
-        Q['str_change_' + party] = '<img src=img/steady.png';
+        Q['str_change_' + party] = '<img src=img/steady.png>';
     }
 }
 !}
