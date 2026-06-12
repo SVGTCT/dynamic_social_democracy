@@ -82,7 +82,7 @@ go-to: fdf_ban_1931 if year >= 1931; fdf_ban_128
 @fdf_ban_1928
 choose-if: met_loyalty >= 0.5
 unavailable-subtitle: [? if met_loyalty < 0.5: The police are not loyal enough to be trusted with this. ?]
-on-departure: fdf_strength -= 0.1; fdf_militancy -= 0.1; local_police_loyalty -= 0.025; met_loyalty -= 0.01; mil_loyalty -= 0.025; Q.buf_modifier_london -= 0.2; buf_modifier_london -= 0.05 if unemployed < 15; unemployed_buf += 5 if buf_votes > 10; unemployed_lab -= 5 if buf_votes > 10; urban_workers_lab += 1; fdf_banned_london = 1;
+on-departure: fdf_strength -= 0.1; fdf_militancy -= 0.1; local_police_loyalty -= 0.025; met_loyalty -= 0.01; mil_loyalty -= 0.025; buf_modifier_london -= 0.2; buf_modifier_london -= 0.05 if unemployed < 15; unemployed_buf += 5 if buf_votes > 10; unemployed_lab -= 5 if buf_votes > 10; urban_workers_lab += 1; fdf_banned_london = 1;
 face-image: img-lab/portraits-lab/MosleyOswald.jpg
 
 The Fascist Defence Force, the personal bodyguard of <span style="color: #262626; text-decoration: bold">Fascist</span> party leader Oswald Mosley, is small in number but far more militarised than the ordinary <span style="color: #262626; text-decoration: bold">Blackshirts</span>.
@@ -96,7 +96,7 @@ Oswald Mosley, fearful of his life, now retreats back into Berkshire, where the 
 @fdf_ban_1931
 choose-if: met_loyalty >= 0.85 and union_loyalty >= 0.85
 unavailable-subtitle: [? if (met_loyalty < 0.85 and year >= 1931): The police are not loyal enough to be trusted with this. ?][? if (unions_loyalty < 85 and year >= 1931): Our forces will not be able to hold back the reaction of the <span style="color: #262626; text-decoration: bold">Blackshirts</span>. ?]
-on-departure: fdf_strength -= 0.1; fdf_militancy -= 0.1; local_police_loyalty -= 0.025; met_loyalty -= 0.01; mil_loyalty -= 0.025; Q.buf_modifier_london -= 0.2; buf_modifier_london -= 0.05 if unemployed < 15; unemployed_buf += 5 if buf_votes > 10; unemployed_lab -= 5 if buf_votes > 10; urban_workers_lab += 1; fdf_banned_london = 1;
+on-departure: fdf_strength -= 0.1; fdf_militancy -= 0.1; local_police_loyalty -= 0.025; met_loyalty -= 0.01; mil_loyalty -= 0.025; buf_modifier_london -= 0.2; buf_modifier_london -= 0.05 if unemployed < 15; unemployed_buf += 5 if buf_votes > 10; unemployed_lab -= 5 if buf_votes > 10; urban_workers_lab += 1; fdf_banned_london = 1;
 face-image: img-lab/portraits-lab/MosleyOswald.jpg
 
 The Fascist Defence Force, the personal bodyguard of <span style="color: #262626; text-decoration: bold">Fascist</span> party leader Oswald Mosley, is small in number but far more militarised than the ordinary <span style="color: #262626; text-decoration: bold">Blackshirts</span>.
