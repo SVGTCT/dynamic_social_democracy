@@ -26,7 +26,7 @@ Below are some actions that will be available. Others: further crackdowns etc., 
 - @wip12: Crack down on the reactionary media.
 - @wip13: Crack down on the communist trade unions.
 - @wip14: Introduce a state ban on the CUP.
-- @wip15: Introduce a state ban on the FDF.
+- @fdf_ban: Introduce a state ban on the FDF.
 - @wip2: Renegotiate our ruling coalition.
 - @wip3: Renegotiate our ruling coalition.
 - @wip4: Call for a snap election.
@@ -73,8 +73,20 @@ go-to: wip
 @wip14
 go-to: wip
 
-@wip15
-go-to: wip
+@fdf_ban
+view-if: ((year = 1928 and month >= 5) or (year >= 1929)) and fdf_banned_london = 0;
+choose-if: met_loyalty >= 0.5 if year < 1931; met_loyalty >= 0.85 if year >= 1931; unions_loyalty >= 85 if year >= 1931;
+unavailable-subtitle: [? if met_loyalty < 0.5: The police are not loyal enough to be trusted with this. ?] [? if (met_loyalty < 0.85 and year >= 1931): The police are not loyal enough to be trusted with this. ?][? if (unions_loyalty < 85 and year >= 1931): Our forces will not be able to hold back the reaction of the <span style="color: #262626; text-decoration: bold">Blackshirts</span>. ?]
+on-departure: fdf_strength -= 0.1; fdf_militancy -= 0.1; local_police_loyalty -= 0.025; met_loyalty -= 0.01; mil_loyalty -= 0.025; Q.buf_modifier_london -= 0.2; buf_modifier_london -= 0.05 if unemployed < 15; unemployed_buf += 5 if buf_votes > 10; unemployed_lab -= 5 if buf_votes > 10; urban_workers_lab += 1; fdf_banned_london = 1;
+face-image: img-lab/portraits-lab/MosleyOswald.jpg
+
+The Fascist Defence Force, the personal bodyguard of <span style="color: #262626; text-decoration: bold">Fascist</span> party leader Oswald Mosley, is small in number but far more militarised than the ordinary <span style="color: #262626; text-decoration: bold">Blackshirts</span>.
+
+In London, all the <span style="color: #005eb8;">constitutional</span> <span style="color: #00b041;">parties</span> agree that they are nothing but a nuisance at best, and an active threat to democracy at worst. 
+
+[? if buf_votes <= 10: Thus, they are banned without much hassle, even though the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> questions the state government spending time on such a non-issue. ?][? if buf_votes > 10: They are banned, but not without a fight from the span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> and the <span style="color: #262626; text-decoration: bold">Fascists</span> themselves. ?]
+
+Oswald Mosley, fearful of his life, now retreats back into Berkshire, where the conservative-minded state government has no problem with his antics, and also where he launched the 1923 failed "March on London" from Reading.
 
 @wip
 
