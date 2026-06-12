@@ -163,13 +163,16 @@ Q.cpb_london = 0;
 // Unions (can mobilise in national crisis), Nationalist Paramilitaries (Sinn Fein's IRA), BUF Blackshirts & FDF, Gentlemen's Clubs (can mobilise in national crisis)
 Q.union_strength = 4800;
 Q.union_militancy = 0.00;
+Q.union_loyalty = 95;
+Q.communist_unions = 5;
+Q.ilp_unions = 0;
 Q.ira_strength = 2;
-Q.ira_militancy = 0.2;
+Q.ira_militancy = 0.3;
 Q.blackshirts_strength = 40;
 Q.blackshirts_militancy = 0.2;
 Q.fdf_strength = 0.3;
-Q.fdf_militancy = 0.2;
-Q.clubs_strength = 50;
+Q.fdf_militancy = 0.3;
+Q.clubs_strength = 500;
 Q.clubs_militancy = 0.05;
 
 // Police & armed forces strength goes here
