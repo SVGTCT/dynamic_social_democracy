@@ -93,12 +93,12 @@ for (const party of Q.parties) {
 
 for (const party of Q.parties) {
     if (Q[party + '_change_r'] > 0) {
-        Q[party + '_str_change_r'] = '<img src=img/arrowup.png>' +  Q[party + '_change_r'];
-    }
-
-    if (Q[party + '_change_r'] < 0) {
+        Q['str_change_' + party] = '<img src=img/arrowup.png>' +  Q[party + '_change_r'];
+    } else if (Q[party + '_change_r'] < 0) {
         Q[party + '_change_r'] *= -1;
-        Q[party + '_str_change_r'] = '<img src=img/arrowdown.png>' +  Q[party + '_change_r'];
+        Q['str_change_' + party] = '<img src=img/arrowdown.png>' +  Q[party + '_change_r'];
+    } else {
+        Q['str_change_' + party] = '<img src=img/steady.png';
     }
 }
 !}
