@@ -30,12 +30,12 @@ on-arrival: {!
 
 Q.jpa_coalition = Q.lab_r + Q.lib_r + Q.cnlp_r + Q.ilp_r;
 
-if (Q.ccp_relation >= 70 or Q.ccp_leader = "Percy") {
+if (Q.ccp_relation >= 70 or Q.ccp_leader == "Percy") {
     Q.jpa_coalition += Q.ccp_r - 6;
     Q.ccp_jpa = 1;
 }  
 
-if (Q.cpb_relation >= 60 and Q.cbp_leader = "Conciliators") {
+if (Q.cpb_relation >= 60 and Q.cbp_leader == "Conciliators") {
     Q.jpa_coalition += Q.cpb_r;
     Q.cpb_jpa = 1;
 }  
@@ -70,7 +70,7 @@ on-arrival: {!
 
 Q.rcra_coalition = Q.lab_r + Q.lib_r + Q.cnlp_r + Q.ilp_r;
 
-if (Q.ccp_relation >= 70 or Q.ccp_leader = "Percy") {
+if (Q.ccp_relation >= 70 or Q.ccp_leader == "Percy") {
     Q.rcra_coalition += Q.ccp_r - 9;
     Q.ccp_rcra = 1;
 }  
