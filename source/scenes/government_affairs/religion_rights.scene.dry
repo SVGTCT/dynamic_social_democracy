@@ -1,0 +1,109 @@
+title: Religious Rights
+new-page: true
+is-card: true
+tags: govt_affairs, cabinet
+view-if: (lab_in_government = 1 and religion_rights_timer = 0 and pm_party == "Lab") and ((church_separation = 0) or (jpa_passed = 0 and buf_votes >= 15 and fascist_urgency >= 1) or (rcra_passed = 0) or (book_revision = 0))
+on-arrival: religion_rights_timer += 10; month_actions += 1
+card-image: img/portraits/KaplanskyShlomo.jpg
+frequency: 50
+go-to: religion_menu
+
+@religion_menu
+
+= Religious Rights
+
+According to the Constitution, freedom of religion is guaranteed. However, this is not followed in practice. A bygone of the monarchist era, the Church of England is still tied to the state despite nominal separation of church and state, and religious minorities such as Catholics and Jews face discrimination and intimidation from organisations such as the <span style="color: #e67038;">**Orange**</span><span style="color: #070863;">**men**</span> and <span style="color: #262626;">**Blackshirts**</span>.
+
+The <span style="color:red">left</span>, <span style="color: #ffbb00;">liberals</span> and <span style="color: #53a84f;">progressives</span> support the separation of church and state and protections for religious minorities. However, only <span style="color: #e31414;">**Labour**</span> has the political capital to actually make these changes law.
+  
+- @jewish_pa: We must introduce the Jewish Protection Act.
+- @rcra: We must introduce the Roman Catholic Relief Act.
+- @prayer_book: Support the proposed revisions to the CofE's *Book of Common Prayer*.
+- @separation: Pass a constitutional amendment to finalise the separation of church and state.
+- @root: We will not do anything about religious rights at this time.
+- @easydiscard
+
+@jewish_pa
+view-if: jpa_passed = 0 and buf_votes >= 15 and fascist_urgency >= 1
+subtitle: British Jews face discrimination from the <span style="color: #262626;">**Fascists**</span>...
+on-arrival: {!
+
+Q.jpa_coalition = Q.lab_r + Q.lib_r + Q.cnlp_r + Q.ilp_r;
+
+if (Q.ccp_relation >= 70 or Q.ccp_leader = "Percy") {
+    Q.jpa_coalition += Q.ccp_r - 6;
+    Q.ccp_jpa = 1;
+}  
+
+if (Q.cpb_relation >= 60 and Q.cbp_leader = "Conciliators") {
+    Q.jpa_coalition += Q.cpb_r;
+    Q.cpb_jpa = 1;
+}  
+
+Q.anti_jpa_coalition = Q.buf_r + Q.cup_r + Q.other_r + Q.uup_r + 3;             
+!}
+go-to: jpa_passed if jpa_coalition > anti_jpa_coalition; jpa_failed
+
+@jpa_passed
+on-arrival: jpa_passed = 1; white_collar_lab += 3; white_collar_cnlp += 2; white_collar_lib += 2; blackshirts_strength -= 5; blackshirts_strength -= 5 if blackshirts_strength > 100; blackshirts_militancy -= 0.025; urban_workers_buf -= 1; cnlp_relation += 5; lib_relation += 2;
+
+With a coalition of <span style="color: #e31414;">**Labour**</span>, the <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span>, [? if ccp_jpa and not cpb_jpa: the <span style="color: #ffbb00;">**Liberal Party**</span> and the <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span>, ] [? if not ccp_jpa and cpb_jpa: the <span style="color: #ffbb00;">**Liberal Party**</span> and the <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span>, ][? if ccp_jpa and cpb_jpa: the <span style="color: #ffbb00;">**Liberal Party**</span>, the <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span>, and the <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span>, ][? if ccp_jpa and not cpb_jpa: and the <span style="color: #ffbb00;">**Liberal Party**</span>, ] we pass the **Jewish Protection Act** (JPA), proposed by <span style="color: #e31414;">**Labour**</span> politicians like Shlomo Kaplansky, and other British Jews, particularly in the liberal parties.
+  
+The JPA criminalises anti-semitic incitment to violence and discrimination against British Jews, which Mosley's <span style="color: #262626;">**BUF**</span> was more than happy to use to their advantage, even promoting the "stab in the back" theory that Jews lost Britain the Great War, instead of poor military decision-making. 
+
+However, we will have to see if Mosley actually follows the law, which is unlikely, and whether the police and courts will bring him to justice if, or when, he breaks it.  
+  
+@jpa_failed  
+on-arrival: jpa_failed = 1; blackshirts_strength += 5; blackshirts_militancy += 0.025; cnlp_relation += 2; lib_relation += 2; white_collar_lib += 1; urban_workers_lab -= 1;
+
+# note: what will jpa_failed be used for?
+
+Unfortunately, we do not currently have the votes in parliament to bring in a **Jewish Protection Act**, which would criminalise anti-semitic incitment to violence and discrimination against British Jews, which Mosley's <span style="color: #262626;">**BUF**</span> was more than happy to use to their advantage, even promoting the "stab in the back" theory that Jews lost Britain the Great War, instead of poor military decision-making. 
+
+It is opposed by the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span>, <span class="tooltip-text" title="Ulster Unionist Party" style="color: #2f97ea;">**UUP**</span>, **special interests**, <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> traditionalists, and, naturally, the <span style="color: #262626;">**BUF**</span>, who argue it violates freedom of speech. [? if not ccp_jpa and not cpb_jpa: The <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> and <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> would not vote either way, and thus the anti-JPA coalition has more votes than us. ?] [? if ccp_jpa and not cpb_jpa: The <span class="tooltip-text" title="Communist Party of Britain" style="color: #8e000a;">**CPB**</span> would not vote either way, and thus the anti-JPA coalition has more votes than us. ?] [? if not ccp_jpa and cpb_jpa: The <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> would not vote either way, and thus the anti-JPA coalition has more votes than us. ?]
+
+However, this improves our relations with the <span style="color: #ffbb00;">liberal</span> parties, at the cost of being used as recruitment material by the <span style="color: #262626;">fascist</span> paramilitaries, who paint us as in the same boat as those they despise.
+
+@rcra
+view-if: rcra_passed = 0
+on-arrival: {!
+
+Q.rcra_coalition = Q.lab_r + Q.lib_r + Q.cnlp_r + Q.ilp_r;
+
+if (Q.ccp_relation >= 70 or Q.ccp_leader = "Percy") {
+    Q.rcra_coalition += Q.ccp_r - 9;
+    Q.ccp_rcra = 1;
+}  
+             
+Q.anti_rcra_coalition = Q.buf_r + Q.cup_r + Q.other_r + 9;             
+!}
+subtitle: British Catholics face discrimination from the <span style="color: #e67038;">**Orange**</span><span style="color: #070863;">**men**</span>...
+choose-if: rcra_support = 1 and church_separation = 0
+unavailable subtitle: [? if not rcra_support: This is not party policy. ?] [? if church_separation: Constitutional scholars in the party argue this would contradict our reforms to it. ?]
+
+The Roman Catholic Relief Bill was first introduced in 1926 by the <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span>, and seeks to write into law a removal of all remaining social barriers that British Catholics face, building on the Constitution's recognition of religious equality.
+
+More religious voices in the <span class="tooltip-text" title="Coalition Conservative Party" style="color: #1375d6;">**CCP**</span> opposed it, arguing it was not necessary, and the <span class="tooltip-text" title="Coalition National Liberal Party" style="color: #ffd600;">**CNLP**</span> subsequently withdrew from government.
+
+Now, we may choose to attempt to make the Bill law.
+
+- @decision_time_rcra
+- @religion_menu: Let's look at something else...
+
+@decision_time_rcra 
+title: We must pass the RCRA!
+choose-if: rcra_coalition > anti_rcra_coalition
+unavailable subtitle: We do not have the votes.
+on-arrival: other_workers_lab += 1; unemployed_lab += 1; white_collar_lab -= 2; upper_lab -= 5; farmers_lab += 1; urban_workers_cup += 1; pragmatist_dissent += 5; left_dissent += 5; reformist_dissent -= 5; labour_dissent += 5; marxist_dissent += 5; reformist_strength += 5; cnlp_relation += 5; lib_relation += 2;
+
+This is a continued breag from orthodoxy which favoured non-involvement in religious affairs, and is met with displeasure from certain factions. However, we had promised this in our election campaign and are now able to deliver it!
+
+The <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span>, naturally, campaigns against the new RCRA. We will have to see how it will be implemented in the staunchly Anti-Catholic Ulster.
+
+@prayer_book
+
+WIP
+  
+@separation
+
+WIP
