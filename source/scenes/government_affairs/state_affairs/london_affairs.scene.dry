@@ -80,8 +80,6 @@ view-if: fdf_banned_london = 0 and (year >= 1929 or month >= 5)
 go-to: fdf_ban_1931 if year >= 1931; fdf_ban_128
 
 @fdf_ban_1928
-
-@fdf_ban_1931
 choose-if: met_loyalty >= 0.5
 unavailable-subtitle: [? if met_loyalty < 0.5: The police are not loyal enough to be trusted with this. ?]
 on-departure: fdf_strength -= 0.1; fdf_militancy -= 0.1; local_police_loyalty -= 0.025; met_loyalty -= 0.01; mil_loyalty -= 0.025; Q.buf_modifier_london -= 0.2; buf_modifier_london -= 0.05 if unemployed < 15; unemployed_buf += 5 if buf_votes > 10; unemployed_lab -= 5 if buf_votes > 10; urban_workers_lab += 1; fdf_banned_london = 1;
