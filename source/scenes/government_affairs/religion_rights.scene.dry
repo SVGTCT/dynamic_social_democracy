@@ -21,7 +21,7 @@ The <span style="color:red">left</span>, <span style="color: #ffbb00;">liberals<
 - @prayer_book: Support the proposed revisions to the CofE's *Book of Common Prayer*.
 - @separation: Pass a constitutional amendment to finalise the separation of church and state.
 - @root: We will not do anything about religious rights at this time.
-- @easydiscard
+- @easy_discard
 
 @jewish_pa
 view-if: jpa_passed = 0 and buf_votes >= 15 and fascist_urgency >= 1
