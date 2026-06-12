@@ -1843,7 +1843,7 @@ view-if: not lab_labour
 on-arrival: leverage -= 4; lab_labour = 1;
 go-to: ministries
 
-Margaret Bondfield of Labour has been appointed Labour Minister. [? if year = 1928 and month = 5: She becomes Britain's first woman cabinet minister! ]
+Margaret Bondfield of Labour has been appointed Labour Minister. [? if year = 1928 and month = 5: She becomes Britain's first woman cabinet minister! ?]
 
 @home_of
 title: Home Office
