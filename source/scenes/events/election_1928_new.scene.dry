@@ -2033,7 +2033,7 @@ go-to: ministries
 
 @drop_foreign
 title: Drop the Foreign Office.
-view-if: lab_foreign = 1;
+view-if: lab_foreign
 on-arrival: leverage += 12; lab_foreign = 0;
 tags: drop_mins_1928
 go-to: ministries
