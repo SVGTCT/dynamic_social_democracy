@@ -93,6 +93,8 @@ In London, all the <span style="color: #005eb8;">constitutional</span> <span sty
 
 Oswald Mosley, fearful of his life, now retreats back into Berkshire, where the conservative-minded state government has no problem with his antics, and also where he launched the 1923 failed "March on London" from Reading.
 
+[? if not blackshirts_banned_london: However, the <span style="color: #262626; text-decoration: bold">Blackshirts</span> still run loose on the streets. It will be harder to ban them than the FDF. ?]
+
 @fdf_ban_1931
 choose-if: met_loyalty >= 0.85 and union_loyalty >= 0.85
 unavailable-subtitle: [? if (met_loyalty < 0.85 and year >= 1931): The police are not loyal enough to be trusted with this. ?][? if (unions_loyalty < 85 and year >= 1931): Our forces will not be able to hold back the reaction of the <span style="color: #262626; text-decoration: bold">Blackshirts</span>. ?]
@@ -106,6 +108,8 @@ In London, all the <span style="color: #005eb8;">constitutional</span> <span sty
 [? if buf_votes <= 10: Thus, they are banned without much hassle, even though the <span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> questions the state government spending time on such a non-issue. ?][? if buf_votes > 10: They are banned, but not without a fight from the span class="tooltip-text" title="Conservative & Unionist Party" style="color: #002c6e;">**CUP**</span> and the <span style="color: #262626; text-decoration: bold">Fascists</span> themselves. ?]
 
 Oswald Mosley, fearful of his life, now retreats back into Berkshire, where the conservative-minded state government has no problem with his antics, and also where he launched the 1923 failed "March on London" from Reading.
+
+[? if not blackshirts_banned_london: However, the <span style="color: #262626; text-decoration: bold">Blackshirts</span> still run loose on the streets. It will be harder to ban them than the FDF. ?]
 
 @wip
 
