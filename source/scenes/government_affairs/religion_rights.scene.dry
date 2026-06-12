@@ -2,11 +2,13 @@ title: Religious Rights
 new-page: true
 is-card: true
 tags: govt_affairs, cabinet
-view-if: (lab_in_government = 1 and religion_rights_timer = 0 and pm_party == "Lab") and ((church_separation = 0) or (jpa_passed = 0 and buf_votes >= 15 and fascist_urgency >= 1) or (rcra_passed = 0) or (book_revision = 0))
+#view-if: (lab_in_government = 1 and religion_rights_timer = 0 and pm_party == "Lab") and ((church_separation = 0) or (jpa_passed = 0 and buf_votes >= 15 and fascist_urgency >= 1) or (rcra_passed = 0) or (book_revision = 0))
 on-arrival: religion_rights_timer += 10; month_actions += 1
 card-image: img-lab/portraits-lab/KaplanskyShlomo.jpg
 frequency: 50
 go-to: religion_menu
+
+#note for testing: view-if condition removed. Remember to revert back.
 
 @religion_menu
 
